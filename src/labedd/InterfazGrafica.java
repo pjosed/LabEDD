@@ -49,6 +49,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         Proveedores = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         Reposicion_De_Productos = new javax.swing.JPanel();
@@ -185,21 +187,41 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         label1.setText("Productos");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
         Productos.setLayout(ProductosLayout);
         ProductosLayout.setHorizontalGroup(
             ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProductosLayout.createSequentialGroup()
-                .addGap(294, 294, 294)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProductosLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ProductosLayout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         ProductosLayout.setVerticalGroup(
             ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProductosLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosLayout.createSequentialGroup()
+                .addContainerGap(199, Short.MAX_VALUE)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(597, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         MainPanel.add(Productos, "card3");
@@ -475,6 +497,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
