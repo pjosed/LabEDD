@@ -46,7 +46,7 @@ public class Eliminar_producto {
             }
             while ((line2=pv.readLine()) != null){
                 String temp[]=line2.split("\t");
-                if (temp[0].equalsIgnoreCase(cod_eliminar)){
+                if (temp[2].equalsIgnoreCase(cod_eliminar)){
                     
                 }else{
                     Proveedores2.println(line2);
