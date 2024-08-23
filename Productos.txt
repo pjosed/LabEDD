@@ -1,0 +1,5 @@
+15	Agua	50
+28	Leche	25
+17	Huevo	100
+50	Harina	30
+29	Almendra	300
