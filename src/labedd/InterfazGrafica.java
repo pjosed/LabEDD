@@ -55,6 +55,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label3 = new java.awt.Label();
         Eliminar_Productos = new javax.swing.JPanel();
         label4 = new java.awt.Label();
+        jLabel2 = new javax.swing.JLabel();
+        Cod_eliminar = new javax.swing.JTextField();
+        Button_Eliminar = new javax.swing.JButton();
         Actualizar_Precio_Del_Producto = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
@@ -251,27 +254,57 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Reposicion_De_Productos, "card8");
 
+        label4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
+        label4.setForeground(new java.awt.Color(255, 0, 51));
         label4.setText("Eliminar productos");
+
+        jLabel2.setText("Producto a eliminar:");
+
+        Cod_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cod_eliminarActionPerformed(evt);
+            }
+        });
+
+        Button_Eliminar.setText("Eliminar");
+        Button_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_EliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Eliminar_ProductosLayout = new javax.swing.GroupLayout(Eliminar_Productos);
         Eliminar_Productos.setLayout(Eliminar_ProductosLayout);
         Eliminar_ProductosLayout.setHorizontalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-            .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
-                    .addGap(240, 240, 240)
-                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(241, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Eliminar_ProductosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Button_Eliminar)
+                .addGap(213, 213, 213))
+            .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Cod_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         Eliminar_ProductosLayout.setVerticalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
-            .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
-                    .addGap(344, 344, 344)
-                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
+            .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(Cod_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(Button_Eliminar)
+                .addContainerGap(590, Short.MAX_VALUE))
         );
 
         MainPanel.add(Eliminar_Productos, "card7");
@@ -379,6 +412,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
+        String cod_eliminar =   Cod_eliminar.getText();
+    }//GEN-LAST:event_Button_EliminarActionPerformed
+
+    private void Cod_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod_eliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cod_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -417,6 +458,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Actualizar_Precio_Del_Producto;
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
+    private javax.swing.JButton Button_Eliminar;
+    private javax.swing.JTextField Cod_eliminar;
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JPanel Productos;
@@ -430,6 +473,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label label1;
     private java.awt.Label label2;
