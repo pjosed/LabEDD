@@ -26,8 +26,8 @@ public class Eliminar_producto {
             FileWriter outFile = new FileWriter(fichero,false);
             PrintWriter Productos2 = new PrintWriter(outFile);
             
-            File Proveedores = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveeedores.txt");
-            BufferedReader pv = new BufferedReader(new FileReader(Productos));
+            File Proveedores = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores.txt");
+            BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
             File fichero2 = new File("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores2.txt");
             FileWriter outFile2 = new FileWriter(fichero2,false);
             PrintWriter Proveedores2 = new PrintWriter(outFile2);
@@ -45,9 +45,9 @@ public class Eliminar_producto {
                 }
             }
             while ((line2=pv.readLine()) != null){
-                String temp[]=line2.split("\t");
-                if (temp[2].equalsIgnoreCase(cod_eliminar)){
-                    
+                String temp2[]=line2.split("\t");
+                if (temp2[2].equalsIgnoreCase(cod_eliminar)){
+                    hay=true;
                 }else{
                     Proveedores2.println(line2);
                 }
@@ -61,13 +61,16 @@ public class Eliminar_producto {
                 System.out.println("El producto no existe.");
                 fichero.delete();
                 fichero2.delete();
+                
             }else{
                 System.out.println("El producto ha sido eliminado.");
                 Productos.delete();
                 Proveedores.delete();
-                File rn = new File ("Productos.txt");
+                
+                File rn = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Productos.txt");
                 boolean renombrar = fichero.renameTo(rn);
-                File rn2 = new File ("Proveedores.txt");
+                
+                File rn2 = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores.txt");
                 boolean renombrar2 = fichero2.renameTo(rn2);
             }
         }catch (IOException ex) {

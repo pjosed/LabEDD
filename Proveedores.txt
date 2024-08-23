@@ -1,6 +1,0 @@
-15	Agua	300
-28	Leche	300
-17	Huevo	300
-35	Café	300
-50	Harina	300
-29	Almendra	300
