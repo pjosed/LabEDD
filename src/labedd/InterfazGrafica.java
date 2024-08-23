@@ -22,6 +22,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     /**
      * Creates new form InterfazGrafica
      */
+    private CardLayout cardLayout ;
     public InterfazGrafica() {
         initComponents();
 
@@ -36,6 +37,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        SideBar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -43,19 +46,46 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        MainPanel = new javax.swing.JPanel();
+        Productos = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
+        Proveedores = new javax.swing.JPanel();
+        label2 = new java.awt.Label();
+        Reposicion_De_Productos = new javax.swing.JPanel();
+        label3 = new java.awt.Label();
+        Eliminar_Productos = new javax.swing.JPanel();
+        label4 = new java.awt.Label();
+        Actualizar_Precio_Del_Producto = new javax.swing.JPanel();
+        label5 = new java.awt.Label();
+        Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
+        label6 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(jPanel2.getBackground());
+        SideBar.setBackground(new java.awt.Color(0, 102, 102));
+        SideBar.setForeground(new java.awt.Color(0, 102, 102));
+        SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/La_Estrella_Logo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(117, 77));
+        jLabel1.setMinimumSize(new java.awt.Dimension(117, 77));
+        jLabel1.setPreferredSize(new java.awt.Dimension(117, 77));
+        SideBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 100, 100));
+
+        jPanel1.setBackground(SideBar.getBackground());
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 1));
 
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Productos");
         jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,16 +116,31 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Eliminar productos");
         jButton4.setPreferredSize(new java.awt.Dimension(200, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(0, 153, 255));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Actualizar precio del producto");
         jButton6.setPreferredSize(new java.awt.Dimension(200, 50));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(0, 153, 255));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Agregar/Eliminar proveedores");
         jButton5.setPreferredSize(new java.awt.Dimension(200, 50));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,32 +173,211 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 180, 290, 350);
+        SideBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 300, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel2.setForeground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 300, 740);
+        getContentPane().add(SideBar);
+        SideBar.setBounds(0, 0, 300, 740);
 
-        jPanel3.setLayout(new java.awt.CardLayout());
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(300, 0, 650, 740);
+        MainPanel.setLayout(new java.awt.CardLayout());
+
+        label1.setText("Productos");
+
+        javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
+        Productos.setLayout(ProductosLayout);
+        ProductosLayout.setHorizontalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductosLayout.createSequentialGroup()
+                .addGap(294, 294, 294)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(296, Short.MAX_VALUE))
+        );
+        ProductosLayout.setVerticalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductosLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(597, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Productos, "card3");
+
+        label2.setText("Proveedores");
+
+        javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
+        Proveedores.setLayout(ProveedoresLayout);
+        ProveedoresLayout.setHorizontalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ProveedoresLayout.createSequentialGroup()
+                    .addGap(240, 240, 240)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
+        ProveedoresLayout.setVerticalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ProveedoresLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
+
+        MainPanel.add(Proveedores, "card6");
+
+        label3.setText("Reposición de productos");
+
+        javax.swing.GroupLayout Reposicion_De_ProductosLayout = new javax.swing.GroupLayout(Reposicion_De_Productos);
+        Reposicion_De_Productos.setLayout(Reposicion_De_ProductosLayout);
+        Reposicion_De_ProductosLayout.setHorizontalGroup(
+            Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
+                    .addGap(240, 240, 240)
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
+        Reposicion_De_ProductosLayout.setVerticalGroup(
+            Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
+
+        MainPanel.add(Reposicion_De_Productos, "card8");
+
+        label4.setText("Eliminar productos");
+
+        javax.swing.GroupLayout Eliminar_ProductosLayout = new javax.swing.GroupLayout(Eliminar_Productos);
+        Eliminar_Productos.setLayout(Eliminar_ProductosLayout);
+        Eliminar_ProductosLayout.setHorizontalGroup(
+            Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                    .addGap(240, 240, 240)
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
+        Eliminar_ProductosLayout.setVerticalGroup(
+            Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
+
+        MainPanel.add(Eliminar_Productos, "card7");
+
+        label5.setText("Actualizar precio de productos");
+
+        javax.swing.GroupLayout Actualizar_Precio_Del_ProductoLayout = new javax.swing.GroupLayout(Actualizar_Precio_Del_Producto);
+        Actualizar_Precio_Del_Producto.setLayout(Actualizar_Precio_Del_ProductoLayout);
+        Actualizar_Precio_Del_ProductoLayout.setHorizontalGroup(
+            Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
+                    .addGap(240, 240, 240)
+                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
+        Actualizar_Precio_Del_ProductoLayout.setVerticalGroup(
+            Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
+
+        MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
+
+        label6.setText("Agregar o eliminar proveedores");
+
+        javax.swing.GroupLayout Agregar_Eliminar_ProveedoresLayout = new javax.swing.GroupLayout(Agregar_Eliminar_Proveedores);
+        Agregar_Eliminar_Proveedores.setLayout(Agregar_Eliminar_ProveedoresLayout);
+        Agregar_Eliminar_ProveedoresLayout.setHorizontalGroup(
+            Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Agregar_Eliminar_ProveedoresLayout.createSequentialGroup()
+                    .addGap(240, 240, 240)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
+        Agregar_Eliminar_ProveedoresLayout.setVerticalGroup(
+            Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Agregar_Eliminar_ProveedoresLayout.createSequentialGroup()
+                    .addGap(344, 344, 344)
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(345, Short.MAX_VALUE)))
+        );
+
+        MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
+
+        getContentPane().add(MainPanel);
+        MainPanel.setBounds(300, 0, 650, 740);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Producto Producto = new Producto(); 
-Producto.setVisible(true);
+        MainPanel.removeAll();
+        MainPanel.add(Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+          MainPanel.removeAll();
+        MainPanel.add(Proveedores);
+        MainPanel.repaint();
+        MainPanel.revalidate();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        MainPanel.removeAll();
+        MainPanel.add(Reposicion_De_Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate(); 
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Eliminar_Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate(); 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+            MainPanel.removeAll();
+        MainPanel.add(Actualizar_Precio_Del_Producto);
+        MainPanel.repaint();
+        MainPanel.revalidate();   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Agregar_Eliminar_Proveedores);
+        MainPanel.repaint();
+        MainPanel.revalidate(); 
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,14 +415,27 @@ Producto.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Actualizar_Precio_Del_Producto;
+    private javax.swing.JPanel Agregar_Eliminar_Proveedores;
+    private javax.swing.JPanel Eliminar_Productos;
+    private javax.swing.JPanel MainPanel;
+    private javax.swing.JPanel Productos;
+    private javax.swing.JPanel Proveedores;
+    private javax.swing.JPanel Reposicion_De_Productos;
+    private javax.swing.JPanel SideBar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
+    private java.awt.Label label5;
+    private java.awt.Label label6;
     // End of variables declaration//GEN-END:variables
 }
