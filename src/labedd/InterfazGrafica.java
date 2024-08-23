@@ -44,6 +44,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -133,7 +134,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setForeground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 300, 730);
+        jPanel2.setBounds(0, 0, 300, 740);
+
+        jPanel3.setLayout(new java.awt.CardLayout());
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(300, 0, 650, 740);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,5 +199,6 @@ Producto.setVisible(true);
     private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
