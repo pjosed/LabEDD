@@ -1,0 +1,6 @@
+CódigoProducto|Nombre|Categoría|Precio|CantidadStock|FechaÚltimaReposición
+P001|Leche|Lácteos|1.25|100|2024-08-01
+P002|Pan|Panadería|0.75|200|2024-07-25
+P003|Manzana|Frutas|0.50|150|2024-08-10
+P004|Jabón|Aseo|1.00|80|2024-08-15
+P005|Pasta|Alimentos|1.50|120|2024-07-30
