@@ -9,6 +9,12 @@ import java.awt.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -50,8 +56,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
-        Proveedores = new javax.swing.JPanel();
-        label2 = new java.awt.Label();
         Reposicion_De_Productos = new javax.swing.JPanel();
         label3 = new java.awt.Label();
         Eliminar_Productos = new javax.swing.JPanel();
@@ -63,6 +67,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         label6 = new java.awt.Label();
+        Proveedores = new javax.swing.JPanel();
+        label7 = new java.awt.Label();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Overview_Proveedores = new javax.swing.JTable();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -192,31 +200,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         SideBar.setBounds(0, 0, 300, 740);
 
         MainPanel.setLayout(new java.awt.CardLayout());
-
-        label2.setText("Proveedores");
-
-        javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
-        Proveedores.setLayout(ProveedoresLayout);
-        ProveedoresLayout.setHorizontalGroup(
-            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ProveedoresLayout.createSequentialGroup()
-                    .addGap(240, 240, 240)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(591, Short.MAX_VALUE)))
-        );
-        ProveedoresLayout.setVerticalGroup(
-            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
-            .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(ProveedoresLayout.createSequentialGroup()
-                    .addGap(344, 344, 344)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
-        );
-
-        MainPanel.add(Proveedores, "card6");
 
         label3.setText("Reposición de productos");
 
@@ -348,28 +331,90 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
+        label7.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        label7.setForeground(new java.awt.Color(51, 153, 255));
+        label7.setText("Proveedores");
+
+        Overview_Proveedores.setAutoCreateRowSorter(true);
+        Overview_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre Proveedor", "Cédula Jurídica", "Productos Suministrados", "Cantidad Suministrada", "Fecha Última Entrega"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Overview_Proveedores.setToolTipText("");
+        Overview_Proveedores.setFillsViewportHeight(true);
+        Overview_Proveedores.setGridColor(new java.awt.Color(0, 0, 0));
+        Overview_Proveedores.setRowHeight(25);
+        Overview_Proveedores.setShowHorizontalLines(true);
+        Overview_Proveedores.setSurrendersFocusOnKeystroke(true);
+        Overview_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Overview_ProveedoresMouseClicked(evt);
+            }
+        });
+        Overview_Proveedores.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                Overview_ProveedoresComponentShown(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Overview_Proveedores);
+        if (Overview_Proveedores.getColumnModel().getColumnCount() > 0) {
+            Overview_Proveedores.getColumnModel().getColumn(0).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(1).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(2).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(3).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
+        Proveedores.setLayout(ProveedoresLayout);
+        ProveedoresLayout.setHorizontalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProveedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3)
+                    .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        ProveedoresLayout.setVerticalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProveedoresLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Proveedores, "card3");
+
         label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         label1.setForeground(new java.awt.Color(51, 153, 255));
         label1.setText("Productos");
 
+        Overview_Productos.setAutoCreateRowSorter(true);
         Overview_Productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código Producto", "Nombre", "Categoría", "Precio", "Cantidad en Stock", "Fecha Última Reposicion"
@@ -390,9 +435,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Overview_Productos.setToolTipText("");
         Overview_Productos.setFillsViewportHeight(true);
         Overview_Productos.setGridColor(new java.awt.Color(0, 0, 0));
         Overview_Productos.setRowHeight(25);
+        Overview_Productos.setShowHorizontalLines(true);
         Overview_Productos.setSurrendersFocusOnKeystroke(true);
         Overview_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -412,6 +459,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             Overview_Productos.getColumnModel().getColumn(3).setResizable(false);
             Overview_Productos.getColumnModel().getColumn(4).setResizable(false);
             Overview_Productos.getColumnModel().getColumn(5).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(5).setHeaderValue("Fecha Última Reposicion");
         }
         System.out.println("Inicio Mostrar Productos");
 
@@ -432,8 +480,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addGap(97, 97, 97)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         MainPanel.add(Productos, "card3");
@@ -449,25 +497,86 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel.repaint();
         MainPanel.revalidate();
         
-        
-        
-        
-        
+       // Obtener el modelo de la tabla Overview_Productos
+DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
+
+
+// Añadir la nueva fila al modelo de la tabla
+
+        System.out.println("Prrrrrrr");
+     
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
+            String linea;
+            br.readLine(); // Omitir la primera línea de encabezados
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+                Object[] fila = {
+                    campos[0],  // CódigoProducto
+                    campos[1],  // Nombre
+                    campos[2],  // Categoría
+                    Double.parseDouble(campos[3]),  // Precio
+                    Integer.parseInt(campos[4]),  // CantidadStock
+                    campos[5]  // FechaÚltimaReposición
+                };
+                model.addRow(fila);
+            };
+            
+            
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(Proveedores);
         MainPanel.repaint();
         MainPanel.revalidate();
+               // Obtener el modelo de la tabla Overview_Productos
+DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
+
+
+// Añadir la nueva fila al modelo de la tabla
+
+        System.out.println("Leyendo Proveedores");
+     
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
+            String linea;
+            br.readLine(); // Omitir la primera línea de encabezados
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+                Object[] fila = {
+                    campos[0],                        // NombreProveedor
+                    campos[1],                        // CedulaJuridica
+                    campos[2],                        // ProductosSuministrados
+                    Integer.parseInt(campos[3]),      // CantidadSuministrada
+                    campos[4]                         // FechaUltimaEntrega
+                };
+                model.addRow(fila);
+            };
+            
+            
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         MainPanel.removeAll();
         MainPanel.add(Reposicion_De_Productos);
         MainPanel.repaint();
-        MainPanel.revalidate(); 
-        
+        MainPanel.revalidate();     
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -515,6 +624,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
         System.out.println("Ojala salga todo");        // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProductosComponentShown
 
+    private void Overview_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProveedoresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Overview_ProveedoresMouseClicked
+
+    private void Overview_ProveedoresComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Overview_ProveedoresComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Overview_ProveedoresComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -558,6 +675,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable Overview_Productos;
+    private javax.swing.JTable Overview_Proveedores;
     private javax.swing.JPanel Productos;
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
@@ -572,11 +690,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
-    private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
+    private java.awt.Label label7;
     // End of variables declaration//GEN-END:variables
 }
