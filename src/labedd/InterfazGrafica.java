@@ -12,6 +12,9 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -25,7 +28,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private CardLayout cardLayout ;
     public InterfazGrafica() {
         initComponents();
-
+            
     }
 //Ana tonta
     /**
@@ -47,10 +50,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
-        Productos = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         Proveedores = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         Reposicion_De_Productos = new javax.swing.JPanel();
@@ -64,12 +63,21 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         label6 = new java.awt.Label();
+        Productos = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Overview_Productos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         SideBar.setBackground(new java.awt.Color(0, 102, 102));
         SideBar.setForeground(new java.awt.Color(0, 102, 102));
+        SideBar.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                SideBarComponentShown(evt);
+            }
+        });
         SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/La_Estrella_Logo.jpg"))); // NOI18N
@@ -185,59 +193,18 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.setLayout(new java.awt.CardLayout());
 
-        label1.setText("Productos");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
-        Productos.setLayout(ProductosLayout);
-        ProductosLayout.setHorizontalGroup(
-            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProductosLayout.createSequentialGroup()
-                .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ProductosLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ProductosLayout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-        ProductosLayout.setVerticalGroup(
-            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosLayout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
-        );
-
-        MainPanel.add(Productos, "card3");
-
         label2.setText("Proveedores");
 
         javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
         Proveedores.setLayout(ProveedoresLayout);
         ProveedoresLayout.setHorizontalGroup(
             ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
             .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ProveedoresLayout.createSequentialGroup()
                     .addGap(240, 240, 240)
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(241, Short.MAX_VALUE)))
+                    .addContainerGap(591, Short.MAX_VALUE)))
         );
         ProveedoresLayout.setVerticalGroup(
             ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,12 +224,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Reposicion_De_Productos.setLayout(Reposicion_De_ProductosLayout);
         Reposicion_De_ProductosLayout.setHorizontalGroup(
             Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
             .addGroup(Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
                     .addGap(240, 240, 240)
                     .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(241, Short.MAX_VALUE)))
+                    .addContainerGap(591, Short.MAX_VALUE)))
         );
         Reposicion_De_ProductosLayout.setVerticalGroup(
             Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +280,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                     .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                         .addGap(221, 221, 221)
                         .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addContainerGap(569, Short.MAX_VALUE))
         );
         Eliminar_ProductosLayout.setVerticalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,12 +304,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Actualizar_Precio_Del_Producto.setLayout(Actualizar_Precio_Del_ProductoLayout);
         Actualizar_Precio_Del_ProductoLayout.setHorizontalGroup(
             Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
             .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
                     .addGap(240, 240, 240)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(241, Short.MAX_VALUE)))
+                    .addContainerGap(591, Short.MAX_VALUE)))
         );
         Actualizar_Precio_Del_ProductoLayout.setVerticalGroup(
             Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,12 +329,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores.setLayout(Agregar_Eliminar_ProveedoresLayout);
         Agregar_Eliminar_ProveedoresLayout.setHorizontalGroup(
             Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
             .addGroup(Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Agregar_Eliminar_ProveedoresLayout.createSequentialGroup()
                     .addGap(240, 240, 240)
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(241, Short.MAX_VALUE)))
+                    .addContainerGap(591, Short.MAX_VALUE)))
         );
         Agregar_Eliminar_ProveedoresLayout.setVerticalGroup(
             Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,8 +348,98 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
+        label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        label1.setForeground(new java.awt.Color(51, 153, 255));
+        label1.setText("Productos");
+
+        Overview_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Código Producto", "Nombre", "Categoría", "Precio", "Cantidad en Stock", "Fecha Última Reposicion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Overview_Productos.setFillsViewportHeight(true);
+        Overview_Productos.setGridColor(new java.awt.Color(0, 0, 0));
+        Overview_Productos.setRowHeight(25);
+        Overview_Productos.setSurrendersFocusOnKeystroke(true);
+        Overview_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Overview_ProductosMouseClicked(evt);
+            }
+        });
+        Overview_Productos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                Overview_ProductosComponentShown(evt);
+            }
+        });
+        jScrollPane2.setViewportView(Overview_Productos);
+        if (Overview_Productos.getColumnModel().getColumnCount() > 0) {
+            Overview_Productos.getColumnModel().getColumn(0).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(1).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(2).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(3).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(4).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(5).setResizable(false);
+        }
+        System.out.println("Inicio Mostrar Productos");
+
+        javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
+        Productos.setLayout(ProductosLayout);
+        ProductosLayout.setHorizontalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        ProductosLayout.setVerticalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductosLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(342, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Productos, "card3");
+
         getContentPane().add(MainPanel);
-        MainPanel.setBounds(300, 0, 650, 740);
+        MainPanel.setBounds(300, 0, 1000, 740);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -391,7 +448,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel.add(Productos);
         MainPanel.repaint();
         MainPanel.revalidate();
-
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -442,6 +503,18 @@ public class InterfazGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Cod_eliminarActionPerformed
 
+    private void Overview_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProductosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Overview_ProductosMouseClicked
+
+    private void SideBarComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_SideBarComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SideBarComponentShown
+
+    private void Overview_ProductosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Overview_ProductosComponentShown
+        System.out.println("Ojala salga todo");        // TODO add your handling code here:
+    }//GEN-LAST:event_Overview_ProductosComponentShown
+
     /**
      * @param args the command line arguments
      */
@@ -484,6 +557,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField Cod_eliminar;
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JTable Overview_Productos;
     private javax.swing.JPanel Productos;
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
@@ -497,8 +571,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
