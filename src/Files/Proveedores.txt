@@ -4,3 +4,29 @@ Panadería El Trigo|3002345678|Pan|200|2024-07-25
 Frutas Del Valle|3003456789|Manzana|150|2024-08-10
 Productos Limpieza SA|3004567890|Jabón|80|2024-08-15
 Alimentos Naturales|3005678901|Pasta|120|2024-07-30
+Quesos Gourmet|3006789012|Queso|50|2024-08-05
+Verduras Frescas|3007890123|Tomate|75|2024-08-18
+Granero Familiar|3008901234|Arroz|300|2024-08-05
+Limpieza Total|3009012345|Detergente|60|2024-08-22
+Tienda de Frutas|3010123456|Plátano|180|2024-08-12
+Cereales y Más|3011234567|Cereal|90|2024-07-28
+Huevos del Campo|3012345678|Huevos|50|2024-08-11
+Carnes Selectas|3013456789|Pollo|40|2024-08-14
+Higiene Personal|3014567890|Shampoo|30|2024-08-19
+Huerta Verde|3015678901|Lechuga|100|2024-08-21
+Lácteos La Finca|3016789012|Yogurt|80|2024-08-03
+Granja Orgánica|3017890123|Zanahoria|120|2024-08-08
+Carnes de Calidad|3018901234|Jamón|70|2024-08-16
+Bebidas Refrescantes|3019012345|Coca-Cola|200|2024-08-17
+Mariscos del Mar|3020123456|Atún|85|2024-08-06
+Mercado Central|3021234567|Carne Molida|45|2024-08-13
+Jugos Naturales|3022345678|Zumo de Naranja|150|2024-08-02
+Aseo Hogar|3023456789|Papel Higiénico|500|2024-08-14
+Cultivos Andinos|3024567890|Fresas|70|2024-08-11
+Enlatados Del Sol|3025678901|Sardinas|200|2024-08-15
+Dulcería Sabrosa|3026789012|Galletas|150|2024-08-07
+Lácteos Los Andes|3027890123|Mantequilla|65|2024-08-04
+Vegetales Orgánicos|3028901234|Pimiento|90|2024-08-09
+Refrescos y Más|3029012345|Café|110|2024-07-31
+Panadería Casera|3030123456|Galletas|120|2024-08-23
+Chocolatería Dulce Vida|3031234567|Chocolates|140|2024-08-10
