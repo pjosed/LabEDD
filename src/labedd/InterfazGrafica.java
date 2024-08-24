@@ -56,6 +56,17 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
+        Inicio = new javax.swing.JPanel();
+        label8 = new java.awt.Label();
+        canvas1 = new java.awt.Canvas();
+        Productos = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Overview_Productos = new javax.swing.JTable();
+        Proveedores = new javax.swing.JPanel();
+        label7 = new java.awt.Label();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Overview_Proveedores = new javax.swing.JTable();
         Reposicion_De_Productos = new javax.swing.JPanel();
         label3 = new java.awt.Label();
         Eliminar_Productos = new javax.swing.JPanel();
@@ -67,14 +78,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         label6 = new java.awt.Label();
-        Proveedores = new javax.swing.JPanel();
-        label7 = new java.awt.Label();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Overview_Proveedores = new javax.swing.JTable();
-        Productos = new javax.swing.JPanel();
-        label1 = new java.awt.Label();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Overview_Productos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -200,6 +203,192 @@ public class InterfazGrafica extends javax.swing.JFrame {
         SideBar.setBounds(0, 0, 300, 740);
 
         MainPanel.setLayout(new java.awt.CardLayout());
+
+        Inicio.setBackground(new java.awt.Color(0, 153, 255));
+        Inicio.setForeground(new java.awt.Color(255, 255, 255));
+
+        label8.setText("Inicio");
+
+        javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
+        Inicio.setLayout(InicioLayout);
+        InicioLayout.setHorizontalGroup(
+            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InicioLayout.createSequentialGroup()
+                .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InicioLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InicioLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(791, Short.MAX_VALUE))
+        );
+        InicioLayout.setVerticalGroup(
+            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InicioLayout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(576, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Inicio, "card8");
+
+        label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        label1.setForeground(new java.awt.Color(51, 153, 255));
+        label1.setText("Productos");
+
+        Overview_Productos.setAutoCreateRowSorter(true);
+        Overview_Productos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código Producto", "Nombre", "Categoría", "Precio", "Cantidad en Stock", "Fecha Última Reposicion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Overview_Productos.setToolTipText("");
+        Overview_Productos.setFillsViewportHeight(true);
+        Overview_Productos.setGridColor(new java.awt.Color(0, 0, 0));
+        Overview_Productos.setRowHeight(25);
+        Overview_Productos.setShowHorizontalLines(true);
+        Overview_Productos.setSurrendersFocusOnKeystroke(true);
+        Overview_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Overview_ProductosMouseClicked(evt);
+            }
+        });
+        Overview_Productos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                Overview_ProductosComponentShown(evt);
+            }
+        });
+        jScrollPane2.setViewportView(Overview_Productos);
+        if (Overview_Productos.getColumnModel().getColumnCount() > 0) {
+            Overview_Productos.getColumnModel().getColumn(0).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(1).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(2).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(3).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(4).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(5).setResizable(false);
+            Overview_Productos.getColumnModel().getColumn(5).setHeaderValue("Fecha Última Reposicion");
+        }
+        System.out.println("Inicio Mostrar Productos");
+
+        javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
+        Productos.setLayout(ProductosLayout);
+        ProductosLayout.setHorizontalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        ProductosLayout.setVerticalGroup(
+            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProductosLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Productos, "card3");
+
+        label7.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        label7.setForeground(new java.awt.Color(51, 153, 255));
+        label7.setText("Proveedores");
+
+        Overview_Proveedores.setAutoCreateRowSorter(true);
+        Overview_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre Proveedor", "Cédula Jurídica", "Productos Suministrados", "Cantidad Suministrada", "Fecha Última Entrega"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Overview_Proveedores.setToolTipText("");
+        Overview_Proveedores.setFillsViewportHeight(true);
+        Overview_Proveedores.setGridColor(new java.awt.Color(0, 0, 0));
+        Overview_Proveedores.setRowHeight(25);
+        Overview_Proveedores.setShowHorizontalLines(true);
+        Overview_Proveedores.setSurrendersFocusOnKeystroke(true);
+        Overview_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Overview_ProveedoresMouseClicked(evt);
+            }
+        });
+        Overview_Proveedores.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                Overview_ProveedoresComponentShown(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Overview_Proveedores);
+        if (Overview_Proveedores.getColumnModel().getColumnCount() > 0) {
+            Overview_Proveedores.getColumnModel().getColumn(0).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(1).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(2).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(3).setResizable(false);
+            Overview_Proveedores.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
+        Proveedores.setLayout(ProveedoresLayout);
+        ProveedoresLayout.setHorizontalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProveedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3)
+                    .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        ProveedoresLayout.setVerticalGroup(
+            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProveedoresLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Proveedores, "card3");
 
         label3.setText("Reposición de productos");
 
@@ -330,161 +519,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         );
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
-
-        label7.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        label7.setForeground(new java.awt.Color(51, 153, 255));
-        label7.setText("Proveedores");
-
-        Overview_Proveedores.setAutoCreateRowSorter(true);
-        Overview_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre Proveedor", "Cédula Jurídica", "Productos Suministrados", "Cantidad Suministrada", "Fecha Última Entrega"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        Overview_Proveedores.setToolTipText("");
-        Overview_Proveedores.setFillsViewportHeight(true);
-        Overview_Proveedores.setGridColor(new java.awt.Color(0, 0, 0));
-        Overview_Proveedores.setRowHeight(25);
-        Overview_Proveedores.setShowHorizontalLines(true);
-        Overview_Proveedores.setSurrendersFocusOnKeystroke(true);
-        Overview_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Overview_ProveedoresMouseClicked(evt);
-            }
-        });
-        Overview_Proveedores.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                Overview_ProveedoresComponentShown(evt);
-            }
-        });
-        jScrollPane3.setViewportView(Overview_Proveedores);
-        if (Overview_Proveedores.getColumnModel().getColumnCount() > 0) {
-            Overview_Proveedores.getColumnModel().getColumn(0).setResizable(false);
-            Overview_Proveedores.getColumnModel().getColumn(1).setResizable(false);
-            Overview_Proveedores.getColumnModel().getColumn(2).setResizable(false);
-            Overview_Proveedores.getColumnModel().getColumn(3).setResizable(false);
-            Overview_Proveedores.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        javax.swing.GroupLayout ProveedoresLayout = new javax.swing.GroupLayout(Proveedores);
-        Proveedores.setLayout(ProveedoresLayout);
-        ProveedoresLayout.setHorizontalGroup(
-            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProveedoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3)
-                    .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
-                .addGap(45, 45, 45))
-        );
-        ProveedoresLayout.setVerticalGroup(
-            ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProveedoresLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-
-        MainPanel.add(Proveedores, "card3");
-
-        label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        label1.setForeground(new java.awt.Color(51, 153, 255));
-        label1.setText("Productos");
-
-        Overview_Productos.setAutoCreateRowSorter(true);
-        Overview_Productos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código Producto", "Nombre", "Categoría", "Precio", "Cantidad en Stock", "Fecha Última Reposicion"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        Overview_Productos.setToolTipText("");
-        Overview_Productos.setFillsViewportHeight(true);
-        Overview_Productos.setGridColor(new java.awt.Color(0, 0, 0));
-        Overview_Productos.setRowHeight(25);
-        Overview_Productos.setShowHorizontalLines(true);
-        Overview_Productos.setSurrendersFocusOnKeystroke(true);
-        Overview_Productos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Overview_ProductosMouseClicked(evt);
-            }
-        });
-        Overview_Productos.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                Overview_ProductosComponentShown(evt);
-            }
-        });
-        jScrollPane2.setViewportView(Overview_Productos);
-        if (Overview_Productos.getColumnModel().getColumnCount() > 0) {
-            Overview_Productos.getColumnModel().getColumn(0).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(1).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(2).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(3).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(4).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(5).setResizable(false);
-            Overview_Productos.getColumnModel().getColumn(5).setHeaderValue("Fecha Última Reposicion");
-        }
-        System.out.println("Inicio Mostrar Productos");
-
-        javax.swing.GroupLayout ProductosLayout = new javax.swing.GroupLayout(Productos);
-        Productos.setLayout(ProductosLayout);
-        ProductosLayout.setHorizontalGroup(
-            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
-                .addGap(45, 45, 45))
-        );
-        ProductosLayout.setVerticalGroup(
-            ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProductosLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-
-        MainPanel.add(Productos, "card3");
 
         getContentPane().add(MainPanel);
         MainPanel.setBounds(300, 0, 1000, 740);
@@ -673,6 +707,7 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private javax.swing.JButton Button_Eliminar;
     private javax.swing.JTextField Cod_eliminar;
     private javax.swing.JPanel Eliminar_Productos;
+    private javax.swing.JPanel Inicio;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTable Overview_Productos;
     private javax.swing.JTable Overview_Proveedores;
@@ -680,6 +715,7 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
     private javax.swing.JPanel SideBar;
+    private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -697,5 +733,6 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private java.awt.Label label5;
     private java.awt.Label label6;
     private java.awt.Label label7;
+    private java.awt.Label label8;
     // End of variables declaration//GEN-END:variables
 }
