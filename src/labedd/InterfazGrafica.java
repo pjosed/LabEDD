@@ -10,6 +10,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -716,70 +718,68 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String Nombre = NombreProveedor1.getText();
-String CedulaStr = CedulaJuridica.getText();
-String ProdSuministrado = ProductoSuministrado.getText();
-String CantidadProductoStr = CantProducto.getText();
-String Fecha = FechaDeEntrega.getText();
+        String CedulaStr = CedulaJuridica.getText();
+        String ProdSuministrado = ProductoSuministrado.getText();
+        String CantidadProductoStr = CantProducto.getText();
+        String Fecha = FechaDeEntrega.getText();
 
 // VERIFICACIONES
 // Verificar que la cédula sea un número
-int Cedula;
-try {
-    Cedula = Integer.parseInt(CedulaStr);
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese un número de cédula válido.");
-    return;
-}
+        int Cedula;
+        try {
+            Cedula = Integer.parseInt(CedulaStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un número de cédula válido.");
+            return;
+        }
 
 // Verificar que el producto suministrado no esté vacío
-if (ProdSuministrado.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del producto suministrado.");
-    return;
-}
+        if (ProdSuministrado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del producto suministrado.");
+            return;
+        }
 // Verificar que el producto suministrado no esté vacío
-if (Nombre.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor");
-    return;
-}
+        if (Nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor");
+            return;
+        }
 
 // Verificar que la cantidad de productos sea un número
-int CantidadProducto;
-try {
-    CantidadProducto = Integer.parseInt(CantidadProductoStr);
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese una cantidad de producto válida.");
-    return;
-}
+        int CantidadProducto;
+        try {
+            CantidadProducto = Integer.parseInt(CantidadProductoStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese una cantidad de producto válida.");
+            return;
+        }
 
 // Verificar que la fecha esté en el formato DD/MM/AA
-if (!Fecha.matches("\\d{2}/\\d{2}/\\d{2}")) {
-    JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
-    return;
-}
+        if (!Fecha.matches("\\d{2}/\\d{2}/\\d{2}")) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
+            return;
+        }
 // Agregar a la tabla
- DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
-    model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, CantidadProducto, Fecha});
+        DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
+        model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, CantidadProducto, Fecha});
 
 // GUARDAR EN EL ARCHIVO
-try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true);
-     PrintWriter pw = new PrintWriter(fw)) {
+        try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true); PrintWriter pw = new PrintWriter(fw)) {
 
-    // Escribir los datos en el archivo
-    pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|" + CantidadProducto + "|" + Fecha);
-    
-    
-    JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
-    
-} catch (IOException ex) {
-    JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
-}
+            // Escribir los datos en el archivo
+            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|" + CantidadProducto + "|" + Fecha);
+
+            JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
+        }
 
 // Limpiar los campos
-NombreProveedor1.setText("");
-CedulaJuridica.setText("");
-ProductoSuministrado.setText("");
-CantProducto.setText("");
-FechaDeEntrega.setText("");
+        NombreProveedor1.setText("");
+        CedulaJuridica.setText("");
+        ProductoSuministrado.setText("");
+        CantProducto.setText("");
+        FechaDeEntrega.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -792,70 +792,90 @@ FechaDeEntrega.setText("");
     }//GEN-LAST:event_CedulaJuridicaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-    try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
-    String apuntador;
-
-    // Leer el archivo 
-    while ((apuntador = br.readLine()) != null) {
-        System.out.println("Leyendo línea: " + apuntador);
-        String[] valores = apuntador.split("\\|");
-
-        if (valores.length >= 3) {
-            String cedulaeliminar = CedulaEliminar.getText();
-            String cedula = valores[1].trim();
-            String nombre = valores[0].trim();
-            String ProductoSuministrado = valores[2].trim();
-
-            // Comparar cédula
-            if (cedulaeliminar.equals(cedula)) {
-                
-                return;
-                
-            }
-        }
-    }
-
-    // Mensaje si no se encuentra la cédula
-    JOptionPane.showMessageDialog(this, "Cédula no encontrada.");
-
-} catch (IOException e) {
-    System.out.println("Error al leer el archivo: " + e.getMessage());
-}            
-        
+        EliminarProveedor();
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-         
-try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
-    String apuntador;
+    public void EliminarProveedor() {
+        String archivoOriginal = "src/Files/Proveedores.txt";
+        String archivoTemporal = "src/Files/Proveedores_temp.txt";
+        String cedulaEliminar = CedulaEliminar.getText().trim();
 
-    // Leer el archivo 
-    while ((apuntador = br.readLine()) != null) {
-        System.out.println("Leyendo línea: " + apuntador);
-        String[] valores = apuntador.split("\\|");
+        File archivo = new File(archivoOriginal);
+        File temporal = new File(archivoTemporal);
 
-        if (valores.length >= 3) {
-            String cedulaeliminar = CedulaEliminar.getText();
-            String cedula = valores[1].trim();
-            String nombre = valores[0].trim();
-            String ProductoSuministrado = valores[2].trim();
+        // Leer del archivo original y escribir al archivo temporal
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo)); BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
 
-            // Comparar cédula
-            if (cedulaeliminar.equals(cedula)) {
-                System.out.println(cedula + "|" +CedulaEliminar);
-                JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto que suministra: " + ProductoSuministrado);
-                return;
-                
+            String apuntador;
+
+            while ((apuntador = br.readLine()) != null) {
+
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    String cedula = valores[1].trim();
+
+                    // Comparar cédula
+                    if (cedulaEliminar.equals(cedula)) {
+                        // Línea encontrada
+                        System.out.println("Eliminando línea: " + apuntador);
+                        continue;
+                    }
+                }
+
+                // Escribir la línea en el archivo temporal si no es la que se va a eliminar
+                bw.write(apuntador);
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
+            return;
+        }
+
+        // Reemplazar el archivo original con el archivo temporal
+        if (archivo.delete()) {
+            if (temporal.renameTo(archivo)) {
+                JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el archivo.");
             }
         }
     }
 
-    // Mensaje si no se encuentra la cédula
-    JOptionPane.showMessageDialog(this, "Cédula no encontrada.");
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
-} catch (IOException e) {
-    System.out.println("Error al leer el archivo: " + e.getMessage());
-}
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
+            String apuntador;
+
+            // Leer el archivo 
+            while ((apuntador = br.readLine()) != null) {
+                System.out.println("Leyendo línea: " + apuntador);
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    String cedulaeliminar = CedulaEliminar.getText();
+                    String cedula = valores[1].trim();
+                    String nombre = valores[0].trim();
+                    String ProductoSuministrado = valores[2].trim();
+                    String Fecha = valores[4].trim();
+
+                    // Comparar cédula
+                    if (cedulaeliminar.equals(cedula)) {
+                        System.out.println(cedula + "|" + CedulaEliminar);
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto que suministra: " + ProductoSuministrado + "\nUltima fecha de entrega: " + Fecha);
+                        return;
+
+                    }
+                }
+            }
+
+            // Mensaje si no se encuentra la cédula
+            JOptionPane.showMessageDialog(this, "Cédula no encontrada.");
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
