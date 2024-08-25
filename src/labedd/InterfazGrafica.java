@@ -12,7 +12,9 @@ import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -31,12 +33,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
     /**
      * Creates new form InterfazGrafica
      */
-    private CardLayout cardLayout ;
+    private CardLayout cardLayout;
+
     public InterfazGrafica() {
         initComponents();
-            
+
     }
 //Ana tonta
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,9 +60,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
-        Inicio = new javax.swing.JPanel();
-        label8 = new java.awt.Label();
-        canvas1 = new java.awt.Canvas();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -77,7 +78,23 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Actualizar_Precio_Del_Producto = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
-        label6 = new java.awt.Label();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        FechaDeEntrega = new javax.swing.JTextField();
+        CedulaEliminar = new javax.swing.JTextField();
+        CedulaJuridica = new javax.swing.JTextField();
+        ProductoSuministrado = new javax.swing.JTextField();
+        CantProducto = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        NombreProveedor1 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -183,9 +200,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(5, 5, 5)
                 .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,37 +220,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         SideBar.setBounds(0, 0, 300, 740);
 
         MainPanel.setLayout(new java.awt.CardLayout());
-
-        Inicio.setBackground(new java.awt.Color(0, 153, 255));
-        Inicio.setForeground(new java.awt.Color(255, 255, 255));
-
-        label8.setText("Inicio");
-
-        javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
-        Inicio.setLayout(InicioLayout);
-        InicioLayout.setHorizontalGroup(
-            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InicioLayout.createSequentialGroup()
-                .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InicioLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(InicioLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(791, Short.MAX_VALUE))
-        );
-        InicioLayout.setVerticalGroup(
-            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InicioLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(576, Short.MAX_VALUE))
-        );
-
-        MainPanel.add(Inicio, "card8");
 
         label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         label1.setForeground(new java.awt.Color(51, 153, 255));
@@ -495,28 +481,96 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
 
-        label6.setText("Agregar o eliminar proveedores");
+        Agregar_Eliminar_Proveedores.setLayout(null);
 
-        javax.swing.GroupLayout Agregar_Eliminar_ProveedoresLayout = new javax.swing.GroupLayout(Agregar_Eliminar_Proveedores);
-        Agregar_Eliminar_Proveedores.setLayout(Agregar_Eliminar_ProveedoresLayout);
-        Agregar_Eliminar_ProveedoresLayout.setHorizontalGroup(
-            Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Agregar_Eliminar_ProveedoresLayout.createSequentialGroup()
-                    .addGap(240, 240, 240)
-                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(591, Short.MAX_VALUE)))
-        );
-        Agregar_Eliminar_ProveedoresLayout.setVerticalGroup(
-            Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
-            .addGroup(Agregar_Eliminar_ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Agregar_Eliminar_ProveedoresLayout.createSequentialGroup()
-                    .addGap(344, 344, 344)
-                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
-        );
+        jLabel3.setText("Fecha de entrega (DD/MM/AA):");
+        Agregar_Eliminar_Proveedores.add(jLabel3);
+        jLabel3.setBounds(50, 250, 190, 40);
+
+        jLabel4.setText("ELIMINAR PROVEEDORES:");
+        Agregar_Eliminar_Proveedores.add(jLabel4);
+        jLabel4.setBounds(290, 310, 190, 40);
+
+        jLabel5.setText("Nombre:");
+        Agregar_Eliminar_Proveedores.add(jLabel5);
+        jLabel5.setBounds(50, 50, 190, 40);
+
+        jLabel7.setText("Producto suministrado:");
+        Agregar_Eliminar_Proveedores.add(jLabel7);
+        jLabel7.setBounds(50, 150, 190, 40);
+
+        jLabel8.setText("Cantidad del producto:");
+        Agregar_Eliminar_Proveedores.add(jLabel8);
+        jLabel8.setBounds(50, 200, 190, 40);
+        Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
+        FechaDeEntrega.setBounds(230, 260, 200, 30);
+
+        CedulaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CedulaEliminarActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(CedulaEliminar);
+        CedulaEliminar.setBounds(290, 370, 300, 20);
+
+        CedulaJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CedulaJuridicaActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(CedulaJuridica);
+        CedulaJuridica.setBounds(150, 110, 280, 30);
+        Agregar_Eliminar_Proveedores.add(ProductoSuministrado);
+        ProductoSuministrado.setBounds(190, 160, 240, 30);
+        Agregar_Eliminar_Proveedores.add(CantProducto);
+        CantProducto.setBounds(190, 210, 240, 30);
+
+        jButton7.setText("Guardar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(jButton7);
+        jButton7.setBounds(470, 140, 120, 80);
+
+        jLabel9.setText("AGREGA LOS PROVEDORES AQUÍ!");
+        Agregar_Eliminar_Proveedores.add(jLabel9);
+        jLabel9.setBounds(270, 10, 190, 40);
+
+        jLabel10.setText("Cédula jurídica:");
+        Agregar_Eliminar_Proveedores.add(jLabel10);
+        jLabel10.setBounds(50, 100, 190, 40);
+
+        NombreProveedor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreProveedor1ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(NombreProveedor1);
+        NombreProveedor1.setBounds(130, 60, 300, 30);
+
+        jLabel11.setText("Ingresa la cedula juridica del proveedor:");
+        Agregar_Eliminar_Proveedores.add(jLabel11);
+        jLabel11.setBounds(60, 360, 220, 40);
+
+        jButton8.setText("ELIMINAR");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(jButton8);
+        jButton8.setBounds(400, 460, 110, 30);
+
+        jButton9.setText("Verificar Proveedor");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(jButton9);
+        jButton9.setBounds(150, 460, 140, 30);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -530,15 +584,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel.add(Productos);
         MainPanel.repaint();
         MainPanel.revalidate();
-        
-       // Obtener el modelo de la tabla Overview_Productos
-DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
 
+        // Obtener el modelo de la tabla Overview_Productos
+        DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
 
 // Añadir la nueva fila al modelo de la tabla
-
         System.out.println("Prrrrrrr");
-     
+
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
             String linea;
@@ -546,19 +598,16 @@ DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
             while ((linea = br.readLine()) != null) {
                 String[] campos = linea.split("\\|");
                 Object[] fila = {
-                    campos[0],  // CódigoProducto
-                    campos[1],  // Nombre
-                    campos[2],  // Categoría
-                    Double.parseDouble(campos[3]),  // Precio
-                    Integer.parseInt(campos[4]),  // CantidadStock
-                    campos[5]  // FechaÚltimaReposición
+                    campos[0], // CódigoProducto
+                    campos[1], // Nombre
+                    campos[2], // Categoría
+                    Double.parseDouble(campos[3]), // Precio
+                    Integer.parseInt(campos[4]), // CantidadStock
+                    campos[5] // FechaÚltimaReposición
                 };
                 model.addRow(fila);
             };
-            
-            
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -571,14 +620,12 @@ DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
         MainPanel.add(Proveedores);
         MainPanel.repaint();
         MainPanel.revalidate();
-               // Obtener el modelo de la tabla Overview_Productos
-DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
-
+        // Obtener el modelo de la tabla Overview_Productos
+        DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
 
 // Añadir la nueva fila al modelo de la tabla
-
         System.out.println("Leyendo Proveedores");
-     
+
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
             String linea;
@@ -586,42 +633,39 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
             while ((linea = br.readLine()) != null) {
                 String[] campos = linea.split("\\|");
                 Object[] fila = {
-                    campos[0],                        // NombreProveedor
-                    campos[1],                        // CedulaJuridica
-                    campos[2],                        // ProductosSuministrados
-                    Integer.parseInt(campos[3]),      // CantidadSuministrada
-                    campos[4]                         // FechaUltimaEntrega
+                    campos[0], // NombreProveedor
+                    campos[1], // CedulaJuridica
+                    campos[2], // ProductosSuministrados
+                    Integer.parseInt(campos[3]), // CantidadSuministrada
+                    campos[4] // FechaUltimaEntrega
                 };
                 model.addRow(fila);
             };
-            
-            
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         MainPanel.removeAll();
         MainPanel.add(Reposicion_De_Productos);
         MainPanel.repaint();
-        MainPanel.revalidate();     
+        MainPanel.revalidate();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         MainPanel.removeAll();
         MainPanel.add(Eliminar_Productos);
         MainPanel.repaint();
-        MainPanel.revalidate(); 
+        MainPanel.revalidate();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-            MainPanel.removeAll();
+        MainPanel.removeAll();
         MainPanel.add(Actualizar_Precio_Del_Producto);
         MainPanel.repaint();
         MainPanel.revalidate();   // TODO add your handling code here:
@@ -631,7 +675,7 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
         MainPanel.removeAll();
         MainPanel.add(Agregar_Eliminar_Proveedores);
         MainPanel.repaint();
-        MainPanel.revalidate(); 
+        MainPanel.revalidate();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -639,7 +683,7 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
-        String cod_eliminar =   Cod_eliminar.getText();
+        String cod_eliminar = Cod_eliminar.getText();
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
     private void Cod_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod_eliminarActionPerformed
@@ -665,6 +709,155 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private void Overview_ProveedoresComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Overview_ProveedoresComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProveedoresComponentShown
+
+    private void CedulaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminarActionPerformed
+
+    }//GEN-LAST:event_CedulaEliminarActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        String Nombre = NombreProveedor1.getText();
+String CedulaStr = CedulaJuridica.getText();
+String ProdSuministrado = ProductoSuministrado.getText();
+String CantidadProductoStr = CantProducto.getText();
+String Fecha = FechaDeEntrega.getText();
+
+// VERIFICACIONES
+// Verificar que la cédula sea un número
+int Cedula;
+try {
+    Cedula = Integer.parseInt(CedulaStr);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese un número de cédula válido.");
+    return;
+}
+
+// Verificar que el producto suministrado no esté vacío
+if (ProdSuministrado.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del producto suministrado.");
+    return;
+}
+// Verificar que el producto suministrado no esté vacío
+if (Nombre.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor");
+    return;
+}
+
+// Verificar que la cantidad de productos sea un número
+int CantidadProducto;
+try {
+    CantidadProducto = Integer.parseInt(CantidadProductoStr);
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese una cantidad de producto válida.");
+    return;
+}
+
+// Verificar que la fecha esté en el formato DD/MM/AA
+if (!Fecha.matches("\\d{2}/\\d{2}/\\d{2}")) {
+    JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
+    return;
+}
+// Agregar a la tabla
+ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
+    model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, CantidadProducto, Fecha});
+
+// GUARDAR EN EL ARCHIVO
+try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true);
+     PrintWriter pw = new PrintWriter(fw)) {
+
+    // Escribir los datos en el archivo
+    pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|" + CantidadProducto + "|" + Fecha);
+    
+    
+    JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
+    
+} catch (IOException ex) {
+    JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
+}
+
+// Limpiar los campos
+NombreProveedor1.setText("");
+CedulaJuridica.setText("");
+ProductoSuministrado.setText("");
+CantProducto.setText("");
+FechaDeEntrega.setText("");
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void NombreProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreProveedor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreProveedor1ActionPerformed
+
+    private void CedulaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaJuridicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CedulaJuridicaActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
+    String apuntador;
+
+    // Leer el archivo 
+    while ((apuntador = br.readLine()) != null) {
+        System.out.println("Leyendo línea: " + apuntador);
+        String[] valores = apuntador.split("\\|");
+
+        if (valores.length >= 3) {
+            String cedulaeliminar = CedulaEliminar.getText();
+            String cedula = valores[1].trim();
+            String nombre = valores[0].trim();
+            String ProductoSuministrado = valores[2].trim();
+
+            // Comparar cédula
+            if (cedulaeliminar.equals(cedula)) {
+                
+                return;
+                
+            }
+        }
+    }
+
+    // Mensaje si no se encuentra la cédula
+    JOptionPane.showMessageDialog(this, "Cédula no encontrada.");
+
+} catch (IOException e) {
+    System.out.println("Error al leer el archivo: " + e.getMessage());
+}            
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+         
+try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
+    String apuntador;
+
+    // Leer el archivo 
+    while ((apuntador = br.readLine()) != null) {
+        System.out.println("Leyendo línea: " + apuntador);
+        String[] valores = apuntador.split("\\|");
+
+        if (valores.length >= 3) {
+            String cedulaeliminar = CedulaEliminar.getText();
+            String cedula = valores[1].trim();
+            String nombre = valores[0].trim();
+            String ProductoSuministrado = valores[2].trim();
+
+            // Comparar cédula
+            if (cedulaeliminar.equals(cedula)) {
+                System.out.println(cedula + "|" +CedulaEliminar);
+                JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto que suministra: " + ProductoSuministrado);
+                return;
+                
+            }
+        }
+    }
+
+    // Mensaje si no se encuentra la cédula
+    JOptionPane.showMessageDialog(this, "Cédula no encontrada.");
+
+} catch (IOException e) {
+    System.out.println("Error al leer el archivo: " + e.getMessage());
+}
+
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -705,25 +898,40 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private javax.swing.JPanel Actualizar_Precio_Del_Producto;
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
     private javax.swing.JButton Button_Eliminar;
+    private javax.swing.JTextField CantProducto;
+    private javax.swing.JTextField CedulaEliminar;
+    private javax.swing.JTextField CedulaJuridica;
     private javax.swing.JTextField Cod_eliminar;
     private javax.swing.JPanel Eliminar_Productos;
-    private javax.swing.JPanel Inicio;
+    private javax.swing.JTextField FechaDeEntrega;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JTextField NombreProveedor1;
     private javax.swing.JTable Overview_Productos;
     private javax.swing.JTable Overview_Proveedores;
+    private javax.swing.JTextField ProductoSuministrado;
     private javax.swing.JPanel Productos;
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
     private javax.swing.JPanel SideBar;
-    private java.awt.Canvas canvas1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -731,8 +939,6 @@ DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
-    private java.awt.Label label6;
     private java.awt.Label label7;
-    private java.awt.Label label8;
     // End of variables declaration//GEN-END:variables
 }
