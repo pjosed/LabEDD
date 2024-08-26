@@ -691,7 +691,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
-        String cod_eliminar = Cod_eliminar.getText();
+        
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
     private void Overview_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProductosMouseClicked
