@@ -20,15 +20,15 @@ public class Eliminar_producto {
     
     public static void eliminar_producto(String cod_eliminar){
         try{
-            File Productos = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Productos.txt");
+            File Productos = new File ("src/Files/Productos.txt");
             BufferedReader pr = new BufferedReader(new FileReader(Productos));
-            File fichero = new File("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Productos2.txt");
+            File fichero = new File("src/Files/Productos2.txt");
             FileWriter outFile = new FileWriter(fichero,false);
             PrintWriter Productos2 = new PrintWriter(outFile);
             
-            File Proveedores = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores.txt");
+            File Proveedores = new File ("src/Files/Proveedores.txt");
             BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
-            File fichero2 = new File("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores2.txt");
+            File fichero2 = new File("src/Files/Proveedores2.txt");
             FileWriter outFile2 = new FileWriter(fichero2,false);
             PrintWriter Proveedores2 = new PrintWriter(outFile2);
             
@@ -67,10 +67,10 @@ public class Eliminar_producto {
                 Productos.delete();
                 Proveedores.delete();
                 
-                File rn = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Productos.txt");
+                File rn = new File ("src/Files/Productos.txt");
                 boolean renombrar = fichero.renameTo(rn);
                 
-                File rn2 = new File ("C:\\Users\\Janus\\Documents\\NetBeansProjects\\EDD\\Proveedores.txt");
+                File rn2 = new File ("src/Files/Proveedores.txt");
                 boolean renombrar2 = fichero2.renameTo(rn2);
             }
         }catch (IOException ex) {
