@@ -75,8 +75,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Eliminar_Productos = new javax.swing.JPanel();
         label4 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
-        Cod_eliminar = new javax.swing.JTextField();
         Button_Eliminar = new javax.swing.JButton();
+        ComboBox1 = new javax.swing.JComboBox<>();
         Actualizar_Precio_Del_Producto = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
@@ -407,13 +407,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label4.setForeground(new java.awt.Color(255, 0, 51));
         label4.setText("Eliminar productos");
 
-        jLabel2.setText("Producto a eliminar:");
-
-        Cod_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cod_eliminarActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Seleccione el producto que desea eliminar:");
 
         Button_Eliminar.setText("Eliminar");
         Button_Eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -422,38 +416,50 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
 
+        ComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        ComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ComboBox1MouseClicked(evt);
+            }
+        });
+        ComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Eliminar_ProductosLayout = new javax.swing.GroupLayout(Eliminar_Productos);
         Eliminar_Productos.setLayout(Eliminar_ProductosLayout);
         Eliminar_ProductosLayout.setHorizontalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Eliminar_ProductosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Button_Eliminar)
-                .addGap(213, 213, 213))
             .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                 .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(Cod_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(569, Short.MAX_VALUE))
+                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel2))
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(424, 424, 424)
+                        .addComponent(Button_Eliminar)))
+                .addContainerGap(503, Short.MAX_VALUE))
         );
         Eliminar_ProductosLayout.setVerticalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(Cod_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(138, 138, 138)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(Button_Eliminar)
-                .addContainerGap(590, Short.MAX_VALUE))
+                .addContainerGap(444, Short.MAX_VALUE))
         );
 
         MainPanel.add(Eliminar_Productos, "card7");
@@ -688,10 +694,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String cod_eliminar = Cod_eliminar.getText();
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
-    private void Cod_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cod_eliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cod_eliminarActionPerformed
-
     private void Overview_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProductosMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProductosMouseClicked
@@ -879,6 +881,101 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    public static void eliminar_producto(String cod_eliminar){
+        try{
+            File Productos = new File ("src/Files/Productos.txt");
+            BufferedReader pr = new BufferedReader(new FileReader(Productos));
+            File fichero = new File("src/Files/Productos2.txt");
+            FileWriter outFile = new FileWriter(fichero,false);
+            PrintWriter Productos2 = new PrintWriter(outFile);
+            
+            File Proveedores = new File ("src/Files/Proveedores.txt");
+            BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
+            File fichero2 = new File("src/Files/Proveedores2.txt");
+            FileWriter outFile2 = new FileWriter(fichero2,false);
+            PrintWriter Proveedores2 = new PrintWriter(outFile2);
+            
+            String line=null;
+            String line2=null;
+            
+            Boolean hay=false;
+            while ((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                if (temp[0].equalsIgnoreCase(cod_eliminar)){
+                    hay=true;
+                }else{
+                    Productos2.println(line);
+                }
+            }
+            while ((line2=pv.readLine()) != null){
+                String temp2[]=line2.split("\\|");
+                if (temp2[2].equalsIgnoreCase(cod_eliminar)){
+                    hay=true;
+                }else{
+                    Proveedores2.println(line2);
+                }
+            }
+            pr.close();
+            Productos2.close();
+            pv.close();
+            Proveedores2.close();
+            
+            if(hay==false){
+                System.out.println("El producto no existe.");
+                fichero.delete();
+                fichero2.delete();
+                
+            }else{
+                System.out.println("El producto ha sido eliminado.");
+                Productos.delete();
+                Proveedores.delete();
+                
+                File rn = new File ("src/Files/Productos.txt");
+                boolean renombrar = fichero.renameTo(rn);
+                
+                File rn2 = new File ("src/Files/Proveedores.txt");
+                boolean renombrar2 = fichero2.renameTo(rn2);
+            }
+        }catch (IOException ex) {
+            System.out.println("Error eliminando el producto.");
+            ex.printStackTrace();
+        }
+    }
+    
+    private void ComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox1ActionPerformed
+        
+    }//GEN-LAST:event_ComboBox1ActionPerformed
+
+    private void ComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBox1MouseClicked
+        
+        ComboBox1.removeAllItems();
+        
+        BufferedReader pr = null;
+        try {
+            File Pr = new File ("src/Files/Productos.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line=pr.readLine();
+            while((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                String cod = temp[0];
+                ComboBox1.addItem(cod);
+            }
+            pr.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                pr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_ComboBox1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -921,7 +1018,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField CantProducto;
     private javax.swing.JTextField CedulaEliminar;
     private javax.swing.JTextField CedulaJuridica;
-    private javax.swing.JTextField Cod_eliminar;
+    private javax.swing.JComboBox<String> ComboBox1;
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JTextField FechaDeEntrega;
     private javax.swing.JPanel MainPanel;
