@@ -407,6 +407,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label4.setForeground(new java.awt.Color(255, 0, 51));
         label4.setText("Eliminar productos");
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel2.setText("Seleccione el producto que desea eliminar:");
 
         Button_Eliminar.setText("Eliminar");
@@ -416,6 +417,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
 
+        ComboBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         ComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
         ComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -459,7 +461,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addComponent(ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(Button_Eliminar)
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
 
         MainPanel.add(Eliminar_Productos, "card7");
@@ -691,7 +693,65 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
-        
+        String cod_eliminar= ComboBox1.getSelectedItem().toString();
+        try{
+            File Productos = new File ("src/Files/Productos.txt");
+            BufferedReader pr = new BufferedReader(new FileReader(Productos));
+            File fichero = new File("src/Files/Productos2.txt");
+            FileWriter outFile = new FileWriter(fichero,false);
+            PrintWriter Productos2 = new PrintWriter(outFile);
+            
+            File Proveedores = new File ("src/Files/Proveedores.txt");
+            BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
+            File fichero2 = new File("src/Files/Proveedores2.txt");
+            FileWriter outFile2 = new FileWriter(fichero2,false);
+            PrintWriter Proveedores2 = new PrintWriter(outFile2);
+            
+            String line=null;
+            String line2=null;
+            
+            Boolean hay=false;
+            while ((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                if (temp[0].equalsIgnoreCase(cod_eliminar)){
+                    hay=true;
+                }else{
+                    Productos2.println(line);
+                }
+            }
+            while ((line2=pv.readLine()) != null){
+                String temp2[]=line2.split("\\|");
+                if (temp2[2].equalsIgnoreCase(cod_eliminar)){
+                    hay=true;
+                }else{
+                    Proveedores2.println(line2);
+                }
+            }
+            pr.close();
+            Productos2.close();
+            pv.close();
+            Proveedores2.close();
+            
+            if(hay==false){
+                System.out.println("El producto no existe.");
+                fichero.delete();
+                fichero2.delete();
+                
+            }else{
+                System.out.println("El producto ha sido eliminado.");
+                Productos.delete();
+                Proveedores.delete();
+                
+                File rn = new File ("src/Files/Productos.txt");
+                boolean renombrar = fichero.renameTo(rn);
+                
+                File rn2 = new File ("src/Files/Proveedores.txt");
+                boolean renombrar2 = fichero2.renameTo(rn2);
+            }
+        }catch (IOException ex) {
+            System.out.println("Error eliminando el producto.");
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
     private void Overview_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProductosMouseClicked
@@ -880,67 +940,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton9ActionPerformed
-
-    public static void eliminar_producto(String cod_eliminar){
-        try{
-            File Productos = new File ("src/Files/Productos.txt");
-            BufferedReader pr = new BufferedReader(new FileReader(Productos));
-            File fichero = new File("src/Files/Productos2.txt");
-            FileWriter outFile = new FileWriter(fichero,false);
-            PrintWriter Productos2 = new PrintWriter(outFile);
-            
-            File Proveedores = new File ("src/Files/Proveedores.txt");
-            BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
-            File fichero2 = new File("src/Files/Proveedores2.txt");
-            FileWriter outFile2 = new FileWriter(fichero2,false);
-            PrintWriter Proveedores2 = new PrintWriter(outFile2);
-            
-            String line=null;
-            String line2=null;
-            
-            Boolean hay=false;
-            while ((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
-                if (temp[0].equalsIgnoreCase(cod_eliminar)){
-                    hay=true;
-                }else{
-                    Productos2.println(line);
-                }
-            }
-            while ((line2=pv.readLine()) != null){
-                String temp2[]=line2.split("\\|");
-                if (temp2[2].equalsIgnoreCase(cod_eliminar)){
-                    hay=true;
-                }else{
-                    Proveedores2.println(line2);
-                }
-            }
-            pr.close();
-            Productos2.close();
-            pv.close();
-            Proveedores2.close();
-            
-            if(hay==false){
-                System.out.println("El producto no existe.");
-                fichero.delete();
-                fichero2.delete();
-                
-            }else{
-                System.out.println("El producto ha sido eliminado.");
-                Productos.delete();
-                Proveedores.delete();
-                
-                File rn = new File ("src/Files/Productos.txt");
-                boolean renombrar = fichero.renameTo(rn);
-                
-                File rn2 = new File ("src/Files/Proveedores.txt");
-                boolean renombrar2 = fichero2.renameTo(rn2);
-            }
-        }catch (IOException ex) {
-            System.out.println("Error eliminando el producto.");
-            ex.printStackTrace();
-        }
-    }
+    
     
     private void ComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox1ActionPerformed
         
