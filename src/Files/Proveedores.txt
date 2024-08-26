@@ -1,5 +1,4 @@
 NombreProveedor|CédulaJurídica|ProductosSuministrados|CantidadSuministrada|FechaÚltimaEntrega
-Lácteos Costa|3001234567|Leche|100|2024-08-01
 Panadería El Trigo|3002345678|Pan|200|2024-07-25
 Frutas Del Valle|3003456789|Manzana|150|2024-08-10
 Productos Limpieza SA|3004567890|Jabón|80|2024-08-15
