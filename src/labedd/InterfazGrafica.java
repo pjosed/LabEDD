@@ -64,6 +64,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel = new javax.swing.JPanel();
         Inicio = new javax.swing.JPanel();
         label2 = new java.awt.Label();
+        label6 = new java.awt.Label();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -86,12 +87,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         FechaDeEntrega = new javax.swing.JTextField();
         CedulaEliminar = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
         ProductoSuministrado = new javax.swing.JTextField();
-        CantProducto = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -229,21 +228,30 @@ public class InterfazGrafica extends javax.swing.JFrame {
         label2.setForeground(new java.awt.Color(51, 153, 255));
         label2.setText("Inicio");
 
+        label6.setText("Software Diseñado para el laboratorio de estructura de datos 1.");
+
         javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
         Inicio.setLayout(InicioLayout);
         InicioLayout.setHorizontalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InicioLayout.createSequentialGroup()
+            .addGroup(InicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
-                .addGap(45, 45, 45))
+                .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InicioLayout.createSequentialGroup()
+                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(InicioLayout.createSequentialGroup()
+                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+                        .addGap(45, 45, 45))))
         );
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(592, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(551, Short.MAX_VALUE))
         );
 
         MainPanel.add(Inicio, "card3");
@@ -429,7 +437,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel.add(Reposicion_De_Productos, "card8");
 
         label4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
-        label4.setForeground(new java.awt.Color(255, 0, 51));
+        label4.setForeground(new java.awt.Color(0, 153, 255));
         label4.setText("Eliminar productos");
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -533,10 +541,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel7.setText("Producto suministrado:");
         Agregar_Eliminar_Proveedores.add(jLabel7);
         jLabel7.setBounds(50, 150, 190, 40);
-
-        jLabel8.setText("Cantidad del producto:");
-        Agregar_Eliminar_Proveedores.add(jLabel8);
-        jLabel8.setBounds(50, 200, 190, 40);
         Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
         FechaDeEntrega.setBounds(230, 260, 200, 30);
 
@@ -557,8 +561,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         CedulaJuridica.setBounds(150, 110, 280, 30);
         Agregar_Eliminar_Proveedores.add(ProductoSuministrado);
         ProductoSuministrado.setBounds(190, 160, 240, 30);
-        Agregar_Eliminar_Proveedores.add(CantProducto);
-        CantProducto.setBounds(190, 210, 240, 30);
 
         jButton7.setText("Guardar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -624,7 +626,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
 
 // Añadir la nueva fila al modelo de la tabla
-        System.out.println("Prrrrrrr");
 
         try {
             model.setRowCount(0); 
@@ -808,7 +809,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String Nombre = NombreProveedor1.getText();
         String CedulaStr = CedulaJuridica.getText();
         String ProdSuministrado = ProductoSuministrado.getText();
-        String CantidadProductoStr = CantProducto.getText();
         String Fecha = FechaDeEntrega.getText();
 
 // VERIFICACIONES
@@ -832,15 +832,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
             return;
         }
 
-// Verificar que la cantidad de productos sea un número
-        int CantidadProducto;
-        try {
-            CantidadProducto = Integer.parseInt(CantidadProductoStr);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese una cantidad de producto válida.");
-            return;
-        }
-
 // Verificar que la fecha esté en el formato DD/MM/AA
         if (!Fecha.matches("\\d{2}/\\d{2}/\\d{2}")) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
@@ -848,13 +839,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
 // Agregar a la tabla
         DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
-        model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, CantidadProducto, Fecha});
+        model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, "0", Fecha});
 
 // GUARDAR EN EL ARCHIVO
         try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true); PrintWriter pw = new PrintWriter(fw)) {
 
             // Escribir los datos en el archivo
-            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|" + CantidadProducto + "|" + Fecha);
+            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|0|" + Fecha+"P");
 
             JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
 
@@ -866,7 +857,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         NombreProveedor1.setText("");
         CedulaJuridica.setText("");
         ProductoSuministrado.setText("");
-        CantProducto.setText("");
         FechaDeEntrega.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1041,7 +1031,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel Actualizar_Precio_Del_Producto;
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
     private javax.swing.JButton Button_Eliminar;
-    private javax.swing.JTextField CantProducto;
     private javax.swing.JTextField CedulaEliminar;
     private javax.swing.JTextField CedulaJuridica;
     private javax.swing.JComboBox<String> ComboBox1;
@@ -1074,7 +1063,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1084,6 +1072,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
+    private java.awt.Label label6;
     private java.awt.Label label7;
     // End of variables declaration//GEN-END:variables
 }

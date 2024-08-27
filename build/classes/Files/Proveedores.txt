@@ -7,7 +7,6 @@ Quesos Gourmet|3006789012|Queso|50|2024-08-05|P006
 Verduras Frescas|3007890123|Tomate|75|2024-08-18|P007
 Limpieza Total|3009012345|Detergente|60|2024-08-22|P009
 Tienda de Frutas|3010123456|Plátano|180|2024-08-12|P010
-Cereales y Más|3011234567|Cereal|90|2024-07-28|P011
 Huevos del Campo|3012345678|Huevos|50|2024-08-11|P012
 Carnes Selectas|3013456789|Pollo|40|2024-08-14|P013
 Higiene Personal|3014567890|Shampoo|30|2024-08-19|P014
