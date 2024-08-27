@@ -747,7 +747,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
             while ((line2=pv.readLine()) != null){
                 String temp2[]=line2.split("\\|");
-                if (temp2[2].equalsIgnoreCase(cod_eliminar)){
+                if (temp2[5].equalsIgnoreCase(cod_eliminar)){
                     hay=true;
                 }else{
                     Proveedores2.println(line2);
@@ -759,12 +759,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
             Proveedores2.close();
             
             if(hay==false){
-                System.out.println("El producto no existe.");
+                JOptionPane.showMessageDialog(null,"El producto no existe.");
                 fichero.delete();
                 fichero2.delete();
                 
             }else{
-                System.out.println("El producto ha sido eliminado.");
+                JOptionPane.showMessageDialog(null, "El producto ha sido eliminado.");
                 Productos.delete();
                 Proveedores.delete();
                 
@@ -775,7 +775,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 boolean renombrar2 = fichero2.renameTo(rn2);
             }
         }catch (IOException ex) {
-            System.out.println("Error eliminando el producto.");
+            JOptionPane.showMessageDialog(null,"Error eliminando el producto.");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_Button_EliminarActionPerformed

@@ -5,7 +5,6 @@ Productos Limpieza SA|3004567890|Jabón|80|2024-08-15|P004
 Alimentos Naturales|3005678901|Pasta|120|2024-07-30|P005
 Quesos Gourmet|3006789012|Queso|50|2024-08-05|P006
 Verduras Frescas|3007890123|Tomate|75|2024-08-18|P007
-Granero Familiar|3008901234|Arroz|300|2024-08-05|P008
 Limpieza Total|3009012345|Detergente|60|2024-08-22|P009
 Tienda de Frutas|3010123456|Plátano|180|2024-08-12|P010
 Cereales y Más|3011234567|Cereal|90|2024-07-28|P011
