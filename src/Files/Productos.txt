@@ -1,31 +1,30 @@
-CódigoProducto|Nombre|Categoría|Precio|CantidadStock|FechaÚltimaReposición
-P001|Leche|Lácteos|1.25|100|2024-08-01
-P002|Pan|Panadería|0.75|200|2024-07-25
-P003|Manzana|Frutas|0.50|150|2024-08-10
-P004|Jabón|Aseo|1.00|80|2024-08-15
-P005|Pasta|Alimentos|1.50|120|2024-07-30
-P006|Queso|Lácteos|2.50|50|2024-08-20
-P007|Tomate|Verduras|0.80|75|2024-08-18
-P008|Arroz|Alimentos|0.90|300|2024-08-05
-P009|Detergente|Aseo|3.00|60|2024-08-22
-P010|Plátano|Frutas|0.40|180|2024-08-12
-P011|Cereal|Alimentos|2.20|90|2024-07-28
-P012|Huevos|Lácteos|1.80|50|2024-08-11
-P013|Pollo|Carnes|4.50|40|2024-08-14
-P014|Shampoo|Aseo|5.00|30|2024-08-19
-P015|Lechuga|Verduras|0.60|100|2024-08-21
-P016|Yogurt|Lácteos|0.95|80|2024-08-03
-P017|Zanahoria|Verduras|0.55|120|2024-08-08
-P018|Jamón|Carnes|3.75|70|2024-08-16
-P019|Café|Bebidas|2.10|110|2024-07-31
-P020|Galletas|Snacks|1.30|150|2024-08-07
-P021|Mantequilla|Lácteos|1.20|65|2024-08-04
-P022|Pimiento|Verduras|1.00|90|2024-08-09
-P023|Coca-Cola|Bebidas|1.50|200|2024-08-17
-P024|Atún|Alimentos|2.75|85|2024-08-06
-P025|Carne Molida|Carnes|5.50|45|2024-08-13
-P026|Zumo de Naranja|Bebidas|1.00|150|2024-08-02
-P027|Papel Higiénico|Aseo|0.75|500|2024-08-14
-P028|Fresas|Frutas|2.00|70|2024-08-11
-P029|Sardinas|Alimentos|1.60|200|2024-08-15
-P030|Chocolates|Snacks|1.75|140|2024-08-10
+CódigoProducto|Nombre|Categoría|Precio|CantidadStock|FechaÚltimaReposición|CédulaJurídica
+P002|Pan|Panadería|0.75|200|2024-07-25|3002345678
+P003|Manzana|Frutas|0.50|150|2024-08-10|3003456789
+P004|Jabón|Aseo|1.00|80|2024-08-15|3004567890
+P005|Pasta|Alimentos|1.50|120|2024-07-30|3005678901
+P006|Queso|Lácteos|2.50|50|2024-08-20|3006789012
+P007|Tomate|Verduras|0.80|75|2024-08-18|3007890123
+P008|Arroz|Alimentos|0.90|300|2024-08-05|3008901234
+P009|Detergente|Aseo|3.00|60|2024-08-22|3009012345
+P010|Plátano|Frutas|0.40|180|2024-08-12|3010123456
+P011|Cereal|Alimentos|2.20|90|2024-07-28|3011234567
+P012|Huevos|Lácteos|1.80|50|2024-08-11|3012345678
+P013|Pollo|Carnes|4.50|40|2024-08-14|3013456789
+P014|Shampoo|Aseo|5.00|30|2024-08-19|3014567890
+P015|Lechuga|Verduras|0.60|100|2024-08-21|3015678901
+P016|Yogurt|Lácteos|0.95|80|2024-08-03|3016789012
+P017|Zanahoria|Verduras|0.55|120|2024-08-08|3017890123
+P018|Jamón|Carnes|3.75|70|2024-08-16|3018901234
+P019|Café|Bebidas|2.10|110|2024-07-31|3029012345
+P020|Galletas|Snacks|1.30|150|2024-08-07|3030123456
+P021|Mantequilla|Lácteos|1.20|65|2024-08-04|3027890123
+P022|Pimiento|Verduras|1.00|90|2024-08-09|3028901234
+P023|Coca-Cola|Bebidas|1.50|200|2024-08-17|3019012345
+P024|Atún|Alimentos|2.75|85|2024-08-06|3020123456
+P025|Carne Molida|Carnes|5.50|45|2024-08-13|3021234567
+P026|Zumo de Naranja|Bebidas|1.00|150|2024-08-02|3022345678
+P027|Papel Higiénico|Aseo|0.75|500|2024-08-14|3023456789
+P028|Fresas|Frutas|2.00|70|2024-08-11|3024567890
+P029|Sardinas|Alimentos|1.60|200|2024-08-15|3025678901
+P030|Chocolates|Snacks|1.75|140|2024-08-10|3031234567
