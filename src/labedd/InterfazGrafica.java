@@ -602,6 +602,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         System.out.println("Prrrrrrr");
 
         try {
+            model.setRowCount(0); 
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
             String linea;
             br.readLine(); // Omitir la primera línea de encabezados
@@ -635,7 +636,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
 // Añadir la nueva fila al modelo de la tabla
         System.out.println("Leyendo Proveedores");
-
+        model.setRowCount(0); 
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
             String linea;
