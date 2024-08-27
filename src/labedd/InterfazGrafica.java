@@ -62,6 +62,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
+        Inicio = new javax.swing.JPanel();
+        label2 = new java.awt.Label();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -222,6 +224,29 @@ public class InterfazGrafica extends javax.swing.JFrame {
         SideBar.setBounds(0, 0, 300, 740);
 
         MainPanel.setLayout(new java.awt.CardLayout());
+
+        label2.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        label2.setForeground(new java.awt.Color(51, 153, 255));
+        label2.setText("Inicio");
+
+        javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
+        Inicio.setLayout(InicioLayout);
+        InicioLayout.setHorizontalGroup(
+            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
+                .addGap(45, 45, 45))
+        );
+        InicioLayout.setVerticalGroup(
+            InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InicioLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(592, Short.MAX_VALUE))
+        );
+
+        MainPanel.add(Inicio, "card3");
 
         label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         label1.setForeground(new java.awt.Color(51, 153, 255));
@@ -1022,6 +1047,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBox1;
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JTextField FechaDeEntrega;
+    private javax.swing.JPanel Inicio;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTextField NombreProveedor1;
     private javax.swing.JTable Overview_Productos;
@@ -1054,6 +1080,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
+    private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
