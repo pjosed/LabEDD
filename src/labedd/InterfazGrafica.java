@@ -790,7 +790,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_SideBarComponentShown
 
     private void Overview_ProductosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Overview_ProductosComponentShown
-        System.out.println("Ojala salga todo");        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProductosComponentShown
 
     private void Overview_ProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProveedoresMouseClicked
@@ -802,7 +802,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_Overview_ProveedoresComponentShown
 
     private void CedulaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminarActionPerformed
-
+        
     }//GEN-LAST:event_CedulaEliminarActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -845,7 +845,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true); PrintWriter pw = new PrintWriter(fw)) {
 
             // Escribir los datos en el archivo
-            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|0|" + Fecha+"P");
+            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|0|" + Fecha+"|P|");
 
             JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
 

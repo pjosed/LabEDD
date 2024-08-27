@@ -26,3 +26,4 @@ Lácteos Los Andes|3027890123|Mantequilla|65|2024-08-04|P021
 Vegetales Orgánicos|3028901234|Pimiento|90|2024-08-09|P022
 Refrescos y Más|3029012345|Café|110|2024-07-31|P019
 Chocolatería Dulce Vida|3031234567|Chocolates|140|2024-08-10|P030
+
