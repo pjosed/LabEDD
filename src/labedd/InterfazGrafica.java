@@ -1132,26 +1132,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonActualizarActionPerformed
 
     private void ComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox2ActionPerformed
-        String cod_Actualizar= ComboBox2.getSelectedItem().toString();
-        try{
-            File Productos = new File ("src/Files/Productos.txt");
-            BufferedReader pr = new BufferedReader(new FileReader(Productos));
 
-            String line=null;
-
-            Boolean hay=false;
-            while ((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
-                if (temp[0].equalsIgnoreCase(cod_Actualizar)){
-                    PrecioViejo.setText(temp[3]);
-                }
-            }
-            pr.close();
-
-        }catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"Error.");
-            ex.printStackTrace();
-        }
     }//GEN-LAST:event_ComboBox2ActionPerformed
 
     /**
