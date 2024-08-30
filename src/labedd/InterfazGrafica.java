@@ -155,7 +155,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 153, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setLabel("Reposición de productos");
+        jButton3.setText("Venta/ Reposición de productos");
+        jButton3.setActionCommand("Reposición/Venta de productos");
         jButton3.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -577,9 +578,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(PrecioViejo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PrecioViejo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(28, 28, 28)
                 .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
