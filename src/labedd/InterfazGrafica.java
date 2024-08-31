@@ -90,14 +90,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         PrecioViejo = new javax.swing.JLabel();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        FechaDeEntrega = new javax.swing.JTextField();
         CedulaEliminar = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
-        ProductoSuministrado = new javax.swing.JTextField();
+        FechaDeEntrega = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -105,6 +103,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        ProductoSuministrado1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -594,23 +594,17 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         Agregar_Eliminar_Proveedores.setLayout(null);
 
-        jLabel3.setText("Fecha de entrega (DD/MM/AA):");
-        Agregar_Eliminar_Proveedores.add(jLabel3);
-        jLabel3.setBounds(50, 250, 190, 40);
-
         jLabel4.setText("ELIMINAR PROVEEDORES:");
         Agregar_Eliminar_Proveedores.add(jLabel4);
-        jLabel4.setBounds(290, 310, 190, 40);
+        jLabel4.setBounds(290, 330, 190, 40);
 
         jLabel5.setText("Nombre:");
         Agregar_Eliminar_Proveedores.add(jLabel5);
         jLabel5.setBounds(50, 50, 190, 40);
 
-        jLabel7.setText("Producto suministrado:");
+        jLabel7.setText("Fecha de registro:");
         Agregar_Eliminar_Proveedores.add(jLabel7);
-        jLabel7.setBounds(50, 150, 190, 40);
-        Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
-        FechaDeEntrega.setBounds(230, 260, 200, 30);
+        jLabel7.setBounds(50, 210, 190, 40);
 
         CedulaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -618,7 +612,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(CedulaEliminar);
-        CedulaEliminar.setBounds(290, 370, 300, 20);
+        CedulaEliminar.setBounds(300, 390, 300, 20);
 
         CedulaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -627,8 +621,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
         Agregar_Eliminar_Proveedores.add(CedulaJuridica);
         CedulaJuridica.setBounds(150, 110, 280, 30);
-        Agregar_Eliminar_Proveedores.add(ProductoSuministrado);
-        ProductoSuministrado.setBounds(190, 160, 240, 30);
+        Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
+        FechaDeEntrega.setBounds(170, 220, 240, 30);
 
         jButton7.setText("Guardar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -637,7 +631,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton7);
-        jButton7.setBounds(470, 140, 120, 80);
+        jButton7.setBounds(480, 90, 120, 80);
 
         jLabel9.setText("AGREGA LOS PROVEDORES AQUÍ!");
         Agregar_Eliminar_Proveedores.add(jLabel9);
@@ -657,7 +651,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jLabel11.setText("Ingresa la cedula juridica del proveedor:");
         Agregar_Eliminar_Proveedores.add(jLabel11);
-        jLabel11.setBounds(60, 360, 220, 40);
+        jLabel11.setBounds(50, 380, 220, 40);
 
         jButton8.setText("ELIMINAR");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -666,7 +660,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton8);
-        jButton8.setBounds(400, 460, 110, 30);
+        jButton8.setBounds(400, 450, 110, 30);
 
         jButton9.setText("Verificar Proveedor");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -675,7 +669,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton9);
-        jButton9.setBounds(150, 460, 140, 30);
+        jButton9.setBounds(150, 450, 140, 30);
+
+        jLabel13.setText("Producto suministrado:");
+        Agregar_Eliminar_Proveedores.add(jLabel13);
+        jLabel13.setBounds(50, 150, 190, 40);
+        Agregar_Eliminar_Proveedores.add(ProductoSuministrado1);
+        ProductoSuministrado1.setBounds(190, 160, 240, 30);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -870,13 +870,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_Overview_ProveedoresComponentShown
 
     private void CedulaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminarActionPerformed
-        
+            
     }//GEN-LAST:event_CedulaEliminarActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String Nombre = NombreProveedor1.getText();
         String CedulaStr = CedulaJuridica.getText();
-        String ProdSuministrado = ProductoSuministrado.getText();
+        String ProdSuministrado = ProductoSuministrado1.getText();
         String Fecha = FechaDeEntrega.getText();
 
 // VERIFICACIONES
@@ -924,7 +924,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 // Limpiar los campos
         NombreProveedor1.setText("");
         CedulaJuridica.setText("");
-        ProductoSuministrado.setText("");
+        ProductoSuministrado1.setText("");
         FechaDeEntrega.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -942,51 +942,60 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     public void EliminarProveedor() {
-        String archivoOriginal = "src/Files/Proveedores.txt";
-        String archivoTemporal = "src/Files/Proveedores_temp.txt";
-        String cedulaEliminar = CedulaEliminar.getText().trim();
+  String archivoOriginal = "src/Files/Proveedores.txt";
+String archivoTemporal = "src/Files/Proveedores_temp.txt";
+String cedulaEliminar = CedulaEliminar.getText().trim();
 
-        File archivo = new File(archivoOriginal);
-        File temporal = new File(archivoTemporal);
+File archivo = new File(archivoOriginal);
+File temporal = new File(archivoTemporal);
 
-        // Leer del archivo original y escribir al archivo temporal
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo)); BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
+boolean lineaEliminada = false;
 
-            String apuntador;
+try (BufferedReader br = new BufferedReader(new FileReader(archivo));
+     BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
 
-            while ((apuntador = br.readLine()) != null) {
+    String apuntador;
 
-                String[] valores = apuntador.split("\\|");
+    while ((apuntador = br.readLine()) != null) {
+        String[] valores = apuntador.split("\\|");
 
-                if (valores.length >= 3) {
-                    String cedula = valores[1].trim();
+        if (valores.length >= 3) {
+            String cedula = valores[1].trim();
 
-                    // Comparar cédula
-                    if (cedulaEliminar.equals(cedula)) {
-                        // Línea encontrada
-                        System.out.println("Eliminando línea: " + apuntador);
-                        continue;
-                    }
-                }
-
-                // Escribir la línea en el archivo temporal si no es la que se va a eliminar
-                bw.write(apuntador);
-                bw.newLine();
-            }
-
-        } catch (IOException e) {
-            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
-            return;
-        }
-
-        // Reemplazar el archivo original con el archivo temporal
-        if (archivo.delete()) {
-            if (temporal.renameTo(archivo)) {
-                JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al actualizar el archivo.");
+            // Comparar cédula
+            if (cedulaEliminar.equals(cedula)) { 
+                System.out.println("Eliminando línea: " + apuntador);
+                lineaEliminada = true;
+                continue; 
             }
         }
+
+        // Escribir la línea en el archivo temporal si no es la que se va a eliminar
+        bw.write(apuntador);
+        bw.newLine();
+    }
+
+} catch (IOException e) {
+    System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
+    return;
+}
+
+// Reemplazar el archivo original con el archivo temporal
+if (archivo.delete()) {
+    if (temporal.renameTo(archivo)) {
+        if (lineaEliminada) {
+            JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula.");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Error al renombrar el archivo temporal.");
+    }
+} else {
+    JOptionPane.showMessageDialog(null, "Error al eliminar el archivo original.");
+}
+
+
     }
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1189,7 +1198,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JTable Overview_Proveedores;
     private javax.swing.JTextField PrecioNuevo;
     private javax.swing.JLabel PrecioViejo;
-    private javax.swing.JTextField ProductoSuministrado;
+    private javax.swing.JTextField ProductoSuministrado1;
     private javax.swing.JPanel Productos;
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
@@ -1207,8 +1216,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
