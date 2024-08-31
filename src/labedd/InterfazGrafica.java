@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -938,65 +939,132 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_CedulaJuridicaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        EliminarProveedor();
+//     
+//String archivoOriginal = "src/Files/Proveedores.txt";
+//String archivoTemporal = "src/Files/Proveedores_temp.txt";
+//String cedulaEliminar = CedulaEliminar.getText().trim();
+//
+//File archivo = new File(archivoOriginal);
+//File temporal = new File(archivoTemporal);
+//
+//boolean lineaEliminada = false;
+//
+//try (BufferedReader br = new BufferedReader(new FileReader(archivo));
+//     BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
+//
+//    String apuntador;
+//
+//    while ((apuntador = br.readLine()) != null) {
+//        String[] valores = apuntador.split("\\|");
+//
+//        if (valores.length >= 3) {
+//            String cedula = valores[1].trim();
+//
+//            // Comparar cédula
+//            if (cedulaEliminar.equals(cedula)) { 
+//                System.out.println("Eliminando línea: " + apuntador);
+//                lineaEliminada = true;
+//                continue; 
+//            }
+//        }
+//
+//        // Escribir la línea en el archivo temporal si no es la que se va a eliminar
+//        bw.write(apuntador);
+//        bw.newLine();
+//    }
+//    
+//    bw.close();
+//    br.close();
+//
+//} catch (IOException e) {
+//    System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
+//    return;
+//}
+//
+//// Reemplazar el archivo original con el archivo temporal
+//try {
+//    if (archivo.exists()) {  // Verificar que el archivo original existe antes de eliminarlo
+//        System.out.println("Eliminando archivo original...");
+//        if (archivo.delete()) {  // Eliminar el archivo original
+//            System.out.println("Archivo original eliminado.");
+//        } else {
+//            System.out.println("No se pudo eliminar el archivo original.");
+//            JOptionPane.showMessageDialog(null, "Error al eliminar el archivo original.");
+//            return;  // Salir si no se puede eliminar el archivo original
+//        }
+//    }
+//
+//    if (temporal.exists()) {  // Verificar que el archivo temporal existe
+//        System.out.println("Renombrando archivo temporal...");
+//        if (temporal.renameTo(archivo)) {  // Renombrar el archivo temporal
+//            System.out.println("Archivo temporal renombrado con éxito.");
+//            if (lineaEliminada) {
+//                JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula.");
+//            }
+//        } else {
+//            System.out.println("No se pudo renombrar el archivo temporal.");
+//            JOptionPane.showMessageDialog(null, "Error al renombrar el archivo temporal.");
+//        }
+//    } else {
+//        System.out.println("El archivo temporal no existe.");
+//        JOptionPane.showMessageDialog(null, "El archivo temporal no existe.");
+//    }
+//} catch (HeadlessException e) {
+//    JOptionPane.showMessageDialog(null, "Error durante la actualización del archivo: " + e.getMessage());
+//}
+
+    String archivoOriginal = "src/Files/Proveedores.txt";
+    String cedulaEliminar = CedulaEliminar.getText();
+    eliminarRegistro(archivoOriginal, cedulaEliminar);
+
     }//GEN-LAST:event_jButton8ActionPerformed
+    public static void eliminarRegistro(String archivoOriginal, String cedulaEliminar) {
+        File archivo = new File(archivoOriginal);
 
-    public void EliminarProveedor() {
-  String archivoOriginal = "src/Files/Proveedores.txt";
-String archivoTemporal = "src/Files/Proveedores_temp.txt";
-String cedulaEliminar = CedulaEliminar.getText().trim();
+        try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
+            String apuntador;
+            long apuntadorPosicion = 0;
+            boolean lineaEliminada = false;
 
-File archivo = new File(archivoOriginal);
-File temporal = new File(archivoTemporal);
+            while ((apuntador = raf.readLine()) != null) {
+                String[] valores = apuntador.split("\\|");
 
-boolean lineaEliminada = false;
+                if (valores.length >= 3) {
+                    String cedula = valores[1].trim();
 
-try (BufferedReader br = new BufferedReader(new FileReader(archivo));
-     BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
+                    if (cedulaEliminar.equals(cedula)) {
+                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion;
+                        long siguientePosicion = raf.getFilePointer();
 
-    String apuntador;
+                        byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
+                        raf.seek(siguientePosicion);
+                        raf.readFully(buffer);
 
-    while ((apuntador = br.readLine()) != null) {
-        String[] valores = apuntador.split("\\|");
+                        raf.seek(apuntadorPosicion);
+                        raf.write(buffer);
+                        raf.setLength(raf.length() - longitudLinea);
+                        lineaEliminada = true;
+                        break;
+                    }
+                }
 
-        if (valores.length >= 3) {
-            String cedula = valores[1].trim();
-
-            // Comparar cédula
-            if (cedulaEliminar.equals(cedula)) { 
-                System.out.println("Eliminando línea: " + apuntador);
-                lineaEliminada = true;
-                continue; 
+                apuntadorPosicion = raf.getFilePointer();
             }
+
+            if (lineaEliminada) {
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
         }
-
-        // Escribir la línea en el archivo temporal si no es la que se va a eliminar
-        bw.write(apuntador);
-        bw.newLine();
     }
 
-} catch (IOException e) {
-    System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
-    return;
-}
-
-// Reemplazar el archivo original con el archivo temporal
-if (archivo.delete()) {
-    if (temporal.renameTo(archivo)) {
-        if (lineaEliminada) {
-            JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula.");
-        }
-    } else {
-        JOptionPane.showMessageDialog(null, "Error al renombrar el archivo temporal.");
-    }
-} else {
-    JOptionPane.showMessageDialog(null, "Error al eliminar el archivo original.");
-}
-
-
-    }
+    
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
