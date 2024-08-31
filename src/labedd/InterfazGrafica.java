@@ -93,24 +93,25 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         CedulaEliminar = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
         FechaDeEntrega = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         NombreProveedor1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         ProductoSuministrado1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         SideBar.setBackground(new java.awt.Color(0, 102, 102));
+        SideBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SideBar.setForeground(new java.awt.Color(0, 102, 102));
         SideBar.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -595,17 +596,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         Agregar_Eliminar_Proveedores.setLayout(null);
 
+        jLabel4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel4.setText("ELIMINAR PROVEEDORES:");
         Agregar_Eliminar_Proveedores.add(jLabel4);
-        jLabel4.setBounds(290, 330, 190, 40);
+        jLabel4.setBounds(310, 330, 370, 40);
 
-        jLabel5.setText("Nombre:");
+        jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel5.setText("Ingrese la cédula jurídica del proveedor:");
         Agregar_Eliminar_Proveedores.add(jLabel5);
-        jLabel5.setBounds(50, 50, 190, 40);
-
-        jLabel7.setText("Fecha de registro:");
-        Agregar_Eliminar_Proveedores.add(jLabel7);
-        jLabel7.setBounds(50, 210, 190, 40);
+        jLabel5.setBounds(50, 380, 260, 40);
 
         CedulaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -613,7 +612,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(CedulaEliminar);
-        CedulaEliminar.setBounds(300, 390, 300, 20);
+        CedulaEliminar.setBounds(320, 390, 310, 20);
 
         CedulaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,10 +620,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(CedulaJuridica);
-        CedulaJuridica.setBounds(150, 110, 280, 30);
+        CedulaJuridica.setBounds(170, 110, 260, 30);
         Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
         FechaDeEntrega.setBounds(170, 220, 240, 30);
 
+        jButton7.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 204, 51));
         jButton7.setText("Guardar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -632,15 +633,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton7);
-        jButton7.setBounds(480, 90, 120, 80);
+        jButton7.setBounds(490, 90, 110, 100);
 
+        jLabel9.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel9.setText("AGREGA LOS PROVEDORES AQUÍ!");
         Agregar_Eliminar_Proveedores.add(jLabel9);
-        jLabel9.setBounds(270, 10, 190, 40);
-
-        jLabel10.setText("Cédula jurídica:");
-        Agregar_Eliminar_Proveedores.add(jLabel10);
-        jLabel10.setBounds(50, 100, 190, 40);
+        jLabel9.setBounds(250, 10, 440, 40);
 
         NombreProveedor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -650,10 +648,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores.add(NombreProveedor1);
         NombreProveedor1.setBounds(130, 60, 300, 30);
 
-        jLabel11.setText("Ingresa la cedula juridica del proveedor:");
-        Agregar_Eliminar_Proveedores.add(jLabel11);
-        jLabel11.setBounds(50, 380, 220, 40);
-
+        jButton8.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 0, 0));
         jButton8.setText("ELIMINAR");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -661,8 +657,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton8);
-        jButton8.setBounds(400, 450, 110, 30);
+        jButton8.setBounds(410, 450, 150, 30);
 
+        jButton9.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton9.setText("Verificar Proveedor");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -670,13 +667,29 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton9);
-        jButton9.setBounds(150, 450, 140, 30);
-
-        jLabel13.setText("Producto suministrado:");
-        Agregar_Eliminar_Proveedores.add(jLabel13);
-        jLabel13.setBounds(50, 150, 190, 40);
+        jButton9.setBounds(150, 450, 190, 30);
         Agregar_Eliminar_Proveedores.add(ProductoSuministrado1);
-        ProductoSuministrado1.setBounds(190, 160, 240, 30);
+        ProductoSuministrado1.setBounds(210, 160, 220, 30);
+
+        jLabel14.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel14.setText("Nombre:");
+        Agregar_Eliminar_Proveedores.add(jLabel14);
+        jLabel14.setBounds(50, 60, 190, 40);
+
+        jLabel15.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel15.setText("Cédula Jurídica:");
+        Agregar_Eliminar_Proveedores.add(jLabel15);
+        jLabel15.setBounds(50, 110, 190, 40);
+
+        jLabel16.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel16.setText("Producto Suministrado:");
+        Agregar_Eliminar_Proveedores.add(jLabel16);
+        jLabel16.setBounds(50, 160, 190, 40);
+
+        jLabel17.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel17.setText("Fecha de registro:");
+        Agregar_Eliminar_Proveedores.add(jLabel17);
+        jLabel17.setBounds(50, 220, 190, 40);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -1281,15 +1294,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
