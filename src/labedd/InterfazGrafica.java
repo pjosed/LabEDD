@@ -75,7 +75,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         Overview_Proveedores = new javax.swing.JTable();
         Reposicion_De_Productos = new javax.swing.JPanel();
-        label3 = new java.awt.Label();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         Eliminar_Productos = new javax.swing.JPanel();
         label4 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
@@ -421,27 +423,59 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Proveedores, "card3");
 
-        label3.setText("Reposición de productos");
+        jTextField1.setText("REGISTRAR VENTA");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setText("REGISTRAR RECEPCIÓN DE NUEVO LOTE");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(230, 230, 230)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(542, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+
+        System.out.println("Hello World!");
+        System.out.println("Hello World");
 
         javax.swing.GroupLayout Reposicion_De_ProductosLayout = new javax.swing.GroupLayout(Reposicion_De_Productos);
         Reposicion_De_Productos.setLayout(Reposicion_De_ProductosLayout);
         Reposicion_De_ProductosLayout.setHorizontalGroup(
             Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
-                    .addGap(240, 240, 240)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(591, Short.MAX_VALUE)))
+            .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Reposicion_De_ProductosLayout.setVerticalGroup(
             Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
-            .addGroup(Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
-                    .addGap(344, 344, 344)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(345, Short.MAX_VALUE)))
+            .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(354, Short.MAX_VALUE))
         );
 
         MainPanel.add(Reposicion_De_Productos, "card8");
@@ -774,6 +808,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         MainPanel.add(Reposicion_De_Productos);
         MainPanel.repaint();
         MainPanel.revalidate();
+        // Venta y reposición de productos 
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1226,6 +1262,14 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ComboBox2ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1306,11 +1350,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private java.awt.Label label1;
     private java.awt.Label label2;
-    private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
