@@ -75,9 +75,28 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         Overview_Proveedores = new javax.swing.JTable();
         Reposicion_De_Productos = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jButton11 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        cantidadReponer = new javax.swing.JTextField();
+        codigoReponer = new javax.swing.JTextField();
+        jButton12 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        cantidadReponer1 = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        cantidadReponer2 = new javax.swing.JTextField();
         Eliminar_Productos = new javax.swing.JPanel();
         label4 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
@@ -423,60 +442,120 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Proveedores, "card3");
 
-        jTextField1.setText("REGISTRAR VENTA");
+        Reposicion_De_Productos.setLayout(null);
+
+        jButton11.setText("Verificar Stock");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jButton11);
+        jButton11.setBounds(400, 170, 120, 30);
+
+        jLabel3.setText("Presiona aquí para verificar los niveles bajos de Stock:");
+        Reposicion_De_Productos.add(jLabel3);
+        jLabel3.setBounds(310, 130, 310, 20);
+
+        jLabel7.setText("Codigo del producto:");
+        Reposicion_De_Productos.add(jLabel7);
+        jLabel7.setBounds(550, 350, 140, 16);
+
+        jButton10.setText("GUARDAR VENTA");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jButton10);
+        jButton10.setBounds(710, 510, 160, 30);
+
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        Reposicion_De_Productos.add(jTextField1);
+        jTextField1.setBounds(690, 390, 160, 22);
 
-        jTextField2.setText("REGISTRAR RECEPCIÓN DE NUEVO LOTE");
+        jLabel10.setText("Cantidad vendida:");
+        Reposicion_De_Productos.add(jLabel10);
+        jLabel10.setBounds(550, 390, 100, 16);
+
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
+        Reposicion_De_Productos.add(jTextField2);
+        jTextField2.setBounds(690, 350, 160, 22);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(230, 230, 230)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(542, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
+        jLabel11.setText("Codigo del producto:");
+        Reposicion_De_Productos.add(jLabel11);
+        jLabel11.setBounds(60, 340, 160, 16);
 
-        System.out.println("Hello World!");
-        System.out.println("Hello World");
+        jLabel13.setText("Fecha");
+        Reposicion_De_Productos.add(jLabel13);
+        jLabel13.setBounds(550, 440, 160, 16);
+        Reposicion_De_Productos.add(cantidadReponer);
+        cantidadReponer.setBounds(680, 440, 170, 22);
+        Reposicion_De_Productos.add(codigoReponer);
+        codigoReponer.setBounds(230, 340, 170, 22);
 
-        javax.swing.GroupLayout Reposicion_De_ProductosLayout = new javax.swing.GroupLayout(Reposicion_De_Productos);
-        Reposicion_De_Productos.setLayout(Reposicion_De_ProductosLayout);
-        Reposicion_De_ProductosLayout.setHorizontalGroup(
-            Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Reposicion_De_ProductosLayout.setVerticalGroup(
-            Reposicion_De_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Reposicion_De_ProductosLayout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
-        );
+        jButton12.setText("VERIFICAR");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jButton12);
+        jButton12.setBounds(550, 510, 140, 30);
+
+        jLabel19.setText("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Reposicion_De_Productos.add(jLabel19);
+        jLabel19.setBounds(0, 220, 910, 16);
+
+        jLabel18.setText("VENDER PRODUCTOS");
+        Reposicion_De_Productos.add(jLabel18);
+        jLabel18.setBounds(550, 290, 210, 30);
+
+        jLabel20.setText("REPONER PRODUCTOS");
+        Reposicion_De_Productos.add(jLabel20);
+        jLabel20.setBounds(70, 290, 210, 30);
+
+        jButton13.setText("REPONER");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jButton13);
+        jButton13.setBounds(250, 510, 140, 30);
+
+        jButton14.setText("VERIFICAR");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jButton14);
+        jButton14.setBounds(60, 510, 140, 30);
+
+        jLabel21.setText("VENTA/ REPOSICION DE PRODUCTO");
+        Reposicion_De_Productos.add(jLabel21);
+        jLabel21.setBounds(360, 20, 250, 16);
+
+        jLabel22.setText("Cantidad");
+        Reposicion_De_Productos.add(jLabel22);
+        jLabel22.setBounds(60, 390, 160, 16);
+        Reposicion_De_Productos.add(cantidadReponer1);
+        cantidadReponer1.setBounds(230, 390, 170, 22);
+
+        jLabel23.setText("Fecha");
+        Reposicion_De_Productos.add(jLabel23);
+        jLabel23.setBounds(60, 440, 160, 16);
+        Reposicion_De_Productos.add(cantidadReponer2);
+        cantidadReponer2.setBounds(230, 440, 170, 22);
 
         MainPanel.add(Reposicion_De_Productos, "card8");
 
@@ -1262,48 +1341,92 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ComboBox2ActionPerformed
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        verificarStockBajo();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+            String apuntador;
+
+            // Leer el archivo 
+            while ((apuntador = br.readLine()) != null) {
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    String codigoProducto = codigoReponer.getText();
+                    String cantidadRepuesta = cantidadReponer.getText();
+                    String nombre = valores[1].trim();
+                    String categoria = valores[2].trim();
+                    String codigo = valores[0].trim();
+                    String fecha = valores[5].trim();
+
+                    // Comparar
+                    if (codigoProducto.equals(codigo)) {                       
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nUltima fecha de entrega: " + fecha);
+                        return;
+
+                    }
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazGrafica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InterfazGrafica().setVisible(true);
+            // Mensaje si no se encuentra la cédula
+            JOptionPane.showMessageDialog(this, "Producto no encontrado.");
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void verificarStockBajo() {
+    String archivoProductos = "src/Files/Productos.txt"; 
+    int productosConStockBajo = 0;
+    StringBuilder nombresProductos = new StringBuilder("Productos con stock menor a 10:\n");
+
+    try (BufferedReader br = new BufferedReader(new FileReader(archivoProductos))) {
+        // Leer y descartar la primera línea (cabecera)
+        String linea = br.readLine();
+
+        // Bucle para procesar las demás líneas
+        while ((linea = br.readLine()) != null) {
+            String[] campos = linea.split("\\|");
+            if (campos.length == 7) {
+                int cantidadEnStock = Integer.parseInt(campos[4].trim());
+                
+                if (cantidadEnStock < 100) {
+                    nombresProductos.append(campos[1].trim()).append(" - Stock: ").append(cantidadEnStock).append("\n");
+                    productosConStockBajo++;
+                }
             }
-        });
+        }
+        
+ 
+        JOptionPane.showMessageDialog(this, "Nombre de los productos: " + nombresProductos);
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Actualizar_Precio_Del_Producto;
@@ -1328,7 +1451,16 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
     private javax.swing.JPanel SideBar;
+    private javax.swing.JTextField cantidadReponer;
+    private javax.swing.JTextField cantidadReponer1;
+    private javax.swing.JTextField cantidadReponer2;
+    private javax.swing.JTextField codigoReponer;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1338,19 +1470,29 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
