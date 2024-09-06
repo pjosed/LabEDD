@@ -114,7 +114,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        CedulaEliminar = new javax.swing.JTextField();
+        NomProducto = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
         FechaDeEntrega = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
@@ -127,6 +127,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        CedulaEliminar1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -287,6 +289,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Inicio, "card3");
 
+        Productos.setPreferredSize(new java.awt.Dimension(1200, 740));
+
         label1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         label1.setForeground(new java.awt.Color(51, 153, 255));
         label1.setText("Productos");
@@ -366,6 +370,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Productos, "card3");
 
+        Proveedores.setPreferredSize(new java.awt.Dimension(1200, 740));
+
         label7.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         label7.setForeground(new java.awt.Color(51, 153, 255));
         label7.setText("Proveedores");
@@ -442,6 +448,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Proveedores, "card3");
 
+        Reposicion_De_Productos.setPreferredSize(new java.awt.Dimension(1200, 740));
         Reposicion_De_Productos.setLayout(null);
 
         jButton11.setText("Verificar Stock");
@@ -559,6 +566,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Reposicion_De_Productos, "card8");
 
+        Eliminar_Productos.setPreferredSize(new java.awt.Dimension(1200, 740));
+
         label4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         label4.setForeground(new java.awt.Color(0, 153, 255));
         label4.setText("Eliminar productos");
@@ -621,6 +630,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         );
 
         MainPanel.add(Eliminar_Productos, "card7");
+
+        Actualizar_Precio_Del_Producto.setPreferredSize(new java.awt.Dimension(1200, 740));
 
         label5.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
         label5.setForeground(new java.awt.Color(255, 51, 51));
@@ -707,6 +718,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
 
+        Agregar_Eliminar_Proveedores.setPreferredSize(new java.awt.Dimension(1200, 740));
         Agregar_Eliminar_Proveedores.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
@@ -715,17 +727,17 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4.setBounds(310, 330, 370, 40);
 
         jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel5.setText("Ingrese la cédula jurídica del proveedor:");
+        jLabel5.setText("Ingrese el producto que siministra:");
         Agregar_Eliminar_Proveedores.add(jLabel5);
-        jLabel5.setBounds(50, 380, 260, 40);
+        jLabel5.setBounds(60, 420, 260, 40);
 
-        CedulaEliminar.addActionListener(new java.awt.event.ActionListener() {
+        NomProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CedulaEliminarActionPerformed(evt);
+                NomProductoActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(CedulaEliminar);
-        CedulaEliminar.setBounds(320, 390, 310, 20);
+        Agregar_Eliminar_Proveedores.add(NomProducto);
+        NomProducto.setBounds(320, 430, 310, 20);
 
         CedulaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -770,7 +782,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton8);
-        jButton8.setBounds(410, 450, 150, 30);
+        jButton8.setBounds(410, 500, 150, 30);
 
         jButton9.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton9.setText("Verificar Proveedor");
@@ -780,7 +792,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton9);
-        jButton9.setBounds(150, 450, 190, 30);
+        jButton9.setBounds(150, 500, 190, 30);
         Agregar_Eliminar_Proveedores.add(ProductoSuministrado1);
         ProductoSuministrado1.setBounds(210, 160, 220, 30);
 
@@ -803,6 +815,19 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel17.setText("Fecha de registro:");
         Agregar_Eliminar_Proveedores.add(jLabel17);
         jLabel17.setBounds(50, 220, 190, 40);
+
+        jLabel24.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel24.setText("Ingrese la cédula jurídica del proveedor:");
+        Agregar_Eliminar_Proveedores.add(jLabel24);
+        jLabel24.setBounds(50, 380, 260, 40);
+
+        CedulaEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CedulaEliminar1ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(CedulaEliminar1);
+        CedulaEliminar1.setBounds(320, 390, 310, 20);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -998,9 +1023,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProveedoresComponentShown
 
-    private void CedulaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminarActionPerformed
+    private void NomProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomProductoActionPerformed
             
-    }//GEN-LAST:event_CedulaEliminarActionPerformed
+    }//GEN-LAST:event_NomProductoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String Nombre = NombreProveedor1.getText();
@@ -1067,94 +1092,24 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_CedulaJuridicaActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-//     
-//String archivoOriginal = "src/Files/Proveedores.txt";
-//String archivoTemporal = "src/Files/Proveedores_temp.txt";
-//String cedulaEliminar = CedulaEliminar.getText().trim();
-//
-//File archivo = new File(archivoOriginal);
-//File temporal = new File(archivoTemporal);
-//
-//boolean lineaEliminada = false;
-//
-//try (BufferedReader br = new BufferedReader(new FileReader(archivo));
-//     BufferedWriter bw = new BufferedWriter(new FileWriter(temporal))) {
-//
-//    String apuntador;
-//
-//    while ((apuntador = br.readLine()) != null) {
-//        String[] valores = apuntador.split("\\|");
-//
-//        if (valores.length >= 3) {
-//            String cedula = valores[1].trim();
-//
-//            // Comparar cédula
-//            if (cedulaEliminar.equals(cedula)) { 
-//                System.out.println("Eliminando línea: " + apuntador);
-//                lineaEliminada = true;
-//                continue; 
-//            }
-//        }
-//
-//        // Escribir la línea en el archivo temporal si no es la que se va a eliminar
-//        bw.write(apuntador);
-//        bw.newLine();
-//    }
-//    
-//    bw.close();
-//    br.close();
-//
-//} catch (IOException e) {
-//    System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
-//    return;
-//}
-//
-//// Reemplazar el archivo original con el archivo temporal
-//try {
-//    if (archivo.exists()) {  // Verificar que el archivo original existe antes de eliminarlo
-//        System.out.println("Eliminando archivo original...");
-//        if (archivo.delete()) {  // Eliminar el archivo original
-//            System.out.println("Archivo original eliminado.");
-//        } else {
-//            System.out.println("No se pudo eliminar el archivo original.");
-//            JOptionPane.showMessageDialog(null, "Error al eliminar el archivo original.");
-//            return;  // Salir si no se puede eliminar el archivo original
-//        }
-//    }
-//
-//    if (temporal.exists()) {  // Verificar que el archivo temporal existe
-//        System.out.println("Renombrando archivo temporal...");
-//        if (temporal.renameTo(archivo)) {  // Renombrar el archivo temporal
-//            System.out.println("Archivo temporal renombrado con éxito.");
-//            if (lineaEliminada) {
-//                JOptionPane.showMessageDialog(null, "Archivo actualizado y proveedor eliminado correctamente.");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula.");
-//            }
-//        } else {
-//            System.out.println("No se pudo renombrar el archivo temporal.");
-//            JOptionPane.showMessageDialog(null, "Error al renombrar el archivo temporal.");
-//        }
-//    } else {
-//        System.out.println("El archivo temporal no existe.");
-//        JOptionPane.showMessageDialog(null, "El archivo temporal no existe.");
-//    }
-//} catch (HeadlessException e) {
-//    JOptionPane.showMessageDialog(null, "Error durante la actualización del archivo: " + e.getMessage());
-//}
 
     String archivoOriginal = "src/Files/Proveedores.txt";
-    String cedulaEliminar = CedulaEliminar.getText();
-    eliminarRegistro(archivoOriginal, cedulaEliminar);
+    String archivoProductos = "src/Files/Productos.txt";
+    String cedulaEliminar = CedulaEliminar1.getText();
+    String nombreProducto = NomProducto.getText();
+    eliminarRegistro(archivoOriginal, archivoProductos, cedulaEliminar, nombreProducto);
 
     }//GEN-LAST:event_jButton8ActionPerformed
-    public static void eliminarRegistro(String archivoOriginal, String cedulaEliminar) {
+ public static void eliminarRegistro(String archivoOriginal, String archivoProductos, String cedulaEliminar, String nombreProductoEliminar) {
         File archivo = new File(archivoOriginal);
+        File archivoProd = new File(archivoProductos);
+        boolean proveedorEliminado = false;
+        boolean productoEliminado = false;
 
+        // Eliminar el proveedor
         try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
             String apuntador;
             long apuntadorPosicion = 0;
-            boolean lineaEliminada = false;
 
             while ((apuntador = raf.readLine()) != null) {
                 String[] valores = apuntador.split("\\|");
@@ -1173,7 +1128,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                         raf.seek(apuntadorPosicion);
                         raf.write(buffer);
                         raf.setLength(raf.length() - longitudLinea);
-                        lineaEliminada = true;
+                        proveedorEliminado = true;
                         break;
                     }
                 }
@@ -1181,18 +1136,102 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 apuntadorPosicion = raf.getFilePointer();
             }
 
-            if (lineaEliminada) {
-                JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
-            }
-
         } catch (IOException e) {
-            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
+            System.out.println("Error al leer o escribir el archivo de proveedores: " + e.getMessage());
+        }
+
+        // Después de eliminar el proveedor, eliminar el producto relacionado
+        if (proveedorEliminado) {
+            try (RandomAccessFile rafProd = new RandomAccessFile(archivoProd, "rw")) {
+                String apuntadorProd;
+                long apuntadorPosicionProd = 0;
+
+                while ((apuntadorProd = rafProd.readLine()) != null) {
+                    String[] valoresProd = apuntadorProd.split("\\|");
+
+                    if (valoresProd.length >= 7) {
+                        String nombreProducto = valoresProd[1].trim();
+                        String cedulaJuridica = valoresProd[6].trim();
+
+                        // Verifica si el producto pertenece al proveedor eliminado y coincide con el nombre del producto
+                        if (nombreProductoEliminar.equals(nombreProducto)) {
+                            long longitudLineaProd = rafProd.getFilePointer() - apuntadorPosicionProd;
+                            long siguientePosicionProd = rafProd.getFilePointer();
+
+                            byte[] bufferProd = new byte[(int) (rafProd.length() - siguientePosicionProd)];
+                            rafProd.seek(siguientePosicionProd);
+                            rafProd.readFully(bufferProd);
+
+                            rafProd.seek(apuntadorPosicionProd);
+                            rafProd.write(bufferProd);
+                            rafProd.setLength(rafProd.length() - longitudLineaProd);
+                            productoEliminado = true;
+                            break; // Salimos del bucle después de eliminar el producto.
+                        }
+                    }
+
+                    apuntadorPosicionProd = rafProd.getFilePointer();
+                }
+
+                if (productoEliminado) {
+                    JOptionPane.showMessageDialog(null, "Proveedor y producto eliminados correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Proveedor eliminado, pero no se encontró el producto especificado.");
+                }
+            } catch (IOException e) {
+                System.out.println("Error al leer o escribir el archivo de productos: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
         }
     }
 
-    
+
+//    public static void eliminarRegistro(String archivoOriginal, String cedulaEliminar) {
+//        File archivo = new File(archivoOriginal);
+//
+//        try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
+//            String apuntador;
+//            long apuntadorPosicion = 0;
+//            boolean lineaEliminada = false;
+//
+//            while ((apuntador = raf.readLine()) != null) {
+//                String[] valores = apuntador.split("\\|");
+//
+//                if (valores.length >= 3) {
+//                    String cedula = valores[1].trim();
+//
+//                    if (cedulaEliminar.equals(cedula)) {
+//                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion;
+//                        long siguientePosicion = raf.getFilePointer();
+//
+//                        byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
+//                        raf.seek(siguientePosicion);
+//                        raf.readFully(buffer);
+//
+//                        raf.seek(apuntadorPosicion);
+//                        raf.write(buffer);
+//                        raf.setLength(raf.length() - longitudLinea);
+//                        lineaEliminada = true;
+//                        break;
+//                    }
+//                }
+//
+//                apuntadorPosicion = raf.getFilePointer();
+//            }
+//
+//            if (lineaEliminada) {
+//                JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
+//            }
+//
+//        } catch (IOException e) {
+//            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
+//        }
+//    }
+//
+//    
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
@@ -1205,7 +1244,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    String cedulaeliminar = CedulaEliminar.getText();
+                    String cedulaeliminar = CedulaEliminar1.getText();
                     String cedula = valores[1].trim();
                     String nombre = valores[0].trim();
                     String ProductoSuministrado = valores[2].trim();
@@ -1213,7 +1252,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
                     // Comparar cédula
                     if (cedulaeliminar.equals(cedula)) {
-                        System.out.println(cedula + "|" + CedulaEliminar);
+                        System.out.println(cedula + "|" + CedulaEliminar1);
                         JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto que suministra: " + ProductoSuministrado + "\nUltima fecha de entrega: " + Fecha);
                         return;
 
@@ -1362,9 +1401,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        
+            
     }//GEN-LAST:event_jButton13ActionPerformed
-
+    
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
          try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
             String apuntador;
@@ -1398,6 +1437,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void CedulaEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CedulaEliminar1ActionPerformed
 
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
@@ -1433,7 +1476,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
     private javax.swing.JButton ButtonActualizar;
     private javax.swing.JButton Button_Eliminar;
-    private javax.swing.JTextField CedulaEliminar;
+    private javax.swing.JTextField CedulaEliminar1;
     private javax.swing.JTextField CedulaJuridica;
     private javax.swing.JComboBox<String> ComboBox1;
     private javax.swing.JComboBox<String> ComboBox2;
@@ -1441,6 +1484,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JTextField FechaDeEntrega;
     private javax.swing.JPanel Inicio;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JTextField NomProducto;
     private javax.swing.JTextField NombreProveedor1;
     private javax.swing.JTable Overview_Productos;
     private javax.swing.JTable Overview_Proveedores;
@@ -1485,6 +1529,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
