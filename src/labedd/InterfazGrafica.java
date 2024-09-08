@@ -18,6 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.RandomAccessFile;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -79,12 +81,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        cantVent = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        codProd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cantidadReponer = new javax.swing.JTextField();
+        fV = new javax.swing.JTextField();
         codigoReponer = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -477,25 +479,25 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Reposicion_De_Productos.add(jButton10);
         jButton10.setBounds(710, 510, 160, 30);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cantVent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                cantVentActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jTextField1);
-        jTextField1.setBounds(690, 390, 160, 22);
+        Reposicion_De_Productos.add(cantVent);
+        cantVent.setBounds(690, 390, 160, 22);
 
         jLabel10.setText("Cantidad vendida:");
         Reposicion_De_Productos.add(jLabel10);
         jLabel10.setBounds(550, 390, 100, 16);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        codProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                codProdActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jTextField2);
-        jTextField2.setBounds(690, 350, 160, 22);
+        Reposicion_De_Productos.add(codProd);
+        codProd.setBounds(690, 350, 160, 22);
 
         jLabel11.setText("Codigo del producto:");
         Reposicion_De_Productos.add(jLabel11);
@@ -504,8 +506,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel13.setText("Fecha");
         Reposicion_De_Productos.add(jLabel13);
         jLabel13.setBounds(550, 440, 160, 16);
-        Reposicion_De_Productos.add(cantidadReponer);
-        cantidadReponer.setBounds(680, 440, 170, 22);
+        Reposicion_De_Productos.add(fV);
+        fV.setBounds(680, 440, 170, 22);
         Reposicion_De_Productos.add(codigoReponer);
         codigoReponer.setBounds(230, 340, 170, 22);
 
@@ -531,6 +533,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel20.setBounds(70, 290, 210, 30);
 
         jButton13.setText("REPONER");
+        jButton13.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jButton13CaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -1384,24 +1393,150 @@ public class InterfazGrafica extends javax.swing.JFrame {
         verificarStockBajo();
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void cantVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantVentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_cantVentActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        String cp = codProd.getText(); // Convertir a entero
+int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
+registrarVenta(cp, cv); // Llamar a la función con los valores correctos
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jButton10ActionPerformed
+public static void registrarVenta(String codigoProducto, int cantidadVendida) {
+            
+        String ARCHIVO_PRODUCTOS = ("src/Files/Productos.txt");
+        File archivo = new File(ARCHIVO_PRODUCTOS);
+        StringBuilder nuevoContenido = new StringBuilder();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+
+                // Verificar si el código del producto coincide
+                if (campos[0].trim().equals(codigoProducto)) {
+                    // Actualizar la cantidad en stock y la fecha de última venta
+                    int cantidadActual = Integer.parseInt(campos[4].trim());
+                    int nuevaCantidad = cantidadActual - cantidadVendida;
+                    String fechaVenta = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                    // Reconstruir la línea actualizada
+                    campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
+                    
+                    campos[5] = fechaVenta; // Actualizar fecha de última venta
+                    linea = String.join("|", campos);
+                }
+
+                nuevoContenido.append(linea).append("\n");
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Guardar el nuevo contenido en el archivo
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+            bw.write(nuevoContenido.toString());
+            JOptionPane.showMessageDialog(null, "Venta registrada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);// TODO add your handling code here:
+        }
+}
+public static void reponerProducto(String codigoProducto, int cantidadVendida) {
+    String ARCHIVO_PRODUCTOS = "src/Files/Productos.txt";
+    File archivo = new File(ARCHIVO_PRODUCTOS);
+    StringBuilder nuevoContenido = new StringBuilder();
+
+    try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] campos = linea.split("\\|");
+
+            // Verificar si el código del producto coincide
+            if (campos[0].trim().equals(codigoProducto)) {
+                // Verificar que el campo de cantidad no esté vacío o contenga solo espacios en blanco
+                String cantidadStr = campos[4].trim();
+                if (!cantidadStr.isEmpty()) {
+                    int cantidadActual = Integer.parseInt(cantidadStr);
+                    int nuevaCantidad = cantidadActual + cantidadVendida;
+                    String fechaVenta = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                    // Reconstruir la línea actualizada
+                    campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
+                    
+                    campos[5] = fechaVenta; // Actualizar fecha de última venta
+                    linea = String.join("|", campos);
+                } else {
+                    // Manejar el caso donde el campo de cantidad está vacío
+                    JOptionPane.showMessageDialog(null, "El campo de cantidad está vacío para el producto: " + codigoProducto, "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            nuevoContenido.append(linea).append("\n");
+        }
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Guardar el nuevo contenido en el archivo
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+        bw.write(nuevoContenido.toString());
+        JOptionPane.showMessageDialog(null, "Venta registrada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+    private void codProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codProdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_codProdActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+ try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+            String apuntador;
+
+            // Leer el archivo 
+            while ((apuntador = br.readLine()) != null) {
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    String codigoProducto = codigoReponer.getText();
+                    String cantidadRepuesta = fV.getText();
+                    String nombre = valores[1].trim();
+                    String categoria = valores[2].trim();
+                    String codigo = valores[0].trim();
+                    String fecha = valores[5].trim();
+
+                    // Comparar
+                    if (codigoProducto.equals(codigo)) {                       
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nUltima fecha de entrega: " + fecha);
+                        return;
+
+                    }
+                }
+            }
+
+            // Mensaje si no se encuentra la cédula
+            JOptionPane.showMessageDialog(this, "Producto no encontrado.");
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }       
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-            
+String cp = codigoReponer.getText(); // Convertir a entero
+int cv = Integer.parseInt(cantidadReponer1.getText()); // Convertir a entero
+reponerProducto(cp, cv); // Llamar a la función con los valores correctos          
+
     }//GEN-LAST:event_jButton13ActionPerformed
     
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -1414,7 +1549,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
                 if (valores.length >= 3) {
                     String codigoProducto = codigoReponer.getText();
-                    String cantidadRepuesta = cantidadReponer.getText();
+                    String cantidadRepuesta = fV.getText();
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
@@ -1441,6 +1576,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void CedulaEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CedulaEliminar1ActionPerformed
+
+    private void jButton13CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton13CaretPositionChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13CaretPositionChanged
 
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
@@ -1495,10 +1634,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel Proveedores;
     private javax.swing.JPanel Reposicion_De_Productos;
     private javax.swing.JPanel SideBar;
-    private javax.swing.JTextField cantidadReponer;
+    private javax.swing.JTextField cantVent;
     private javax.swing.JTextField cantidadReponer1;
     private javax.swing.JTextField cantidadReponer2;
+    private javax.swing.JTextField codProd;
     private javax.swing.JTextField codigoReponer;
+    private javax.swing.JTextField fV;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1540,8 +1681,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label4;
