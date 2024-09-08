@@ -1063,9 +1063,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
 // VERIFICACIONES
 // Verificar que la cédula sea un número
-        int Cedula;
+        long Cedula;
         try {
-            Cedula = Integer.parseInt(CedulaStr);
+            Cedula = Long.parseLong(CedulaStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un número de cédula válido.");
             return;
