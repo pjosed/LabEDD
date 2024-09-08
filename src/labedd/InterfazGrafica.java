@@ -1001,7 +1001,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error eliminando el producto.");
         }
         
-        if(proveedorEliminado){
+        if(productoEliminado){
             try (RandomAccessFile rafProv= new RandomAccessFile(archivoProv,"rw")){
                 String apuntadorProv;
                 long apuntadorPosicionProv=0;
