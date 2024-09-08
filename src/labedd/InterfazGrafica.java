@@ -622,7 +622,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                     .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                         .addGap(424, 424, 424)
                         .addComponent(Button_Eliminar)))
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(703, Short.MAX_VALUE))
         );
         Eliminar_ProductosLayout.setVerticalGroup(
             Eliminar_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,7 +701,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                     .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
                         .addComponent(ComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(709, Short.MAX_VALUE))
         );
         Actualizar_Precio_Del_ProductoLayout.setVerticalGroup(
             Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -755,6 +755,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
         Agregar_Eliminar_Proveedores.add(CedulaJuridica);
         CedulaJuridica.setBounds(170, 110, 260, 30);
+
+        FechaDeEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaDeEntregaActionPerformed(evt);
+            }
+        });
         Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
         FechaDeEntrega.setBounds(170, 220, 240, 30);
 
@@ -1060,8 +1066,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
             return;
         }
 
-// Verificar que la fecha esté en el formato DD/MM/AA
-        if (!Fecha.matches("\\d{2}/\\d{2}/\\d{2}")) {
+// Verificar que la fecha esté en el formato YYYY/MM/DD
+        if (!Fecha.matches("\\d{4}-\\d{2}-\\d{2}")) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
             return;
         }
@@ -1116,37 +1122,38 @@ public class InterfazGrafica extends javax.swing.JFrame {
         try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
             String apuntador;
             long apuntadorPosicion = 0;
-
+            // Recorro el archivo
             while ((apuntador = raf.readLine()) != null) {
-                String[] valores = apuntador.split("\\|");
+                String[] valores = apuntador.split("\\|"); // Se explica que cda campo está separado por |
 
-                if (valores.length >= 3) {
+                    // Obtengo el valor de la cedula del archivo
                     String cedula = valores[1].trim();
-
+                    // Comparo el valor de la cedula de la tabla con el ingresado
                     if (cedulaEliminar.equals(cedula)) {
-                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion;
-                        long siguientePosicion = raf.getFilePointer();
-
+                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion; // Se resta la posicion actual de la linea de la posicion actual del puntero.
+                        long siguientePosicion = raf.getFilePointer(); //  Almacena la posición actual del puntero del archivo, que indica dónde termina la línea que se va a eliminar.
+                        //A continuación, se crea un arreglo de bytes (buffer) para almacenar temporalmente todos los datos que siguen a la línea que se va a eliminar. 
+                        //El tamaño del buffer es la longitud total del archivo menos la posición actual del puntero.
                         byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
-                        raf.seek(siguientePosicion);
-                        raf.readFully(buffer);
+                        raf.seek(siguientePosicion); // Ajusta el puntero del archivo a la posición justo después de la línea que se va a eliminar, o sea, a siguientePosicion.
+                        raf.readFully(buffer); // Lee los datos restantes en el buffer
 
-                        raf.seek(apuntadorPosicion);
-                        raf.write(buffer);
-                        raf.setLength(raf.length() - longitudLinea);
-                        proveedorEliminado = true;
-                        break;
+                        raf.seek(apuntadorPosicion); // Mueve el puntero del archivo de vuelta a la posición donde comienza la línea que se va a eliminar-
+                        raf.write(buffer); // Sobrescribe la línea eliminadal.
+                        raf.setLength(raf.length() - longitudLinea); // Se reduce la longitud del archivo para eliminar el espacio que ocupaba la línea eliminada, se asegura que no queden datos innecesarios al final del archivo.
+                        proveedorEliminado = true; // Se verifica que se elimino el proveedor.
+                        break; // Se rompe el ciclo
                     }
-                }
+                
 
-                apuntadorPosicion = raf.getFilePointer();
+                apuntadorPosicion = raf.getFilePointer(); // Se obtiene la posicion atual del apuntador.
             }
-
+        // Manejo de errores.
         } catch (IOException e) {
             System.out.println("Error al leer o escribir el archivo de proveedores: " + e.getMessage());
         }
 
-        // Después de eliminar el proveedor, eliminar el producto relacionado
+        // Después de eliminar el proveedor, eliminar el producto relacionado:
         if (proveedorEliminado) {
             try (RandomAccessFile rafProd = new RandomAccessFile(archivoProd, "rw")) {
                 String apuntadorProd;
@@ -1161,6 +1168,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
                         // Verifica si el producto pertenece al proveedor eliminado y coincide con el nombre del producto
                         if (nombreProductoEliminar.equals(nombreProducto)) {
+                            // Se aplica la misma logica que para eliminar el proveedor.
                             long longitudLineaProd = rafProd.getFilePointer() - apuntadorPosicionProd;
                             long siguientePosicionProd = rafProd.getFilePointer();
 
@@ -1178,7 +1186,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
                     apuntadorPosicionProd = rafProd.getFilePointer();
                 }
-
+                // Manejo de errores.
                 if (productoEliminado) {
                     JOptionPane.showMessageDialog(null, "Proveedor y producto eliminados correctamente");
                 } else {
@@ -1191,53 +1199,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
         }
     }
-
-
-//    public static void eliminarRegistro(String archivoOriginal, String cedulaEliminar) {
-//        File archivo = new File(archivoOriginal);
-//
-//        try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
-//            String apuntador;
-//            long apuntadorPosicion = 0;
-//            boolean lineaEliminada = false;
-//
-//            while ((apuntador = raf.readLine()) != null) {
-//                String[] valores = apuntador.split("\\|");
-//
-//                if (valores.length >= 3) {
-//                    String cedula = valores[1].trim();
-//
-//                    if (cedulaEliminar.equals(cedula)) {
-//                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion;
-//                        long siguientePosicion = raf.getFilePointer();
-//
-//                        byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
-//                        raf.seek(siguientePosicion);
-//                        raf.readFully(buffer);
-//
-//                        raf.seek(apuntadorPosicion);
-//                        raf.write(buffer);
-//                        raf.setLength(raf.length() - longitudLinea);
-//                        lineaEliminada = true;
-//                        break;
-//                    }
-//                }
-//
-//                apuntadorPosicion = raf.getFilePointer();
-//            }
-//
-//            if (lineaEliminada) {
-//                JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No se encontró ningún proveedor con esa cédula");
-//            }
-//
-//        } catch (IOException e) {
-//            System.out.println("Error al leer o escribir el archivo: " + e.getMessage());
-//        }
-//    }
-//
-//    
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
@@ -1575,6 +1536,10 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private void jButton13CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton13CaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13CaretPositionChanged
+
+    private void FechaDeEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaDeEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FechaDeEntregaActionPerformed
 
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
