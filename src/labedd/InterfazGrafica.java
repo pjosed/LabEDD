@@ -85,8 +85,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         codProd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        fV = new javax.swing.JTextField();
         codigoReponer = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -357,7 +355,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2)
-                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                    .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE))
                 .addGap(45, 45, 45))
         );
         ProductosLayout.setVerticalGroup(
@@ -502,12 +500,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel11.setText("Codigo del producto:");
         Reposicion_De_Productos.add(jLabel11);
         jLabel11.setBounds(60, 340, 160, 16);
-
-        jLabel13.setText("Fecha");
-        Reposicion_De_Productos.add(jLabel13);
-        jLabel13.setBounds(550, 440, 160, 16);
-        Reposicion_De_Productos.add(fV);
-        fV.setBounds(680, 440, 170, 22);
         Reposicion_De_Productos.add(codigoReponer);
         codigoReponer.setBounds(230, 340, 170, 22);
 
@@ -1483,7 +1475,7 @@ public static void reponerProducto(String codigoProducto, int cantidadVendida) {
 
                 if (valores.length >= 3) {
                     String codigoProducto = codigoReponer.getText();
-                    String cantidadRepuesta = fV.getText();
+                    
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
@@ -1524,7 +1516,7 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
 
                 if (valores.length >= 3) {
                     String codigoProducto = codigoReponer.getText();
-                    String cantidadRepuesta = fV.getText();
+                    
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
@@ -1618,7 +1610,6 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JTextField cantidadReponer2;
     private javax.swing.JTextField codProd;
     private javax.swing.JTextField codigoReponer;
-    private javax.swing.JTextField fV;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1637,7 +1628,6 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
