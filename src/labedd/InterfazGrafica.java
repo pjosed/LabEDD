@@ -1326,45 +1326,40 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void ButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActualizarActionPerformed
         String cod_Actualizar= ComboBox2.getSelectedItem().toString();
-        try{
-            File Productos = new File ("src/Files/Productos.txt");
-            BufferedReader pr = new BufferedReader(new FileReader(Productos));
-            File fichero = new File("src/Files/Productos2.txt");
-            FileWriter outFile = new FileWriter(fichero,false);
-            PrintWriter Productos2 = new PrintWriter(outFile);
-
-            String line=null;
-
-            Boolean hay=false;
-            while ((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
-                if (temp[0].equalsIgnoreCase(cod_Actualizar)){
-                    String precionuevo = PrecioNuevo.getText();
-                    Productos2.println(temp[0] + "|" + temp[1] + "|" + temp[2] + "|" + precionuevo + "|" + temp[4] + "|" + temp[5] + "|" + temp[6]);
-                    hay=true;
-                }else{
-                    Productos2.println(line);
-                }
-            }
-            pr.close();
-            Productos2.close();
-            
-            if(hay==false){
-                JOptionPane.showMessageDialog(null,"El producto no existe.");
-                fichero.delete();          
-            }else{
-                JOptionPane.showMessageDialog(null, "El precio ha sido actualizado correctamente.");
-                File rn = new File ("src/Files/Productos.txt");
-                Productos.delete();
-                boolean renombrar = fichero.renameTo(rn);
-            }
-            PrecioNuevo.setText("");
-        }catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"Error actualizando el precio.");
-            ex.printStackTrace();
-        }
+        String precionuevo = PrecioNuevo.getText();
+        String archivoProd ="src/Files/Productos.txt";
+        ActualizarPrecio(archivoProd, cod_Actualizar, precionuevo);
     }//GEN-LAST:event_ButtonActualizarActionPerformed
 
+    public static void ActualizarPrecio ( String archivoProductos, String cod_actualizar, String precionuevo){
+        File archivo = new File(archivoProductos);
+        StringBuilder nuevoContenido = new StringBuilder();
+        
+        try(BufferedReader br = new BufferedReader (new FileReader (archivo))){
+            String linea;
+            
+            while((linea = br.readLine()) != null){
+                String[] campos = linea.split("\\|");
+                
+                if(campos[0].trim().equals(cod_actualizar)){
+                    campos[3]= precionuevo;
+                    linea= String.join("|", campos);
+                }
+                
+                nuevoContenido.append(linea).append("\n");
+            }  
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Error actualizando el precio. ");
+        }
+        
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+            bw.write(nuevoContenido.toString());
+            JOptionPane.showMessageDialog(null, "Precio actualizado. ");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     private void ComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox2ActionPerformed
 
     }//GEN-LAST:event_ComboBox2ActionPerformed

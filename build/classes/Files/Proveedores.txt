@@ -7,7 +7,6 @@ Verduras Frescas|3007890123|Tomate|75|2024-08-18|P007
 Limpieza Total|3009012345|Detergente|60|2024-08-22|P009
 Tienda de Frutas|3010123456|Plátano|180|2024-08-12|P010
 Huevos del Campo|3012345678|Huevos|50|2024-08-11|P012
-Carnes Selectas|3013456789|Pollo|40|2024-08-14|P013
 Higiene Personal|3014567890|Shampoo|30|2024-08-19|P014
 Huerta Verde|3015678901|Lechuga|100|2024-08-21|P015
 Lácteos La Finca|3016789012|Yogurt|80|2024-08-03|P016
@@ -18,7 +17,6 @@ Mariscos del Mar|3020123456|Atún|85|2024-08-06|P024
 Mercado Central|3021234567|Carne Molida|45|2024-08-13|P025
 Jugos Naturales|3022345678|Zumo de Naranja|150|2024-08-02|P026
 Aseo Hogar|3023456789|Papel Higiénico|500|2024-08-14|P027
-Cultivos Andinos|3024567890|Fresas|70|2024-08-11|P028
 Enlatados Del Sol|3025678901|Sardinas|200|2024-08-15|P029
 Dulcería Sabrosa|3026789012|Galletas|150|2024-08-07|P020
 Lácteos Los Andes|3027890123|Mantequilla|65|2024-08-04|P021
