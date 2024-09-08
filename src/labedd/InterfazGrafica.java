@@ -952,6 +952,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
         String cod_eliminar= ComboBox1.getSelectedItem().toString();
+        System.out.println(cod_eliminar);
         try{
             File Productos = new File ("src/Files/Productos.txt");
             BufferedReader pr = new BufferedReader(new FileReader(Productos));
@@ -970,7 +971,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             
             Boolean hay=false;
             while ((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+                String temp[]=line.split("\\|");                
                 if (temp[0].equalsIgnoreCase(cod_eliminar)){
                     hay=true;
                 }else{
@@ -980,30 +981,26 @@ public class InterfazGrafica extends javax.swing.JFrame {
             while ((line2=pv.readLine()) != null){
                 String temp2[]=line2.split("\\|");
                 if (temp2[5].equalsIgnoreCase(cod_eliminar)){
-                    hay=true;
+                    
                 }else{
                     Proveedores2.println(line2);
                 }
             }
+            
             pr.close();
             Productos2.close();
             pv.close();
             Proveedores2.close();
             
-            if(hay==false){
-                JOptionPane.showMessageDialog(null,"El producto no existe.");
-                fichero.delete();
-                fichero2.delete();
-                
-            }else{
+            if(hay==true){
                 JOptionPane.showMessageDialog(null, "El producto ha sido eliminado.");
                 Productos.delete();
                 Proveedores.delete();
                 
-                File rn = new File ("src/Files/Productos.txt");
+                File rn = new File ("/src/Files/Productos.txt");
                 boolean renombrar = fichero.renameTo(rn);
                 
-                File rn2 = new File ("src/Files/Proveedores.txt");
+                File rn2 = new File ("/src/Files/Proveedores.txt");
                 boolean renombrar2 = fichero2.renameTo(rn2);
             }
         }catch (IOException ex) {
@@ -1369,13 +1366,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
             
             if(hay==false){
                 JOptionPane.showMessageDialog(null,"El producto no existe.");
-                fichero.delete();
-                
+                fichero.delete();          
             }else{
                 JOptionPane.showMessageDialog(null, "El precio ha sido actualizado correctamente.");
-                Productos.delete();
-                
                 File rn = new File ("src/Files/Productos.txt");
+                Productos.delete();
                 boolean renombrar = fichero.renameTo(rn);
             }
             PrecioNuevo.setText("");

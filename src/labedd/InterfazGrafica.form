@@ -821,7 +821,7 @@
                               <Component id="Button_Eliminar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="503" max="32767" attributes="0"/>
+                      <EmptySpace pref="703" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -941,7 +941,7 @@
                               <Component id="ComboBox2" min="-2" pref="210" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="509" max="32767" attributes="0"/>
+                      <EmptySpace pref="709" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
