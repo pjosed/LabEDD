@@ -2,7 +2,6 @@ NombreProveedor|CédulaJurídica|ProductosSuministrados|CantidadSuministrada|Fec
 Panadería El Trigo|3002345678|Pan|200|2024-07-25|P002
 Frutas Del Valle|3003456789|Manzana|150|2024-08-10|P003
 Productos Limpieza SA|3004567890|Jabón|80|2024-08-15|P004
-Alimentos Naturales|3005678901|Pasta|120|2024-07-30|P005
 Quesos Gourmet|3006789012|Queso|50|2024-08-05|P006
 Verduras Frescas|3007890123|Tomate|75|2024-08-18|P007
 Limpieza Total|3009012345|Detergente|60|2024-08-22|P009

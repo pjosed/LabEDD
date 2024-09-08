@@ -952,63 +952,87 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
         String cod_eliminar= ComboBox1.getSelectedItem().toString();
-        System.out.println(cod_eliminar);
-        try{
-            File Productos = new File ("src/Files/Productos.txt");
-            BufferedReader pr = new BufferedReader(new FileReader(Productos));
-            File fichero = new File("src/Files/Productos2.txt");
-            FileWriter outFile = new FileWriter(fichero,false);
-            PrintWriter Productos2 = new PrintWriter(outFile);
-            
-            File Proveedores = new File ("src/Files/Proveedores.txt");
-            BufferedReader pv = new BufferedReader(new FileReader(Proveedores));
-            File fichero2 = new File("src/Files/Proveedores2.txt");
-            FileWriter outFile2 = new FileWriter(fichero2,false);
-            PrintWriter Proveedores2 = new PrintWriter(outFile2);
-            
-            String line=null;
-            String line2=null;
-            
-            Boolean hay=false;
-            while ((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");                
-                if (temp[0].equalsIgnoreCase(cod_eliminar)){
-                    hay=true;
-                }else{
-                    Productos2.println(line);
-                }
-            }
-            while ((line2=pv.readLine()) != null){
-                String temp2[]=line2.split("\\|");
-                if (temp2[5].equalsIgnoreCase(cod_eliminar)){
-                    
-                }else{
-                    Proveedores2.println(line2);
-                }
-            }
-            
-            pr.close();
-            Productos2.close();
-            pv.close();
-            Proveedores2.close();
-            
-            if(hay==true){
-                JOptionPane.showMessageDialog(null, "El producto ha sido eliminado.");
-                Productos.delete();
-                Proveedores.delete();
-                
-                File rn = new File ("/src/Files/Productos.txt");
-                boolean renombrar = fichero.renameTo(rn);
-                
-                File rn2 = new File ("/src/Files/Proveedores.txt");
-                boolean renombrar2 = fichero2.renameTo(rn2);
-            }
-        }catch (IOException ex) {
-            JOptionPane.showMessageDialog(null,"Error eliminando el producto.");
-            ex.printStackTrace();
-        }
+        String archivoProveedores = "src/Files/Proveedores.txt";
+        String archivoProductos = "src/Files/Productos.txt";
+        eliminarProducto (archivoProveedores, archivoProductos, cod_eliminar);
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
+    public static void eliminarProducto(String archivoProveedores, String archivoProductos, String cod_eliminar){
+        File archivoProv = new File(archivoProveedores);
+        File archivoProd = new File(archivoProductos);
+        boolean proveedorEliminado = false;
+        boolean productoEliminado = false;
+        
+        try(RandomAccessFile rafProd= new RandomAccessFile(archivoProd, "rw")){
+            String apuntadorProd;
+            long apuntadorPosicionProd = 0;
+            
+            while((apuntadorProd = rafProd.readLine()) != null){
+                String[] valores = apuntadorProd.split("\\|");
+                
+                if(valores.length >= 7){
+                    String cod = valores[0].trim();
+                    
+                    if(cod_eliminar.equals(cod)){
+                        long longitudLinea = rafProd.getFilePointer()- apuntadorPosicionProd;
+                        long siguientePosicion = rafProd.getFilePointer();
+                        
+                        byte[] buffer = new byte[(int)(rafProd.length()- siguientePosicion)];
+                        rafProd.seek(siguientePosicion);
+                        rafProd.readFully(buffer);
+                        
+                        rafProd.seek(apuntadorPosicionProd);
+                        rafProd.write(buffer);
+                        rafProd.setLength(rafProd.length()- longitudLinea);
+                        productoEliminado =true;
+                        break;
+                    }
+                }
+                
+                apuntadorPosicionProd =rafProd.getFilePointer();
+            }
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Error eliminando el producto.");
+        }
+        
+        if(proveedorEliminado){
+            try (RandomAccessFile rafProv= new RandomAccessFile(archivoProv,"rw")){
+                String apuntadorProv;
+                long apuntadorPosicionProv=0;
+                
+                while((apuntadorProv=rafProv.readLine()) != null){
+                    String[] valoresProv = apuntadorProv.split("\\|");
+                    
+                    if (valoresProv.length >=3){
+                        String codP =  valoresProv[5].trim();
+                        
+                        if(cod_eliminar.equals(codP)){
+                            long longitudLineaProv = rafProv.getFilePointer()- apuntadorPosicionProv;
+                            long siguientePosicionProv = rafProv.getFilePointer();
+                            
+                            byte[] bufferProv = new byte[(int) (rafProv.length()- siguientePosicionProv)];
+                            rafProv.seek(siguientePosicionProv);
+                            rafProv.readFully(bufferProv);
+                            
+                            rafProv.seek(apuntadorPosicionProv);
+                            rafProv.write(bufferProv);
+                            rafProv.setLength(rafProv.length()- longitudLineaProv);
+                            proveedorEliminado = true;
+                            break;
+                        }
+                    }
+                    
+                    apuntadorPosicionProv = rafProv.getFilePointer();
+                }
+                
+                if (proveedorEliminado){
+                    JOptionPane.showMessageDialog(null, "El producto ha sido eliminado correctamente.");
+                }
+            }catch (IOException e){
+                JOptionPane.showMessageDialog(null, "Error eliminando el producto.");
+            }
+        }
+    }
     private void Overview_ProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview_ProductosMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProductosMouseClicked
