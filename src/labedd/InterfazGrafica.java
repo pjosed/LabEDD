@@ -83,9 +83,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         cantVent = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        codProd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        codigoReponer = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -95,8 +93,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         cantidadReponer1 = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        cantidadReponer2 = new javax.swing.JTextField();
+        jComborep = new javax.swing.JComboBox<>();
+        jComboven = new javax.swing.JComboBox<>();
         Eliminar_Productos = new javax.swing.JPanel();
         label4 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
@@ -116,7 +114,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         NomProducto = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
-        FechaDeEntrega = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         NombreProveedor1 = new javax.swing.JTextField();
@@ -126,9 +123,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        CedulaEliminar1 = new javax.swing.JTextField();
+        jComboprov = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -433,7 +429,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3)
-                    .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
+                    .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE))
                 .addGap(45, 45, 45))
         );
         ProveedoresLayout.setVerticalGroup(
@@ -489,19 +485,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Reposicion_De_Productos.add(jLabel10);
         jLabel10.setBounds(550, 390, 100, 16);
 
-        codProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codProdActionPerformed(evt);
-            }
-        });
-        Reposicion_De_Productos.add(codProd);
-        codProd.setBounds(690, 350, 160, 22);
-
         jLabel11.setText("Codigo del producto:");
         Reposicion_De_Productos.add(jLabel11);
         jLabel11.setBounds(60, 340, 160, 16);
-        Reposicion_De_Productos.add(codigoReponer);
-        codigoReponer.setBounds(230, 340, 170, 22);
 
         jButton12.setText("VERIFICAR");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -559,11 +545,23 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Reposicion_De_Productos.add(cantidadReponer1);
         cantidadReponer1.setBounds(230, 390, 170, 22);
 
-        jLabel23.setText("Fecha");
-        Reposicion_De_Productos.add(jLabel23);
-        jLabel23.setBounds(60, 440, 160, 16);
-        Reposicion_De_Productos.add(cantidadReponer2);
-        cantidadReponer2.setBounds(230, 440, 170, 22);
+        jComborep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComborep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComborepMouseClicked(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jComborep);
+        jComborep.setBounds(220, 340, 160, 22);
+
+        jComboven.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComboven.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCombovenMouseClicked(evt);
+            }
+        });
+        Reposicion_De_Productos.add(jComboven);
+        jComboven.setBounds(690, 350, 110, 22);
 
         MainPanel.add(Reposicion_De_Productos, "card8");
 
@@ -748,14 +746,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores.add(CedulaJuridica);
         CedulaJuridica.setBounds(170, 110, 260, 30);
 
-        FechaDeEntrega.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FechaDeEntregaActionPerformed(evt);
-            }
-        });
-        Agregar_Eliminar_Proveedores.add(FechaDeEntrega);
-        FechaDeEntrega.setBounds(170, 220, 240, 30);
-
         jButton7.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 204, 51));
         jButton7.setText("Guardar");
@@ -818,23 +808,27 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Agregar_Eliminar_Proveedores.add(jLabel16);
         jLabel16.setBounds(50, 160, 190, 40);
 
-        jLabel17.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel17.setText("Fecha de registro:");
-        Agregar_Eliminar_Proveedores.add(jLabel17);
-        jLabel17.setBounds(50, 220, 190, 40);
-
         jLabel24.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
         jLabel24.setText("Ingrese la cédula jurídica del proveedor:");
         Agregar_Eliminar_Proveedores.add(jLabel24);
         jLabel24.setBounds(50, 380, 260, 40);
 
-        CedulaEliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CedulaEliminar1ActionPerformed(evt);
+        jComboprov.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComboprov.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboprovMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboprovMouseEntered(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(CedulaEliminar1);
-        CedulaEliminar1.setBounds(320, 390, 310, 20);
+        jComboprov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboprovActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(jComboprov);
+        jComboprov.setBounds(330, 390, 180, 22);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -888,7 +882,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
 
 // Añadir la nueva fila al modelo de la tabla
-        System.out.println("Leyendo Proveedores");
         model.setRowCount(0); 
         try {
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
@@ -1059,7 +1052,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String Nombre = NombreProveedor1.getText();
         String CedulaStr = CedulaJuridica.getText();
         String ProdSuministrado = ProductoSuministrado1.getText();
-        String Fecha = FechaDeEntrega.getText();
+        String Fecha = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 // VERIFICACIONES
 // Verificar que la cédula sea un número
@@ -1081,12 +1074,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor");
             return;
         }
-
-// Verificar que la fecha esté en el formato YYYY/MM/DD
-        if (!Fecha.matches("\\d{4}-\\d{2}-\\d{2}")) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese la fecha en el formato DD/MM/AA.");
-            return;
-        }
+        
 // Agregar a la tabla
         DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
         model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, "0", Fecha});
@@ -1107,7 +1095,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         NombreProveedor1.setText("");
         CedulaJuridica.setText("");
         ProductoSuministrado1.setText("");
-        FechaDeEntrega.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1123,7 +1110,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     String archivoOriginal = "src/Files/Proveedores.txt";
     String archivoProductos = "src/Files/Productos.txt";
-    String cedulaEliminar = CedulaEliminar1.getText();
+    String cedulaEliminar = jComboprov.getSelectedItem().toString();
     String nombreProducto = NomProducto.getText();
     eliminarRegistro(archivoOriginal, archivoProductos, cedulaEliminar, nombreProducto);
 
@@ -1133,6 +1120,23 @@ public class InterfazGrafica extends javax.swing.JFrame {
         File archivoProd = new File(archivoProductos);
         boolean proveedorEliminado = false;
         boolean productoEliminado = false;
+        try{
+        BufferedReader pr = null;
+        File Pr = new File ("src/Files/Proveedores.txt");
+        pr = new BufferedReader(new FileReader(Pr));
+        String line=pr.readLine();
+                
+        while((line=pr.readLine()) != null){
+            String temp[]=line.split("\\|");
+            String ced = temp[1];
+            if(ced.equalsIgnoreCase(cedulaEliminar)){
+                String cod = temp[5];
+            }
+        }
+        pr.close();
+        }catch (IOException e){
+            System.out.println("Error al leer o escribir el archivo de productos: " + e.getMessage());
+        }
 
         // Eliminar el proveedor
         try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
@@ -1171,19 +1175,19 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         // Después de eliminar el proveedor, eliminar el producto relacionado:
         if (proveedorEliminado) {
+            
             try (RandomAccessFile rafProd = new RandomAccessFile(archivoProd, "rw")) {
                 String apuntadorProd;
                 long apuntadorPosicionProd = 0;
-
+                
+                
                 while ((apuntadorProd = rafProd.readLine()) != null) {
                     String[] valoresProd = apuntadorProd.split("\\|");
-
+                    String nombre = valoresProd[1];
+                    
                     if (valoresProd.length >= 7) {
-                        String nombreProducto = valoresProd[1].trim();
-                        String cedulaJuridica = valoresProd[6].trim();
-
                         // Verifica si el producto pertenece al proveedor eliminado y coincide con el nombre del producto
-                        if (nombreProductoEliminar.equals(nombreProducto)) {
+                        if (nombreProductoEliminar.equalsIgnoreCase(nombre)) {
                             // Se aplica la misma logica que para eliminar el proveedor.
                             long longitudLineaProd = rafProd.getFilePointer() - apuntadorPosicionProd;
                             long siguientePosicionProd = rafProd.getFilePointer();
@@ -1217,25 +1221,22 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-
+        String cedulaEliminar = jComboprov.getSelectedItem().toString();
         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"))) {
             String apuntador;
 
             // Leer el archivo 
             while ((apuntador = br.readLine()) != null) {
-                System.out.println("Leyendo línea: " + apuntador);
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    String cedulaeliminar = CedulaEliminar1.getText();
                     String cedula = valores[1].trim();
                     String nombre = valores[0].trim();
                     String ProductoSuministrado = valores[2].trim();
                     String Fecha = valores[4].trim();
 
                     // Comparar cédula
-                    if (cedulaeliminar.equals(cedula)) {
-                        System.out.println(cedula + "|" + CedulaEliminar1);
+                    if (cedulaEliminar.equals(cedula)) {
                         JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto que suministra: " + ProductoSuministrado + "\nUltima fecha de entrega: " + Fecha);
                         return;
 
@@ -1365,9 +1366,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_cantVentActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String cp = codProd.getText(); // Convertir a entero
-int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
-registrarVenta(cp, cv); // Llamar a la función con los valores correctos
+        String cp = jComboven.getSelectedItem().toString(); // Convertir a entero
+        int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
+        registrarVenta(cp, cv); // Llamar a la función con los valores correctos
 
     }//GEN-LAST:event_jButton10ActionPerformed
 public static void registrarVenta(String codigoProducto, int cantidadVendida) {
@@ -1455,26 +1456,22 @@ public static void reponerProducto(String codigoProducto, int cantidadVendida) {
     // Guardar el nuevo contenido en el archivo
     try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
         bw.write(nuevoContenido.toString());
-        JOptionPane.showMessageDialog(null, "Venta registrada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Producto repuesto correctamente. ", "Éxito", JOptionPane.INFORMATION_MESSAGE);
     } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
 
-    private void codProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codProdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codProdActionPerformed
-
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
  try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
             String apuntador;
-
+            String codigoProducto = jComboven.getSelectedItem().toString();
             // Leer el archivo 
             while ((apuntador = br.readLine()) != null) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    String codigoProducto = codigoReponer.getText();
+                   
                     
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
@@ -1500,22 +1497,22 @@ public static void reponerProducto(String codigoProducto, int cantidadVendida) {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-String cp = codigoReponer.getText(); // Convertir a entero
-int cv = Integer.parseInt(cantidadReponer1.getText()); // Convertir a entero
-reponerProducto(cp, cv); // Llamar a la función con los valores correctos          
+        String cp = jComborep.getSelectedItem().toString();; // Convertir a entero
+        int cv = Integer.parseInt(cantidadReponer1.getText()); // Convertir a entero
+        reponerProducto(cp, cv); // Llamar a la función con los valores correctos          
 
     }//GEN-LAST:event_jButton13ActionPerformed
     
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
          try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
             String apuntador;
-
+            String codigoProducto = jComborep.getSelectedItem().toString();
             // Leer el archivo 
             while ((apuntador = br.readLine()) != null) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    String codigoProducto = codigoReponer.getText();
+                    
                     
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
@@ -1540,17 +1537,104 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
 
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void CedulaEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaEliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CedulaEliminar1ActionPerformed
-
     private void jButton13CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton13CaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13CaretPositionChanged
 
-    private void FechaDeEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaDeEntregaActionPerformed
+    private void jComboprovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboprovActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FechaDeEntregaActionPerformed
+    }//GEN-LAST:event_jComboprovActionPerformed
+
+    private void jComboprovMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboprovMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboprovMouseEntered
+
+    private void jComboprovMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboprovMouseClicked
+        jComboprov.removeAllItems();
+        
+        BufferedReader pr = null;
+        try {
+            File Pr = new File ("src/Files/Proveedores.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line=pr.readLine();
+            while((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                String cedula = temp[1];
+                jComboprov.addItem(cedula);
+            }
+            pr.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                pr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jComboprovMouseClicked
+
+    private void jComborepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComborepMouseClicked
+        jComborep.removeAllItems();
+        
+        BufferedReader pr = null;
+        try {
+            File Pr = new File ("src/Files/Productos.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line=pr.readLine();
+            while((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                String cod = temp[0];
+                jComborep.addItem(cod);
+            }
+            pr.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                pr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jComborepMouseClicked
+
+    private void jCombovenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombovenMouseClicked
+        jComboven.removeAllItems();
+        
+        BufferedReader pr = null;
+        try {
+            File Pr = new File ("src/Files/Productos.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line=pr.readLine();
+            while((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                String cod = temp[0];
+                jComboven.addItem(cod);
+            }
+            pr.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                pr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jCombovenMouseClicked
 
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
@@ -1586,12 +1670,10 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
     private javax.swing.JButton ButtonActualizar;
     private javax.swing.JButton Button_Eliminar;
-    private javax.swing.JTextField CedulaEliminar1;
     private javax.swing.JTextField CedulaJuridica;
     private javax.swing.JComboBox<String> ComboBox1;
     private javax.swing.JComboBox<String> ComboBox2;
     private javax.swing.JPanel Eliminar_Productos;
-    private javax.swing.JTextField FechaDeEntrega;
     private javax.swing.JPanel Inicio;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTextField NomProducto;
@@ -1607,9 +1689,6 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JPanel SideBar;
     private javax.swing.JTextField cantVent;
     private javax.swing.JTextField cantidadReponer1;
-    private javax.swing.JTextField cantidadReponer2;
-    private javax.swing.JTextField codProd;
-    private javax.swing.JTextField codigoReponer;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1624,6 +1703,9 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboprov;
+    private javax.swing.JComboBox<String> jComborep;
+    private javax.swing.JComboBox<String> jComboven;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1631,14 +1713,12 @@ reponerProducto(cp, cv); // Llamar a la función con los valores correctos
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
