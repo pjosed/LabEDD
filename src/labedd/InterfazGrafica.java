@@ -1322,6 +1322,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         String precionuevo = PrecioNuevo.getText();
         String archivoProd ="src/Files/Productos.txt";
         ActualizarPrecio(archivoProd, cod_Actualizar, precionuevo);
+        PrecioNuevo.setText("");
     }//GEN-LAST:event_ButtonActualizarActionPerformed
 
     public static void ActualizarPrecio ( String archivoProductos, String cod_actualizar, String precionuevo){
