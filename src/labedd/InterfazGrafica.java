@@ -1372,6 +1372,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton10ActionPerformed
 public static void registrarVenta(String codigoProducto, int cantidadVendida) {
+    
             
         String ARCHIVO_PRODUCTOS = ("src/Files/Productos.txt");
         File archivo = new File(ARCHIVO_PRODUCTOS);
@@ -1413,54 +1414,105 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
             JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);// TODO add your handling code here:
         }
 }
-public static void reponerProducto(String codigoProducto, int cantidadVendida) {
-    String ARCHIVO_PRODUCTOS = "src/Files/Productos.txt";
-    File archivo = new File(ARCHIVO_PRODUCTOS);
-    StringBuilder nuevoContenido = new StringBuilder();
+ public static void reponerProductoYActualizarProveedor(String codigoProducto, int cantidadVendida) {
+        // Archivos
+        String ARCHIVO_PRODUCTOS = "src/Files/Productos.txt";
+        String ARCHIVO_PROVEEDORES = "src/Files/Proveedores.txt";
+        File archivoProductos = new File(ARCHIVO_PRODUCTOS);
+        File archivoProveedores = new File(ARCHIVO_PROVEEDORES);
 
-    try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-        String linea;
+        // Buffers para almacenar los nuevos contenidos
+        StringBuilder nuevoContenidoProductos = new StringBuilder();
+        StringBuilder nuevoContenidoProveedores = new StringBuilder();
 
-        while ((linea = br.readLine()) != null) {
-            String[] campos = linea.split("\\|");
+        // Actualizar archivo de productos
+        try (BufferedReader brProductos = new BufferedReader(new FileReader(archivoProductos))) {
+            String linea;
 
-            // Verificar si el código del producto coincide
-            if (campos[0].trim().equals(codigoProducto)) {
-                // Verificar que el campo de cantidad no esté vacío o contenga solo espacios en blanco
-                String cantidadStr = campos[4].trim();
-                if (!cantidadStr.isEmpty()) {
-                    int cantidadActual = Integer.parseInt(cantidadStr);
-                    int nuevaCantidad = cantidadActual + cantidadVendida;
-                    String fechaVenta = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            while ((linea = brProductos.readLine()) != null) {
+                String[] campos = linea.split("\\|");
 
-                    // Reconstruir la línea actualizada
-                    campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
-                    
-                    campos[5] = fechaVenta; // Actualizar fecha de última venta
-                    linea = String.join("|", campos);
-                } else {
-                    // Manejar el caso donde el campo de cantidad está vacío
-                    JOptionPane.showMessageDialog(null, "El campo de cantidad está vacío para el producto: " + codigoProducto, "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
+                // Verificar si el código del producto coincide
+                if (campos[0].trim().equals(codigoProducto)) {
+                    // Verificar que el campo de cantidad no esté vacío o contenga solo espacios en blanco
+                    String cantidadStr = campos[4].trim();
+                    if (!cantidadStr.isEmpty()) {
+                        int cantidadActual = Integer.parseInt(cantidadStr);
+                        int nuevaCantidad = cantidadActual + cantidadVendida;
+                        String fechaVenta = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                        // Reconstruir la línea actualizada
+                        campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
+                        campos[5] = fechaVenta; // Actualizar fecha de última venta
+                        linea = String.join("|", campos);
+                    } else {
+                        // Manejar el caso donde el campo de cantidad está vacío
+                        JOptionPane.showMessageDialog(null, "El campo de cantidad está vacío para el producto: " + codigoProducto, "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                 }
+
+                nuevoContenidoProductos.append(linea).append("\n");
             }
 
-            nuevoContenido.append(linea).append("\n");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo de productos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+        // Guardar el nuevo contenido en el archivo de productos
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoProductos))) {
+            bw.write(nuevoContenidoProductos.toString());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo de productos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Actualizar archivo de proveedores
+        try (BufferedReader brProveedores = new BufferedReader(new FileReader(archivoProveedores))) {
+            String linea;
+
+            while ((linea = brProveedores.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+
+                // Validar que la línea tiene exactamente 6 campos
+                if (campos.length == 6) {
+                    // Verificar si el código del producto coincide
+                    if (campos[5].trim().equals(codigoProducto)) {
+                        // Actualizar cantidad suministrada y fecha de última entrega
+                        int nuevaCantidadSuministrada = Integer.parseInt(campos[3].trim()) + cantidadVendida;
+                        campos[3] = String.valueOf(nuevaCantidadSuministrada); // Actualizar cantidad suministrada
+                        campos[4] = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")); // Actualizar fecha de última entrega
+
+                        // Reconstruir la línea actualizada
+                        linea = String.join("|", campos);
+                    }
+                } else {
+                    // Si la línea no tiene el formato correcto, se omite y continúa
+                    JOptionPane.showMessageDialog(null, "Línea con formato incorrecto: " + linea, "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    continue;
+                }
+
+                nuevoContenidoProveedores.append(linea).append("\n");
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo de proveedores: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Guardar el nuevo contenido en el archivo de proveedores
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoProveedores))) {
+            bw.write(nuevoContenidoProveedores.toString());
+            JOptionPane.showMessageDialog(null, "Reposición y actualización de proveedor registrada exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al escribir en el archivo de proveedores: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    // Guardar el nuevo contenido en el archivo
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
-        bw.write(nuevoContenido.toString());
-        JOptionPane.showMessageDialog(null, "Producto repuesto correctamente. ", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
+
+    private void codProdActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+    }                                       
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
  try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
@@ -1499,7 +1551,7 @@ public static void reponerProducto(String codigoProducto, int cantidadVendida) {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         String cp = jComborep.getSelectedItem().toString();; // Convertir a entero
         int cv = Integer.parseInt(cantidadReponer1.getText()); // Convertir a entero
-        reponerProducto(cp, cv); // Llamar a la función con los valores correctos          
+        reponerProductoYActualizarProveedor(cp, cv); // Llamar a la función con los valores correctos          
 
     }//GEN-LAST:event_jButton13ActionPerformed
     
