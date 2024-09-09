@@ -66,14 +66,13 @@ public class Login extends javax.swing.JFrame {
 
         // Validar usuario y contraseña
         if (user.equals("admin") && password.equals("1234")) {
-            JOptionPane.showMessageDialog(null, "Login exitoso");
             InterfazGrafica IG = new InterfazGrafica ();
             IG.setSize(1300, 600);
             IG.setLocationRelativeTo(null);        
             IG.setVisible(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. ");
         }
     
 

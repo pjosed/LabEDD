@@ -100,15 +100,16 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Button_Eliminar = new javax.swing.JButton();
         ComboBox1 = new javax.swing.JComboBox<>();
+        jButton15 = new javax.swing.JButton();
         Actualizar_Precio_Del_Producto = new javax.swing.JPanel();
         label5 = new java.awt.Label();
         ComboBox2 = new javax.swing.JComboBox<>();
         PrecioNuevo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         ButtonActualizar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         PrecioViejo = new javax.swing.JLabel();
+        JButton16 = new javax.swing.JButton();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -594,6 +595,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
 
+        jButton15.setText("Verificar");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Eliminar_ProductosLayout = new javax.swing.GroupLayout(Eliminar_Productos);
         Eliminar_Productos.setLayout(Eliminar_ProductosLayout);
         Eliminar_ProductosLayout.setHorizontalGroup(
@@ -611,7 +619,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
                         .addGap(424, 424, 424)
-                        .addComponent(Button_Eliminar)))
+                        .addComponent(Button_Eliminar))
+                    .addGroup(Eliminar_ProductosLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(703, Short.MAX_VALUE))
         );
         Eliminar_ProductosLayout.setVerticalGroup(
@@ -625,7 +636,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addComponent(ComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(Button_Eliminar)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         MainPanel.add(Eliminar_Productos, "card7");
@@ -648,8 +661,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("El precio actual es:");
-
         ButtonActualizar.setText("Actualizar");
         ButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -661,6 +672,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jLabel12.setText("Ingrese el nuevo precio:");
 
+        JButton16.setText("Verificar");
+        JButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Actualizar_Precio_Del_ProductoLayout = new javax.swing.GroupLayout(Actualizar_Precio_Del_Producto);
         Actualizar_Precio_Del_Producto.setLayout(Actualizar_Precio_Del_ProductoLayout);
         Actualizar_Precio_Del_ProductoLayout.setHorizontalGroup(
@@ -668,12 +686,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
             .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
                 .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
-                        .addGap(236, 236, 236)
+                        .addGap(103, 103, 103)
+                        .addComponent(JButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(ButtonActualizar))))
+                                .addGap(19, 19, 19)
+                                .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(ButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jLabel8))
@@ -685,8 +706,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(PrecioNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(103, 103, 103)
                                 .addComponent(PrecioViejo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(Actualizar_Precio_Del_ProductoLayout.createSequentialGroup()
                         .addGap(180, 180, 180)
@@ -703,16 +723,16 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PrecioViejo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addComponent(PrecioViejo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(PrecioNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(ButtonActualizar)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(Actualizar_Precio_Del_ProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(348, Short.MAX_VALUE))
         );
 
         MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
@@ -755,7 +775,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(jButton7);
-        jButton7.setBounds(490, 90, 110, 100);
+        jButton7.setBounds(500, 90, 110, 100);
 
         jLabel9.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
         jLabel9.setText("AGREGA LOS PROVEDORES AQUÍ!");
@@ -1061,6 +1081,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
             Cedula = Long.parseLong(CedulaStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un número de cédula válido.");
+            NombreProveedor1.setText("");
+            ProductoSuministrado1.setText("");
             return;
         }
 
@@ -1319,7 +1341,21 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void ButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActualizarActionPerformed
         String cod_Actualizar= ComboBox2.getSelectedItem().toString();
-        String precionuevo = PrecioNuevo.getText();
+        String precionuevo= PrecioNuevo.getText();
+        
+        try{
+            Double precio = Double.parseDouble(PrecioNuevo.getText());
+        }catch(NumberFormatException e2){
+            JOptionPane.showMessageDialog(null, "Ingrese un precio válido. ");
+            PrecioNuevo.setText("");
+            return;
+        }
+        
+        if(precionuevo.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el precio. ");
+            return;
+        }
+        
         String archivoProd ="src/Files/Productos.txt";
         ActualizarPrecio(archivoProd, cod_Actualizar, precionuevo);
         PrecioNuevo.setText("");
@@ -1328,7 +1364,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     public static void ActualizarPrecio ( String archivoProductos, String cod_actualizar, String precionuevo){
         File archivo = new File(archivoProductos);
         StringBuilder nuevoContenido = new StringBuilder();
-        
         try(BufferedReader br = new BufferedReader (new FileReader (archivo))){
             String linea;
             
@@ -1367,9 +1402,24 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_cantVentActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String cp = jComboven.getSelectedItem().toString(); // Convertir a entero
+        String cp = jComboven.getSelectedItem().toString(); 
+        
+        if((cantVent.getText()).isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese la cantidad. ");
+            return;
+        }
+        
+        try{
+            int cv2 = Integer.parseInt(cantVent.getText());
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida. ");
+            cantVent.setText("");
+            return;
+        }
+        
         int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
         registrarVenta(cp, cv); // Llamar a la función con los valores correctos
+        cantVent.setText("");
 
     }//GEN-LAST:event_jButton10ActionPerformed
 public static void registrarVenta(String codigoProducto, int cantidadVendida) {
@@ -1550,10 +1600,25 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        String cp = jComborep.getSelectedItem().toString();; // Convertir a entero
-        int cv = Integer.parseInt(cantidadReponer1.getText()); // Convertir a entero
+        String cp = jComborep.getSelectedItem().toString();
+        
+        if((cantidadReponer1.getText()).isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese la cantidad. ");
+            return;
+        }
+        
+        try{
+            int cv2 = Integer.parseInt(cantidadReponer1.getText());
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida. ");
+            cantidadReponer1.setText("");
+            return;
+        }
+        
+        int cv = Integer.parseInt(cantidadReponer1.getText()); //Pasar a entero
+        
         reponerProductoYActualizarProveedor(cp, cv); // Llamar a la función con los valores correctos          
-
+        cantidadReponer1.setText("");
     }//GEN-LAST:event_jButton13ActionPerformed
     
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -1689,6 +1754,70 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         }
     }//GEN-LAST:event_jCombovenMouseClicked
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+            String apuntador;
+            String codigoProducto = ComboBox1.getSelectedItem().toString();
+            // Leer el archivo 
+            while ((apuntador = br.readLine()) != null) {
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    
+                    
+                    String nombre = valores[1].trim();
+                    String categoria = valores[2].trim();
+                    String codigo = valores[0].trim();
+
+                    // Comparar
+                    if (codigoProducto.equals(codigo)) {                       
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria );
+                        return;
+
+                    }
+                }
+            }
+
+            // Mensaje si no se encuentra la cédula
+            JOptionPane.showMessageDialog(this, "Producto no encontrado.");
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void JButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButton16ActionPerformed
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+            String apuntador;
+            String codigoProducto = ComboBox2.getSelectedItem().toString();
+            // Leer el archivo 
+            while ((apuntador = br.readLine()) != null) {
+                String[] valores = apuntador.split("\\|");
+
+                if (valores.length >= 3) {
+                    
+                    
+                    String nombre = valores[1].trim();
+                    String categoria = valores[2].trim();
+                    String codigo = valores[0].trim();
+                    String precio = valores[3].trim();
+                    // Comparar
+                    if (codigoProducto.equals(codigo)) {                       
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nPrecio Actual: "+ precio);
+                        return;
+
+                    }
+                }
+            }
+
+            // Mensaje si no se encuentra la cédula
+            JOptionPane.showMessageDialog(this, "Producto no encontrado.");
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }//GEN-LAST:event_JButton16ActionPerformed
+
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
     int productosConStockBajo = 0;
@@ -1728,6 +1857,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JComboBox<String> ComboBox2;
     private javax.swing.JPanel Eliminar_Productos;
     private javax.swing.JPanel Inicio;
+    private javax.swing.JButton JButton16;
     private javax.swing.JPanel MainPanel;
     private javax.swing.JTextField NomProducto;
     private javax.swing.JTextField NombreProveedor1;
@@ -1748,6 +1878,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1776,7 +1907,6 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
