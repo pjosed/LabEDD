@@ -66,8 +66,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
         Inicio = new javax.swing.JPanel();
-        label2 = new java.awt.Label();
-        label6 = new java.awt.Label();
+        jLabel1 = new javax.swing.JLabel();
         Productos = new javax.swing.JPanel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -246,34 +245,24 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         MainPanel.setLayout(new java.awt.CardLayout());
 
-        label2.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        label2.setForeground(new java.awt.Color(51, 153, 255));
-        label2.setText("Inicio");
+        Inicio.setPreferredSize(new java.awt.Dimension(1000, 600));
 
-        label6.setText("Software Diseñado para el laboratorio de estructura de datos 1.");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Inicio.png"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
         Inicio.setLayout(InicioLayout);
         InicioLayout.setHorizontalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InicioLayout.createSequentialGroup()
-                        .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(InicioLayout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE)
-                        .addGap(45, 45, 45))))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         MainPanel.add(Inicio, "card3");
@@ -2047,6 +2036,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JComboBox<String> jComboprov;
     private javax.swing.JComboBox<String> jComborep;
     private javax.swing.JComboBox<String> jComboven;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2074,10 +2064,8 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
-    private java.awt.Label label2;
     private java.awt.Label label4;
     private java.awt.Label label5;
-    private java.awt.Label label6;
     private java.awt.Label label7;
     // End of variables declaration//GEN-END:variables
 }
