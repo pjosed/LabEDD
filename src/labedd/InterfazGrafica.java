@@ -56,7 +56,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void initComponents() {
 
         SideBar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -64,6 +63,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
         Inicio = new javax.swing.JPanel();
         label2 = new java.awt.Label();
@@ -147,19 +147,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
         SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/La_Estrella_Logo.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(117, 77));
-        jLabel1.setMinimumSize(new java.awt.Dimension(117, 77));
-        jLabel1.setPreferredSize(new java.awt.Dimension(117, 77));
-        SideBar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 100, 100));
-
         jPanel1.setBackground(SideBar.getBackground());
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 1));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Productos");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,90 +167,79 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Proveedores");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 150, 40));
 
         jButton3.setBackground(new java.awt.Color(0, 153, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Venta/ Reposición de productos");
         jButton3.setActionCommand("Reposición/Venta de productos");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 150, 60));
 
         jButton4.setBackground(new java.awt.Color(0, 153, 255));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Eliminar productos");
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 150, 40));
 
         jButton6.setBackground(new java.awt.Color(0, 153, 255));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Actualizar precio del producto");
+        jButton6.setBorderPainted(false);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 160, 60));
 
         jButton5.setBackground(new java.awt.Color(0, 153, 255));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Agregar/Eliminar proveedores");
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 150, 60));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-        );
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Menú.png"))); // NOI18N
+        jLabel23.setText("jLabel23");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 300, 650));
 
-        SideBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 300, -1));
+        SideBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
 
         getContentPane().add(SideBar);
         SideBar.setBounds(0, 0, 300, 740);
@@ -714,11 +699,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
 
         jButtonConProd.setText("Consultar");
-        jButtonConProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConProdActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout Actualizar_Precio_Del_ProductoLayout = new javax.swing.GroupLayout(Actualizar_Precio_Del_Producto);
         Actualizar_Precio_Del_Producto.setLayout(Actualizar_Precio_Del_ProductoLayout);
@@ -1991,41 +1971,6 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         }   
     }//GEN-LAST:event_jButtonConProvActionPerformed
 
-    private void jButtonConProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConProdActionPerformed
-        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
-            String apuntador;
-            String codigoProducto = jComboProd.getSelectedItem().toString();
-            // Leer el archivo 
-            while ((apuntador = br.readLine()) != null) {
-                String[] valores = apuntador.split("\\|");
-
-                if (valores.length >= 3) {
-                   
-                    
-                    String nombre = valores[1].trim();
-                    String categoria = valores[2].trim();
-                    String codigo = valores[0].trim();
-                    String fecha = valores[5].trim();
-                    String stock = valores[4].trim();
-                    String precio = valores[3].trim();
-
-                    // Comparar
-                    if (codigoProducto.equals(codigo)) {                       
-                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria +"\nCantidad en stock: " + stock + "\nPrecio: $" + precio + "\nUltima fecha de entrega: " + fecha);
-                        return;
-
-                    }
-                }
-            }
-
-            // Mensaje si no se encuentra la cédula
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione un producto. ");
-
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-        }   
-    }//GEN-LAST:event_jButtonConProdActionPerformed
-
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
     int productosConStockBajo = 0;
@@ -2102,7 +2047,6 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JComboBox<String> jComboprov;
     private javax.swing.JComboBox<String> jComborep;
     private javax.swing.JComboBox<String> jComboven;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2117,6 +2061,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
