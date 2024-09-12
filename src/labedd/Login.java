@@ -74,6 +74,7 @@ public class Login extends javax.swing.JFrame {
             IG.setSize(1300, 600);
             IG.setLocationRelativeTo(null);        
             IG.setVisible(true);
+            IG.setResizable(false);
             dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. ");
