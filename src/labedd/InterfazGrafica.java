@@ -20,6 +20,7 @@ import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -125,6 +126,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jComboprov = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        categoriaProducto_new = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        Precio_New = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        Cantidad_New = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -241,20 +248,19 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Inicio.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/INICIO (2).png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         javax.swing.GroupLayout InicioLayout = new javax.swing.GroupLayout(Inicio);
         Inicio.setLayout(InicioLayout);
         InicioLayout.setHorizontalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -320,7 +326,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Productos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 949, 332));
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/productos.png"))); // NOI18N
-        jLabel25.setPreferredSize(new java.awt.Dimension(1000, 600));
         Productos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MainPanel.add(Productos, "card3");
@@ -382,7 +387,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Proveedores.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 950, 332));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/proveedores.png"))); // NOI18N
-        jLabel26.setPreferredSize(new java.awt.Dimension(1000, 600));
         Proveedores.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MainPanel.add(Proveedores, "card3");
@@ -547,7 +551,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Eliminar_Productos.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 140, 80));
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eliminarproductos.png"))); // NOI18N
-        jLabel27.setPreferredSize(new java.awt.Dimension(1000, 600));
         Eliminar_Productos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MainPanel.add(Eliminar_Productos, "card7");
@@ -634,7 +637,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Actualizar_Precio_Del_Producto.add(jButtonConProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 243, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/actualizarconsultar.png"))); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(1000, 600));
         Actualizar_Precio_Del_Producto.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
@@ -648,7 +650,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel4.setBounds(310, 330, 370, 40);
 
         jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel5.setText("Ingrese el producto que siministra:");
+        jLabel5.setText("Ingrese el producto que suministra:");
         Agregar_Eliminar_Proveedores.add(jLabel5);
         jLabel5.setBounds(60, 420, 260, 40);
 
@@ -666,7 +668,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(CedulaJuridica);
-        CedulaJuridica.setBounds(170, 110, 260, 30);
+        CedulaJuridica.setBounds(210, 110, 220, 30);
 
         jButton7.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 204, 51));
@@ -690,7 +692,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
         Agregar_Eliminar_Proveedores.add(NombreProveedor1);
-        NombreProveedor1.setBounds(130, 60, 300, 30);
+        NombreProveedor1.setBounds(210, 60, 220, 30);
 
         jButton8.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 0, 0));
@@ -751,6 +753,33 @@ public class InterfazGrafica extends javax.swing.JFrame {
         });
         Agregar_Eliminar_Proveedores.add(jComboprov);
         jComboprov.setBounds(330, 390, 180, 22);
+
+        jLabel17.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel17.setText("Categoría:");
+        Agregar_Eliminar_Proveedores.add(jLabel17);
+        jLabel17.setBounds(50, 200, 190, 40);
+        Agregar_Eliminar_Proveedores.add(categoriaProducto_new);
+        categoriaProducto_new.setBounds(210, 200, 220, 30);
+
+        jLabel28.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel28.setText("Precio:");
+        Agregar_Eliminar_Proveedores.add(jLabel28);
+        jLabel28.setBounds(50, 240, 190, 40);
+
+        Precio_New.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Precio_NewActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(Precio_New);
+        Precio_New.setBounds(210, 240, 220, 30);
+
+        jLabel29.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
+        jLabel29.setText("Cantidad:");
+        Agregar_Eliminar_Proveedores.add(jLabel29);
+        jLabel29.setBounds(50, 280, 190, 40);
+        Agregar_Eliminar_Proveedores.add(Cantidad_New);
+        Cantidad_New.setBounds(210, 280, 220, 30);
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -987,6 +1016,37 @@ public class InterfazGrafica extends javax.swing.JFrame {
             ProductoSuministrado1.setText("");
             return;
         }
+        Double precio;
+        try{
+            precio = Double.parseDouble(Precio_New.getText());
+        }catch(NumberFormatException e2){
+            JOptionPane.showMessageDialog(null, "Ingrese un precio válido. ");
+            Precio_New.setText("");
+            return;
+        }
+         //verifica que el campo no esté vacío
+        if(Precio_New.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el precio. ");
+            return;
+        }
+        
+         Precio_New.setText("");
+         
+        int cantidad;
+        try{
+            cantidad = Integer.parseInt(Cantidad_New.getText());
+        }catch(NumberFormatException e2){
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida ");
+            Cantidad_New.setText("");
+            return;
+        }
+         //verifica que el campo no esté vacío
+        if(Cantidad_New.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese la cantidad. ");
+            return;
+        }
+        
+         Cantidad_New.setText("");
 
 // Verificar que el producto suministrado no esté vacío
         if (ProdSuministrado.isEmpty()) {
@@ -1002,13 +1062,74 @@ public class InterfazGrafica extends javax.swing.JFrame {
 // Agregar a la tabla
         DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
         model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, "0", Fecha});
+        
+        
+                // Ruta del archivo .txt (puedes cambiarla según la ubicación de tu archivo)
+        String rutaArchivo = "src/Files/Proveedores.txt";
+        ArrayList<Integer> ids = new ArrayList<>();
+       
+        
+        // Usamos BufferedReader para leer el archivo
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            
+            // Leer la primera línea (encabezado) para ignorarla
+            linea = br.readLine();
+            
+            // Leer cada línea del archivo hasta que no haya más
+            while ((linea = br.readLine()) != null) {
+                // Separar la línea usando el delimitador "|"
+                String[] columnas = linea.split("\\|");
+                
+                // Asignar valores a variables individuales
+          
+                String codigoProducto = columnas[5];
+                
+                String numberPart = codigoProducto.substring(1);
+        
+        // Convertir el número a entero
+                int number = Integer.parseInt(numberPart);
+                
+                ids.add(number);
+                
+                System.out.println(ids);
+               
+            }
+        } catch (IOException e) {
+            // Manejo de excepciones en caso de error
+            System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
+        }
+        
+        int mayor = ids.get(0);
+
+        // Recorrer la lista para encontrar el número mayor
+        for (int id : ids) {
+            if (id > mayor) {
+                mayor = id;
+            }
+        }
+        
+        int new_id = mayor +1;
+    
 
 // GUARDAR EN EL ARCHIVO
         try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true); PrintWriter pw = new PrintWriter(fw)) {
-
+            String newNumber= String.format("%03d", new_id);
+            
             // Escribir los datos en el archivo
-            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|0|" + Fecha+"|P|");
+            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|"+ cantidad +"|" + Fecha+"|P"+newNumber);
 
+            JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
+
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
+        }
+        
+        try (FileWriter fw = new FileWriter("src/Files/Productos.txt", true); PrintWriter pw = new PrintWriter(fw)) {
+            String newNumber= String.format("%03d", new_id);
+            pw.println(("P"+newNumber)+"|"+ ProdSuministrado  + "|"+ categoriaProducto_new.getText()+ "|"+  precio +   "|"+ cantidad+"|" + Fecha   +"|"+    Cedula );
+            // Escribir los datos en el archivo
+           
             JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
 
         } catch (IOException ex) {
@@ -1019,6 +1140,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         NombreProveedor1.setText("");
         CedulaJuridica.setText("");
         ProductoSuministrado1.setText("");
+        categoriaProducto_new.setText("");
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1322,6 +1444,9 @@ public class InterfazGrafica extends javax.swing.JFrame {
         int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
         registrarVenta(cp, cv); // Llamar a la función con los valores correctos
         cantVent.setText("");
+        
+        
+        
 
     }//GEN-LAST:event_jButton10ActionPerformed
 public static void registrarVenta(String codigoProducto, int cantidadVendida) {
@@ -1348,7 +1473,13 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                     campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
                     
                     campos[5] = fechaVenta; // Actualizar fecha de última venta
+                    if (cantidadActual - cantidadVendida <50){
+                    campos[4] = "50";
+                    reponerProductoYActualizarProveedor(codigoProducto, 50 -(cantidadActual - cantidadVendida) );
+                     }
                     linea = String.join("|", campos);
+                
+                    
                 }
 
                 nuevoContenido.append(linea).append("\n");
@@ -1848,6 +1979,10 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         }   
     }//GEN-LAST:event_jButtonConProdActionPerformed
 
+    private void Precio_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Precio_NewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Precio_NewActionPerformed
+
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
     int productosConStockBajo = 0;
@@ -1882,6 +2017,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JPanel Agregar_Eliminar_Proveedores;
     private javax.swing.JButton ButtonActualizar;
     private javax.swing.JButton Button_Eliminar;
+    private javax.swing.JTextField Cantidad_New;
     private javax.swing.JTextField CedulaJuridica;
     private javax.swing.JComboBox<String> ComboBox1;
     private javax.swing.JComboBox<String> ComboBox2;
@@ -1894,6 +2030,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JTable Overview_Productos;
     private javax.swing.JTable Overview_Proveedores;
     private javax.swing.JTextField PrecioNuevo;
+    private javax.swing.JTextField Precio_New;
     private javax.swing.JTextField ProductoSuministrado1;
     private javax.swing.JPanel Productos;
     private javax.swing.JPanel Proveedores;
@@ -1901,6 +2038,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JPanel SideBar;
     private javax.swing.JTextField cantVent;
     private javax.swing.JTextField cantidadReponer1;
+    private javax.swing.JTextField categoriaProducto_new;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1929,6 +2067,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1940,6 +2079,8 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

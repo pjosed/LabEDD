@@ -1,5 +1,5 @@
 NombreProveedor|CédulaJurídica|ProductosSuministrados|CantidadSuministrada|FechaÚltimaEntrega|CódigoProducto
-Panadería El Trigo|3002345678|Pan|200|2024-07-25|P002
+Panadería El Trigo|3002345678|Pan|210|2024-09-12|P002
 Frutas Del Valle|3003456789|Manzana|150|2024-08-10|P003
 Productos Limpieza SA|3004567890|Jabón|80|2024-08-15|P004
 Quesos Gourmet|3006789012|Queso|90|2024-09-11|P006
