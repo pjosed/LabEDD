@@ -37,10 +37,10 @@ public class Login extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(900, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        contraseña.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getContentPane().add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 320, 30));
 
-        usuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
