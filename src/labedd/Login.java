@@ -4,6 +4,12 @@
  */
 package labedd;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,9 +38,9 @@ public class Login extends javax.swing.JFrame {
         usuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -59,72 +65,116 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 220, 80));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOGIN.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 500));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
+
+        jButton2.setText("REGISTRARSE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 190, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String user = usuario.getText();
-        String password = new String(contraseña.getPassword());
-
-        // Validar usuario y contraseña
-        if (user.equals("admin") && password.equals("1234")) {
-            InterfazGrafica IG = new InterfazGrafica ();
-            IG.setSize(1300, 600);
-            IG.setLocationRelativeTo(null);        
-            IG.setVisible(true);
-            IG.setResizable(false);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos. ");
-        }
-    
-
+    String password = contraseña.getText();
+     login(user, password); 
     }//GEN-LAST:event_jButton1ActionPerformed
+ 
+private void login(String user, String password) {
+    boolean usuarioValido = false;
+
+    // Verificar si el usuario y la contraseña están en el archivo
+    try (BufferedReader lector = new BufferedReader(new FileReader("src/Files/Usuarios.txt"))) {
+        String linea;
+        while ((linea = lector.readLine()) != null) {
+            String[] datos = linea.split("\\|");
+            
+            // Verificar que el formato sea correcto
+            if (datos.length == 2) {
+                String usuarioArchivo = datos[0].trim();  // Asegurarse de eliminar espacios en blanco
+                String contraseñaArchivo = datos[1].trim();
+                
+                // Comparar el usuario y la contraseña
+                if (user.equals(usuarioArchivo) && password.equals(contraseñaArchivo)) {
+                    usuarioValido = true;
+                    InterfazGrafica IG = new InterfazGrafica();
+                    IG.setSize(1300, 600);
+                    IG.setLocationRelativeTo(null);
+                    IG.setVisible(true);
+                    IG.setResizable(false);
+                    dispose();  // Cerrar la ventana de login actual
+                    break;  // Salir del bucle ya que se ha encontrado un usuario válido
+                }
+            }
+        }
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al leer el archivo de usuarios: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Si después de recorrer el archivo no se encontró un usuario válido, mostrar el error
+    if (!usuarioValido) {
+        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+    }
+}
+
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        String user= usuario.getText();
+        String password = contraseña.getText();
+        guardarUsuario(user, password);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+    private void guardarUsuario(String usuario, String contraseña) {
+    // Verificar si el usuario o la contraseña estan vacios
+    if (usuario.isEmpty() || contraseña.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Por favor, complete ambos campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    File archivo = new File("src/Files/Usuarios.txt");
+
+    // Verificar si el archivo existe antes de leer
+    if (archivo.exists()) {
+        // Verificar si el usuario ya existe
+        try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                String[] datos = linea.split("\\|");
+                if (datos[0].equals(usuario)) {  // Comparar el nombre de usuario
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe. Por favor, elija otro nombre.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer los usuarios: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
     }
+
+    // Guardar el nuevo usuario, creando el archivo si no existe
+    try (PrintWriter escritor = new PrintWriter(new FileWriter(archivo, true))) {
+        escritor.println(usuario + "|" + contraseña);
+        JOptionPane.showMessageDialog(null, "Usuario guardado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al guardar el usuario: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
