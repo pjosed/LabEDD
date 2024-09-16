@@ -150,7 +150,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 150, 40));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,7 +216,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 150, 60));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 150, 60));
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Menú.png"))); // NOI18N
         jLabel23.setText("jLabel23");
@@ -386,7 +386,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 180, 40));
+        Reposicion_De_Productos.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 180, 40));
 
         jButton10.setBorderPainted(false);
         jButton10.setContentAreaFilled(false);
@@ -404,7 +404,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 cantVentActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(cantVent, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 200, 30));
+        Reposicion_De_Productos.add(cantVent, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 200, 30));
 
         jButton12.setBorderPainted(false);
         jButton12.setContentAreaFilled(false);
@@ -431,7 +431,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 100, 30));
+        Reposicion_De_Productos.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 100, 40));
 
         jButton14.setBorderPainted(false);
         jButton14.setContentAreaFilled(false);
@@ -444,7 +444,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Reposicion_De_Productos.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 100, 40));
 
         cantidadReponer1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        Reposicion_De_Productos.add(cantidadReponer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 200, 30));
+        Reposicion_De_Productos.add(cantidadReponer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 200, 30));
 
         jComborep.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComborep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -454,7 +454,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jComborepMouseClicked(evt);
             }
         });
-        Reposicion_De_Productos.add(jComborep, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 190, 30));
+        Reposicion_De_Productos.add(jComborep, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 190, 30));
 
         jComboven.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComboven.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -464,7 +464,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jCombovenMouseClicked(evt);
             }
         });
-        Reposicion_De_Productos.add(jComboven, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 180, 30));
+        Reposicion_De_Productos.add(jComboven, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, 180, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reponerstock.png"))); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -483,7 +483,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 Button_EliminarActionPerformed(evt);
             }
         });
-        Eliminar_Productos.add(Button_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 423, 140, 80));
+        Eliminar_Productos.add(Button_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 140, 80));
 
         ComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -531,10 +531,10 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 ComboBox2ActionPerformed(evt);
             }
         });
-        Actualizar_Precio_Del_Producto.add(ComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 240, 30));
+        Actualizar_Precio_Del_Producto.add(ComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 240, 30));
 
         PrecioNuevo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Actualizar_Precio_Del_Producto.add(PrecioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 520, 240, -1));
+        Actualizar_Precio_Del_Producto.add(PrecioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 240, -1));
 
         ButtonActualizar.setBorderPainted(false);
         ButtonActualizar.setContentAreaFilled(false);
@@ -544,7 +544,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 ButtonActualizarActionPerformed(evt);
             }
         });
-        Actualizar_Precio_Del_Producto.add(ButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 515, 100, 40));
+        Actualizar_Precio_Del_Producto.add(ButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 510, 100, 40));
 
         JButton16.setBorderPainted(false);
         JButton16.setContentAreaFilled(false);
@@ -554,7 +554,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 JButton16ActionPerformed(evt);
             }
         });
-        Actualizar_Precio_Del_Producto.add(JButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 440, 100, 40));
+        Actualizar_Precio_Del_Producto.add(JButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 430, 100, 40));
 
         jComboProv.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jComboProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -594,7 +594,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButtonConProdActionPerformed(evt);
             }
         });
-        Actualizar_Precio_Del_Producto.add(jButtonConProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 243, 100, 40));
+        Actualizar_Precio_Del_Producto.add(jButtonConProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/actualizarconsultar.png"))); // NOI18N
         Actualizar_Precio_Del_Producto.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
@@ -612,7 +612,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 CedulaJuridicaActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(CedulaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 280, -1));
+        Agregar_Eliminar_Proveedores.add(CedulaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 280, -1));
 
         jButton7.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 204, 51));
@@ -624,7 +624,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 150, 80));
+        Agregar_Eliminar_Proveedores.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 160, 150, 80));
 
         NombreProveedor1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         NombreProveedor1.setPreferredSize(new java.awt.Dimension(250, 25));
@@ -633,7 +633,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 NombreProveedor1ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(NombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 320, -1));
+        Agregar_Eliminar_Proveedores.add(NombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 320, -1));
 
         jButton8.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 0, 0));
@@ -656,11 +656,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, 150, 50));
+        Agregar_Eliminar_Proveedores.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 150, 50));
 
         ProductoSuministrado1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         ProductoSuministrado1.setPreferredSize(new java.awt.Dimension(64, 25));
-        Agregar_Eliminar_Proveedores.add(ProductoSuministrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 210, -1));
+        Agregar_Eliminar_Proveedores.add(ProductoSuministrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 210, -1));
 
         jComboprov.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComboprov.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -678,11 +678,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jComboprovActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jComboprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 250, 30));
+        Agregar_Eliminar_Proveedores.add(jComboprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 250, 30));
 
         categoriaProducto_new.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         categoriaProducto_new.setPreferredSize(new java.awt.Dimension(64, 25));
-        Agregar_Eliminar_Proveedores.add(categoriaProducto_new, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 330, -1));
+        Agregar_Eliminar_Proveedores.add(categoriaProducto_new, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 330, -1));
 
         Precio_New.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         Precio_New.setPreferredSize(new java.awt.Dimension(64, 25));
@@ -691,11 +691,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 Precio_NewActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(Precio_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 370, -1));
+        Agregar_Eliminar_Proveedores.add(Precio_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 370, -1));
 
         Cantidad_New.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         Cantidad_New.setPreferredSize(new java.awt.Dimension(64, 25));
-        Agregar_Eliminar_Proveedores.add(Cantidad_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 340, -1));
+        Agregar_Eliminar_Proveedores.add(Cantidad_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 340, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
@@ -710,7 +710,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 240, 30));
+        Agregar_Eliminar_Proveedores.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 240, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/agregarprov.png"))); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(1000, 600));
