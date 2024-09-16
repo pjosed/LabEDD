@@ -78,23 +78,15 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         Reposicion_De_Productos = new javax.swing.JPanel();
         jButton11 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         cantVent = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         cantidadReponer1 = new javax.swing.JTextField();
         jComborep = new javax.swing.JComboBox<>();
         jComboven = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
         Eliminar_Productos = new javax.swing.JPanel();
         Button_Eliminar = new javax.swing.JButton();
         ComboBox1 = new javax.swing.JComboBox<>();
@@ -111,27 +103,18 @@ public class InterfazGrafica extends javax.swing.JFrame {
         jButtonConProd = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Agregar_Eliminar_Proveedores = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        NomProducto = new javax.swing.JTextField();
         CedulaJuridica = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
         NombreProveedor1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         ProductoSuministrado1 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
         jComboprov = new javax.swing.JComboBox<>();
-        jLabel17 = new javax.swing.JLabel();
         categoriaProducto_new = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
         Precio_New = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
         Cantidad_New = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -148,6 +131,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jPanel1.setBackground(SideBar.getBackground());
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 1, 1, 1));
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
@@ -236,12 +220,12 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Menú.png"))); // NOI18N
         jLabel23.setText("jLabel23");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 300, 650));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 300, 600));
 
         SideBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
 
         getContentPane().add(SideBar);
-        SideBar.setBounds(0, 0, 300, 740);
+        SideBar.setBounds(0, 0, 300, 600);
 
         MainPanel.setLayout(new java.awt.CardLayout());
 
@@ -260,8 +244,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         InicioLayout.setVerticalGroup(
             InicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InicioLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         MainPanel.add(Inicio, "card3");
@@ -326,7 +310,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Productos.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 949, 332));
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/productos.png"))); // NOI18N
-        Productos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Productos.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         MainPanel.add(Productos, "card3");
 
@@ -387,77 +371,54 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Proveedores.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 950, 332));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/proveedores.png"))); // NOI18N
-        Proveedores.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Proveedores.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         MainPanel.add(Proveedores, "card3");
 
-        Reposicion_De_Productos.setPreferredSize(new java.awt.Dimension(1200, 740));
-        Reposicion_De_Productos.setLayout(null);
+        Reposicion_De_Productos.setPreferredSize(new java.awt.Dimension(1000, 600));
+        Reposicion_De_Productos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton11.setText("Verificar Stock");
+        jButton11.setBorderPainted(false);
+        jButton11.setContentAreaFilled(false);
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton11);
-        jButton11.setBounds(400, 170, 120, 30);
+        Reposicion_De_Productos.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 520, 180, 40));
 
-        jLabel3.setText("Presiona aquí para verificar los niveles bajos de Stock:");
-        Reposicion_De_Productos.add(jLabel3);
-        jLabel3.setBounds(310, 130, 310, 20);
-
-        jLabel7.setText("Codigo del producto:");
-        Reposicion_De_Productos.add(jLabel7);
-        jLabel7.setBounds(550, 350, 140, 16);
-
-        jButton10.setText("GUARDAR VENTA");
+        jButton10.setBorderPainted(false);
+        jButton10.setContentAreaFilled(false);
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton10);
-        jButton10.setBounds(710, 510, 160, 30);
+        Reposicion_De_Productos.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 100, 40));
 
+        cantVent.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         cantVent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cantVentActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(cantVent);
-        cantVent.setBounds(690, 390, 160, 22);
+        Reposicion_De_Productos.add(cantVent, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, 200, 30));
 
-        jLabel10.setText("Cantidad vendida:");
-        Reposicion_De_Productos.add(jLabel10);
-        jLabel10.setBounds(550, 390, 100, 16);
-
-        jLabel11.setText("Codigo del producto:");
-        Reposicion_De_Productos.add(jLabel11);
-        jLabel11.setBounds(60, 340, 160, 16);
-
-        jButton12.setText("VERIFICAR");
+        jButton12.setBorderPainted(false);
+        jButton12.setContentAreaFilled(false);
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton12);
-        jButton12.setBounds(550, 510, 140, 30);
+        Reposicion_De_Productos.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 100, 40));
 
-        jLabel19.setText("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        Reposicion_De_Productos.add(jLabel19);
-        jLabel19.setBounds(0, 220, 910, 16);
-
-        jLabel18.setText("VENDER PRODUCTOS");
-        Reposicion_De_Productos.add(jLabel18);
-        jLabel18.setBounds(550, 290, 210, 30);
-
-        jLabel20.setText("REPONER PRODUCTOS");
-        Reposicion_De_Productos.add(jLabel20);
-        jLabel20.setBounds(70, 290, 210, 30);
-
-        jButton13.setText("REPONER");
+        jButton13.setBorderPainted(false);
+        jButton13.setContentAreaFilled(false);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton13.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jButton13CaretPositionChanged(evt);
@@ -470,45 +431,44 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton13);
-        jButton13.setBounds(250, 510, 140, 30);
+        Reposicion_De_Productos.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 100, 30));
 
-        jButton14.setText("VERIFICAR");
+        jButton14.setBorderPainted(false);
+        jButton14.setContentAreaFilled(false);
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
             }
         });
-        Reposicion_De_Productos.add(jButton14);
-        jButton14.setBounds(60, 510, 140, 30);
+        Reposicion_De_Productos.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 100, 40));
 
-        jLabel21.setText("VENTA/ REPOSICION DE PRODUCTO");
-        Reposicion_De_Productos.add(jLabel21);
-        jLabel21.setBounds(360, 20, 250, 16);
+        cantidadReponer1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        Reposicion_De_Productos.add(cantidadReponer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 200, 30));
 
-        jLabel22.setText("Cantidad");
-        Reposicion_De_Productos.add(jLabel22);
-        jLabel22.setBounds(60, 390, 160, 16);
-        Reposicion_De_Productos.add(cantidadReponer1);
-        cantidadReponer1.setBounds(230, 390, 170, 22);
-
+        jComborep.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComborep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComborep.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComborep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComborepMouseClicked(evt);
             }
         });
-        Reposicion_De_Productos.add(jComborep);
-        jComborep.setBounds(220, 340, 160, 22);
+        Reposicion_De_Productos.add(jComborep, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 190, 30));
 
+        jComboven.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComboven.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComboven.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboven.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCombovenMouseClicked(evt);
             }
         });
-        Reposicion_De_Productos.add(jComboven);
-        jComboven.setBounds(690, 350, 110, 22);
+        Reposicion_De_Productos.add(jComboven, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 180, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/reponerstock.png"))); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(1000, 600));
+        Reposicion_De_Productos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         MainPanel.add(Reposicion_De_Productos, "card8");
 
@@ -551,7 +511,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Eliminar_Productos.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 140, 80));
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/eliminarproductos.png"))); // NOI18N
-        Eliminar_Productos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Eliminar_Productos.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         MainPanel.add(Eliminar_Productos, "card7");
 
@@ -637,107 +597,74 @@ public class InterfazGrafica extends javax.swing.JFrame {
         Actualizar_Precio_Del_Producto.add(jButtonConProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 243, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/actualizarconsultar.png"))); // NOI18N
-        Actualizar_Precio_Del_Producto.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Actualizar_Precio_Del_Producto.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
 
         MainPanel.add(Actualizar_Precio_Del_Producto, "card5");
 
-        Agregar_Eliminar_Proveedores.setPreferredSize(new java.awt.Dimension(1200, 740));
-        Agregar_Eliminar_Proveedores.setLayout(null);
+        Agregar_Eliminar_Proveedores.setMaximumSize(new java.awt.Dimension(1000, 600));
+        Agregar_Eliminar_Proveedores.setPreferredSize(new java.awt.Dimension(1000, 600));
+        Agregar_Eliminar_Proveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
-        jLabel4.setText("ELIMINAR PROVEEDORES:");
-        Agregar_Eliminar_Proveedores.add(jLabel4);
-        jLabel4.setBounds(310, 330, 370, 40);
-
-        jLabel5.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel5.setText("Ingrese el producto que suministra:");
-        Agregar_Eliminar_Proveedores.add(jLabel5);
-        jLabel5.setBounds(60, 420, 260, 40);
-
-        NomProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomProductoActionPerformed(evt);
-            }
-        });
-        Agregar_Eliminar_Proveedores.add(NomProducto);
-        NomProducto.setBounds(320, 430, 310, 20);
-
+        CedulaJuridica.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        CedulaJuridica.setPreferredSize(new java.awt.Dimension(64, 25));
         CedulaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CedulaJuridicaActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(CedulaJuridica);
-        CedulaJuridica.setBounds(210, 110, 220, 30);
+        Agregar_Eliminar_Proveedores.add(CedulaJuridica, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 280, -1));
 
         jButton7.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 204, 51));
-        jButton7.setText("Guardar");
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jButton7);
-        jButton7.setBounds(500, 90, 110, 100);
+        Agregar_Eliminar_Proveedores.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 150, 80));
 
-        jLabel9.setFont(new java.awt.Font("Microsoft Himalaya", 1, 36)); // NOI18N
-        jLabel9.setText("AGREGA LOS PROVEDORES AQUÍ!");
-        Agregar_Eliminar_Proveedores.add(jLabel9);
-        jLabel9.setBounds(250, 10, 440, 40);
-
+        NombreProveedor1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        NombreProveedor1.setPreferredSize(new java.awt.Dimension(250, 25));
         NombreProveedor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreProveedor1ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(NombreProveedor1);
-        NombreProveedor1.setBounds(210, 60, 220, 30);
+        Agregar_Eliminar_Proveedores.add(NombreProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 320, -1));
 
         jButton8.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 0, 0));
-        jButton8.setText("ELIMINAR");
+        jButton8.setBorderPainted(false);
+        jButton8.setContentAreaFilled(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jButton8);
-        jButton8.setBounds(410, 500, 150, 30);
+        Agregar_Eliminar_Proveedores.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 490, 150, 50));
 
         jButton9.setFont(new java.awt.Font("Microsoft Himalaya", 3, 24)); // NOI18N
-        jButton9.setText("Verificar Proveedor");
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jButton9);
-        jButton9.setBounds(150, 500, 190, 30);
-        Agregar_Eliminar_Proveedores.add(ProductoSuministrado1);
-        ProductoSuministrado1.setBounds(210, 160, 220, 30);
+        Agregar_Eliminar_Proveedores.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, 150, 50));
 
-        jLabel14.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel14.setText("Nombre:");
-        Agregar_Eliminar_Proveedores.add(jLabel14);
-        jLabel14.setBounds(50, 60, 190, 40);
+        ProductoSuministrado1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        ProductoSuministrado1.setPreferredSize(new java.awt.Dimension(64, 25));
+        Agregar_Eliminar_Proveedores.add(ProductoSuministrado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 210, -1));
 
-        jLabel15.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel15.setText("Cédula Jurídica:");
-        Agregar_Eliminar_Proveedores.add(jLabel15);
-        jLabel15.setBounds(50, 110, 190, 40);
-
-        jLabel16.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel16.setText("Producto Suministrado:");
-        Agregar_Eliminar_Proveedores.add(jLabel16);
-        jLabel16.setBounds(50, 160, 190, 40);
-
-        jLabel24.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel24.setText("Ingrese la cédula jurídica del proveedor:");
-        Agregar_Eliminar_Proveedores.add(jLabel24);
-        jLabel24.setBounds(50, 380, 260, 40);
-
+        jComboprov.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jComboprov.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComboprov.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboprov.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComboprovMouseClicked(evt);
@@ -751,35 +678,43 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 jComboprovActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(jComboprov);
-        jComboprov.setBounds(330, 390, 180, 22);
+        Agregar_Eliminar_Proveedores.add(jComboprov, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 250, 30));
 
-        jLabel17.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel17.setText("Categoría:");
-        Agregar_Eliminar_Proveedores.add(jLabel17);
-        jLabel17.setBounds(50, 200, 190, 40);
-        Agregar_Eliminar_Proveedores.add(categoriaProducto_new);
-        categoriaProducto_new.setBounds(210, 200, 220, 30);
+        categoriaProducto_new.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        categoriaProducto_new.setPreferredSize(new java.awt.Dimension(64, 25));
+        Agregar_Eliminar_Proveedores.add(categoriaProducto_new, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 330, -1));
 
-        jLabel28.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel28.setText("Precio:");
-        Agregar_Eliminar_Proveedores.add(jLabel28);
-        jLabel28.setBounds(50, 240, 190, 40);
-
+        Precio_New.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        Precio_New.setPreferredSize(new java.awt.Dimension(64, 25));
         Precio_New.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Precio_NewActionPerformed(evt);
             }
         });
-        Agregar_Eliminar_Proveedores.add(Precio_New);
-        Precio_New.setBounds(210, 240, 220, 30);
+        Agregar_Eliminar_Proveedores.add(Precio_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 370, -1));
 
-        jLabel29.setFont(new java.awt.Font("Microsoft Himalaya", 2, 24)); // NOI18N
-        jLabel29.setText("Cantidad:");
-        Agregar_Eliminar_Proveedores.add(jLabel29);
-        jLabel29.setBounds(50, 280, 190, 40);
-        Agregar_Eliminar_Proveedores.add(Cantidad_New);
-        Cantidad_New.setBounds(210, 280, 220, 30);
+        Cantidad_New.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        Cantidad_New.setPreferredSize(new java.awt.Dimension(64, 25));
+        Agregar_Eliminar_Proveedores.add(Cantidad_New, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 340, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        Agregar_Eliminar_Proveedores.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 240, 30));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/agregarprov.png"))); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(1000, 600));
+        Agregar_Eliminar_Proveedores.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, -1));
 
         MainPanel.add(Agregar_Eliminar_Proveedores, "card4");
 
@@ -788,109 +723,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Productos);
-        MainPanel.repaint();
-        MainPanel.revalidate();
-
-        // Obtener el modelo de la tabla Overview_Productos
-        DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
-
-// Añadir la nueva fila al modelo de la tabla
-
-        try {
-            model.setRowCount(0); 
-            BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
-            String linea;
-            br.readLine(); // Omitir la primera línea de encabezados
-            while ((linea = br.readLine()) != null) {
-                String[] campos = linea.split("\\|");
-                Object[] fila = {
-                    campos[0], // CódigoProducto
-                    campos[1], // Nombre
-                    campos[2], // Categoría
-                    Double.parseDouble(campos[3]), // Precio
-                    Integer.parseInt(campos[4]), // CantidadStock
-                    campos[5] // FechaÚltimaReposición
-                };
-                model.addRow(fila);
-            };
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Proveedores);
-        MainPanel.repaint();
-        MainPanel.revalidate();
-        // Obtener el modelo de la tabla Overview_Productos
-        DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
-
-// Añadir la nueva fila al modelo de la tabla
-        model.setRowCount(0); 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
-            String linea;
-            br.readLine(); // Omitir la primera línea de encabezados
-            while ((linea = br.readLine()) != null) {
-                String[] campos = linea.split("\\|");
-                Object[] fila = {
-                    campos[0], // NombreProveedor
-                    campos[1], // CedulaJuridica
-                    campos[2], // ProductosSuministrados
-                    Integer.parseInt(campos[3]), // CantidadSuministrada
-                    campos[4] // FechaUltimaEntrega
-                };
-                model.addRow(fila);
-            };
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Reposicion_De_Productos);
-        MainPanel.repaint();
-        MainPanel.revalidate();
-        // Venta y reposición de productos 
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Eliminar_Productos);
-        MainPanel.repaint();
-        MainPanel.revalidate();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Actualizar_Precio_Del_Producto);
-        MainPanel.repaint();
-        MainPanel.revalidate();   // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        MainPanel.removeAll();
-        MainPanel.add(Agregar_Eliminar_Proveedores);
-        MainPanel.repaint();
-        MainPanel.revalidate();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
-    }//GEN-LAST:event_jButton1MouseClicked
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
         String cod_eliminar= ComboBox1.getSelectedItem().toString();
@@ -994,10 +826,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void Overview_ProveedoresComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Overview_ProveedoresComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview_ProveedoresComponentShown
-
-    private void NomProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomProductoActionPerformed
-            
-    }//GEN-LAST:event_NomProductoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         String Nombre = NombreProveedor1.getText();
@@ -1157,7 +985,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     String archivoOriginal = "src/Files/Proveedores.txt";
     String archivoProductos = "src/Files/Productos.txt";
     String cedulaEliminar = jComboprov.getSelectedItem().toString();
-    String nombreProducto = NomProducto.getText();
+    String nombreProducto = jComboBox1.getSelectedItem().toString();
     eliminarRegistro(archivoOriginal, archivoProductos, cedulaEliminar, nombreProducto);
 
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1229,7 +1057,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                 
                 while ((apuntadorProd = rafProd.readLine()) != null) {
                     String[] valoresProd = apuntadorProd.split("\\|");
-                    String nombre = valoresProd[1];
+                    String nombre = valoresProd[0];
                     
                     if (valoresProd.length >= 7) {
                         // Verifica si el producto pertenece al proveedor eliminado y coincide con el nombre del producto
@@ -1983,10 +1811,162 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         // TODO add your handling code here:
     }//GEN-LAST:event_Precio_NewActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Agregar_Eliminar_Proveedores);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Actualizar_Precio_Del_Producto);
+        MainPanel.repaint();
+        MainPanel.revalidate();   // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Eliminar_Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Reposicion_De_Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+        // Venta y reposición de productos
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Proveedores);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+        // Obtener el modelo de la tabla Overview_Productos
+        DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel();
+
+        // Añadir la nueva fila al modelo de la tabla
+        model.setRowCount(0);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/Files/Proveedores.txt"));
+            String linea;
+            br.readLine(); // Omitir la primera línea de encabezados
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+                Object[] fila = {
+                    campos[0], // NombreProveedor
+                    campos[1], // CedulaJuridica
+                    campos[2], // ProductosSuministrados
+                    Integer.parseInt(campos[3]), // CantidadSuministrada
+                    campos[4] // FechaUltimaEntrega
+                };
+                model.addRow(fila);
+            };
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainPanel.removeAll();
+        MainPanel.add(Productos);
+        MainPanel.repaint();
+        MainPanel.revalidate();
+
+        // Obtener el modelo de la tabla Overview_Productos
+        DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
+
+        // Añadir la nueva fila al modelo de la tabla
+
+        try {
+            model.setRowCount(0);
+            BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
+            String linea;
+            br.readLine(); // Omitir la primera línea de encabezados
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+                Object[] fila = {
+                    campos[0], // CódigoProducto
+                    campos[1], // Nombre
+                    campos[2], // Categoría
+                    Double.parseDouble(campos[3]), // Precio
+                    Integer.parseInt(campos[4]), // CantidadStock
+                    campos[5] // FechaÚltimaReposición
+                };
+                model.addRow(fila);
+            };
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
+        jComboBox1.removeAllItems();
+        String cedulaEliminar = jComboprov.getSelectedItem().toString();
+        
+        BufferedReader pr = null;
+        BufferedReader pro =null;
+        String codigoeliminar=null;
+        try {
+            File Pr = new File ("src/Files/Proveedores.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line=pr.readLine();
+            while((line=pr.readLine()) != null){
+                String temp[]=line.split("\\|");
+                String cedula = temp[1];
+                if(cedula.equals(cedulaEliminar)){
+                    codigoeliminar = temp[5];
+                    break;
+                }
+            }
+            File Pro = new File ("src/Files/Productos.txt");
+            pro = new BufferedReader(new FileReader(Pro));
+            String line2 =pro.readLine();
+            while((line2=pro.readLine()) != null){
+                String temp[]= line2.split("\\|");
+                String cod = temp[0];
+                if(cod.equals(codigoeliminar)){
+                    jComboBox1.addItem(cod);
+                }
+            }
+            pr.close();
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                pr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jComboBox1MouseClicked
+
     private void verificarStockBajo() {
     String archivoProductos = "src/Files/Productos.txt"; 
     int productosConStockBajo = 0;
-    StringBuilder nombresProductos = new StringBuilder("Productos con stock menor a 10:\n");
+    StringBuilder nombresProductos = new StringBuilder("Productos con stock menor a 50:\n");
 
     try (BufferedReader br = new BufferedReader(new FileReader(archivoProductos))) {
         // Leer y descartar la primera línea (cabecera)
@@ -1998,7 +1978,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
             if (campos.length == 7) {
                 int cantidadEnStock = Integer.parseInt(campos[4].trim());
                 
-                if (cantidadEnStock < 100) {
+                if (cantidadEnStock < 50) {
                     nombresProductos.append(campos[1].trim()).append(" - Stock: ").append(cantidadEnStock).append("\n");
                     productosConStockBajo++;
                 }
@@ -2025,7 +2005,6 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JPanel Inicio;
     private javax.swing.JButton JButton16;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JTextField NomProducto;
     private javax.swing.JTextField NombreProveedor1;
     private javax.swing.JTable Overview_Productos;
     private javax.swing.JTable Overview_Proveedores;
@@ -2056,6 +2035,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonConProd;
     private javax.swing.JButton jButtonConProv;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboProd;
     private javax.swing.JComboBox<String> jComboProv;
     private javax.swing.JComboBox<String> jComboprov;
@@ -2063,29 +2043,12 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private javax.swing.JComboBox<String> jComboven;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
