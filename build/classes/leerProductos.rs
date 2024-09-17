@@ -1,2 +1,0 @@
-leerProductos
-Producto
