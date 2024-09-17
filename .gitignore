@@ -1,1 +1,22 @@
+# Ignorar todos los archivos y carpetas generados por NetBeans
+/nbproject/
+/build/
 /dist/
+/nbactions.xml
+/nb-configuration.xml
+
+# Ignorar archivos de respaldo y caché
+*~
+*.bak
+*.swp
+.DS_Store
+*.xml
+*.iml
+*.properties
+*.netbeans_automatic_build
+*.mf
+*.netbeans_update_resources
+*.class
+
+# Excepto archivos Java en todas partes del proyecto
+!**/*.java
