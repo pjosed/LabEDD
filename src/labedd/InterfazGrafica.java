@@ -725,84 +725,84 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Button_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EliminarActionPerformed
-        String cod_eliminar= ComboBox1.getSelectedItem().toString();
+        String cod_eliminar = ComboBox1.getSelectedItem().toString();
         String archivoProveedores = "src/Files/Proveedores.txt";
         String archivoProductos = "src/Files/Productos.txt";
-        eliminarProducto (archivoProveedores, archivoProductos, cod_eliminar);
+        eliminarProducto(archivoProveedores, archivoProductos, cod_eliminar);
     }//GEN-LAST:event_Button_EliminarActionPerformed
 
-    public static void eliminarProducto(String archivoProveedores, String archivoProductos, String cod_eliminar){
+    public static void eliminarProducto(String archivoProveedores, String archivoProductos, String cod_eliminar) {
         File archivoProv = new File(archivoProveedores);
         File archivoProd = new File(archivoProductos);
         boolean proveedorEliminado = false;
         boolean productoEliminado = false;
-        
-        try(RandomAccessFile rafProd= new RandomAccessFile(archivoProd, "rw")){
+
+        try (RandomAccessFile rafProd = new RandomAccessFile(archivoProd, "rw")) {
             String apuntadorProd;
             long apuntadorPosicionProd = 0;
-            
-            while((apuntadorProd = rafProd.readLine()) != null){
+
+            while ((apuntadorProd = rafProd.readLine()) != null) {
                 String[] valores = apuntadorProd.split("\\|");
-                
-                if(valores.length >= 7){
+
+                if (valores.length >= 7) {
                     String cod = valores[0].trim();
-                    
-                    if(cod_eliminar.equals(cod)){
-                        long longitudLinea = rafProd.getFilePointer()- apuntadorPosicionProd;
+
+                    if (cod_eliminar.equals(cod)) {
+                        long longitudLinea = rafProd.getFilePointer() - apuntadorPosicionProd;
                         long siguientePosicion = rafProd.getFilePointer();
-                        
-                        byte[] buffer = new byte[(int)(rafProd.length()- siguientePosicion)];
+
+                        byte[] buffer = new byte[(int) (rafProd.length() - siguientePosicion)];
                         rafProd.seek(siguientePosicion);
                         rafProd.readFully(buffer);
-                        
+
                         rafProd.seek(apuntadorPosicionProd);
                         rafProd.write(buffer);
-                        rafProd.setLength(rafProd.length()- longitudLinea);
-                        productoEliminado =true;
+                        rafProd.setLength(rafProd.length() - longitudLinea);
+                        productoEliminado = true;
                         break;
                     }
                 }
-                
-                apuntadorPosicionProd =rafProd.getFilePointer();
+
+                apuntadorPosicionProd = rafProd.getFilePointer();
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error eliminando el producto.");
         }
-        
-        if(productoEliminado){
-            try (RandomAccessFile rafProv= new RandomAccessFile(archivoProv,"rw")){
+
+        if (productoEliminado) {
+            try (RandomAccessFile rafProv = new RandomAccessFile(archivoProv, "rw")) {
                 String apuntadorProv;
-                long apuntadorPosicionProv=0;
-                
-                while((apuntadorProv=rafProv.readLine()) != null){
+                long apuntadorPosicionProv = 0;
+
+                while ((apuntadorProv = rafProv.readLine()) != null) {
                     String[] valoresProv = apuntadorProv.split("\\|");
-                    
-                    if (valoresProv.length >=3){
-                        String codP =  valoresProv[5].trim();
-                        
-                        if(cod_eliminar.equals(codP)){
-                            long longitudLineaProv = rafProv.getFilePointer()- apuntadorPosicionProv;
+
+                    if (valoresProv.length >= 3) {
+                        String codP = valoresProv[5].trim();
+
+                        if (cod_eliminar.equals(codP)) {
+                            long longitudLineaProv = rafProv.getFilePointer() - apuntadorPosicionProv;
                             long siguientePosicionProv = rafProv.getFilePointer();
-                            
-                            byte[] bufferProv = new byte[(int) (rafProv.length()- siguientePosicionProv)];
+
+                            byte[] bufferProv = new byte[(int) (rafProv.length() - siguientePosicionProv)];
                             rafProv.seek(siguientePosicionProv);
                             rafProv.readFully(bufferProv);
-                            
+
                             rafProv.seek(apuntadorPosicionProv);
                             rafProv.write(bufferProv);
-                            rafProv.setLength(rafProv.length()- longitudLineaProv);
+                            rafProv.setLength(rafProv.length() - longitudLineaProv);
                             proveedorEliminado = true;
                             break;
                         }
                     }
-                    
+
                     apuntadorPosicionProv = rafProv.getFilePointer();
                 }
-                
-                if (proveedorEliminado){
+
+                if (proveedorEliminado) {
                     JOptionPane.showMessageDialog(null, "El producto ha sido eliminado correctamente.");
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 JOptionPane.showMessageDialog(null, "Error eliminando el producto.");
             }
         }
@@ -844,122 +844,124 @@ public class InterfazGrafica extends javax.swing.JFrame {
             ProductoSuministrado1.setText("");
             return;
         }
+
         Double precio;
-        try{
+        try {
             precio = Double.parseDouble(Precio_New.getText());
-        }catch(NumberFormatException e2){
-            JOptionPane.showMessageDialog(null, "Ingrese un precio válido. ");
+        } catch (NumberFormatException e2) {
+            JOptionPane.showMessageDialog(null, "Ingrese un precio válido.");
             Precio_New.setText("");
             return;
         }
-         //verifica que el campo no esté vacío
-        if(Precio_New.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese el precio. ");
+
+// Verifica que el campo de precio no esté vacío
+        if (Precio_New.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el precio.");
             return;
         }
-        
-         Precio_New.setText("");
-         
+        Precio_New.setText("");
+
         int cantidad;
-        try{
+        try {
             cantidad = Integer.parseInt(Cantidad_New.getText());
-        }catch(NumberFormatException e2){
-            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida ");
+        } catch (NumberFormatException e2) {
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida.");
             Cantidad_New.setText("");
             return;
         }
-         //verifica que el campo no esté vacío
-        if(Cantidad_New.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese la cantidad. ");
+
+// Verifica que el campo de cantidad no esté vacío
+        if (Cantidad_New.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese la cantidad.");
             return;
         }
-        
-         Cantidad_New.setText("");
+        Cantidad_New.setText("");
 
 // Verificar que el producto suministrado no esté vacío
         if (ProdSuministrado.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del producto suministrado.");
             return;
         }
-// Verificar que el producto suministrado no esté vacío
+
+// Verificar que el nombre no esté vacío
         if (Nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor");
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el nombre del proveedor.");
             return;
         }
-        
-// Agregar a la tabla
-        DefaultTableModel model = (DefaultTableModel) Overview_Proveedores.getModel(); // Suponiendo que la tabla se llama jTable1
-        model.addRow(new Object[]{Nombre, Cedula, ProdSuministrado, "0", Fecha});
-        
-        
-                // Ruta del archivo .txt (puedes cambiarla según la ubicación de tu archivo)
+
         String rutaArchivo = "src/Files/Proveedores.txt";
         ArrayList<Integer> ids = new ArrayList<>();
-       
-        
-        // Usamos BufferedReader para leer el archivo
+        boolean proveedorExiste = false;
+
+// Usamos BufferedReader para leer el archivo y verificar si ya existe la cédula
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
-            
-            // Leer la primera línea (encabezado) para ignorarla
+
+            // Leer la primera línea 
             linea = br.readLine();
-            
+
             // Leer cada línea del archivo hasta que no haya más
             while ((linea = br.readLine()) != null) {
                 // Separar la línea usando el delimitador "|"
                 String[] columnas = linea.split("\\|");
-                
-                // Asignar valores a variables individuales
-          
+
+                // Asignar valor
+                String cedulaExistente = columnas[1].trim(); // Obtener la cédula existente en el archivo
+
+                // Comparar la cédula existente con la cédula ingresada
+                if (cedulaExistente.equals(CedulaStr)) {
+                    proveedorExiste = true; // El proveedor ya existe
+                    break;
+                }
+
                 String codigoProducto = columnas[5];
-                
                 String numberPart = codigoProducto.substring(1);
-        
-        // Convertir el número a entero
+
+                // Convertir el número a entero
                 int number = Integer.parseInt(numberPart);
-                
                 ids.add(number);
-                
-                System.out.println(ids);
-               
             }
         } catch (IOException e) {
-            // Manejo de excepciones en caso de error
+            // Manejo de excepciones
             System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
         }
-        
+
+// Si el proveedor ya existe, mostrar un mensaje y detener la operación
+        if (proveedorExiste) {
+            JOptionPane.showMessageDialog(this, "El proveedor con cédula " + CedulaStr + " ya existe.");
+            return;
+        }
+
+// Si el proveedor no existe, continuar con el proceso de guardar los datos
         int mayor = ids.get(0);
 
-        // Recorrer la lista para encontrar el número mayor
+// Recorrer la lista para encontrar el número mayor
         for (int id : ids) {
             if (id > mayor) {
                 mayor = id;
             }
         }
-        
-        int new_id = mayor +1;
-    
+
+        int new_id = mayor + 1;
 
 // GUARDAR EN EL ARCHIVO
         try (FileWriter fw = new FileWriter("src/Files/Proveedores.txt", true); PrintWriter pw = new PrintWriter(fw)) {
-            String newNumber= String.format("%03d", new_id);
-            
+            String newNumber = String.format("%03d", new_id);
+
             // Escribir los datos en el archivo
-            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|"+ cantidad +"|" + Fecha+"|P"+newNumber);
+            pw.println(Nombre + "|" + Cedula + "|" + ProdSuministrado + "|" + cantidad + "|" + Fecha + "|P" + newNumber);
 
-            JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
-
+            JOptionPane.showMessageDialog(this, "Datos guardados correctamente en el archivo proveedores!");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
         }
-        
-        try (FileWriter fw = new FileWriter("src/Files/Productos.txt", true); PrintWriter pw = new PrintWriter(fw)) {
-            String newNumber= String.format("%03d", new_id);
-            pw.println(("P"+newNumber)+"|"+ ProdSuministrado  + "|"+ categoriaProducto_new.getText()+ "|"+  precio +   "|"+ cantidad+"|" + Fecha   +"|"+    Cedula );
-            // Escribir los datos en el archivo
-           
-            JOptionPane.showMessageDialog(this, "Datos guardados correctamente!");
 
+// GUARDAR EN EL ARCHIVO DE PRODUCTOS
+        try (FileWriter fw = new FileWriter("src/Files/Productos.txt", true); PrintWriter pw = new PrintWriter(fw)) {
+            String newNumber = String.format("%03d", new_id);
+            pw.println("P" + newNumber + "|" + ProdSuministrado + "|" + categoriaProducto_new.getText() + "|" + precio + "|" + cantidad + "|" + Fecha + "|" + Cedula);
+
+            JOptionPane.showMessageDialog(this, "Datos guardados correctamente en el archivo productos!");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage());
         }
@@ -969,6 +971,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         CedulaJuridica.setText("");
         ProductoSuministrado1.setText("");
         categoriaProducto_new.setText("");
+
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -982,33 +985,33 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-    String archivoOriginal = "src/Files/Proveedores.txt";
-    String archivoProductos = "src/Files/Productos.txt";
-    String cedulaEliminar = jComboprov.getSelectedItem().toString();
-    String nombreProducto = jComboBox1.getSelectedItem().toString();
-    eliminarRegistro(archivoOriginal, archivoProductos, cedulaEliminar, nombreProducto);
+        String archivoOriginal = "src/Files/Proveedores.txt";
+        String archivoProductos = "src/Files/Productos.txt";
+        String cedulaEliminar = jComboprov.getSelectedItem().toString();
+        String nombreProducto = jComboBox1.getSelectedItem().toString();
+        eliminarRegistro(archivoOriginal, archivoProductos, cedulaEliminar, nombreProducto);
 
     }//GEN-LAST:event_jButton8ActionPerformed
- public static void eliminarRegistro(String archivoOriginal, String archivoProductos, String cedulaEliminar, String nombreProductoEliminar) {
+    public static void eliminarRegistro(String archivoOriginal, String archivoProductos, String cedulaEliminar, String nombreProductoEliminar) {
         File archivo = new File(archivoOriginal);
         File archivoProd = new File(archivoProductos);
         boolean proveedorEliminado = false;
         boolean productoEliminado = false;
-        try{
-        BufferedReader pr = null;
-        File Pr = new File ("src/Files/Proveedores.txt");
-        pr = new BufferedReader(new FileReader(Pr));
-        String line=pr.readLine();
-                
-        while((line=pr.readLine()) != null){
-            String temp[]=line.split("\\|");
-            String ced = temp[1];
-            if(ced.equalsIgnoreCase(cedulaEliminar)){
-                String cod = temp[5];
+        try {
+            BufferedReader pr = null;
+            File Pr = new File("src/Files/Proveedores.txt");
+            pr = new BufferedReader(new FileReader(Pr));
+            String line = pr.readLine();
+
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
+                String ced = temp[1];
+                if (ced.equalsIgnoreCase(cedulaEliminar)) {
+                    String cod = temp[5];
+                }
             }
-        }
-        pr.close();
-        }catch (IOException e){
+            pr.close();
+        } catch (IOException e) {
             System.out.println("Error al leer o escribir el archivo de productos: " + e.getMessage());
         }
 
@@ -1020,45 +1023,43 @@ public class InterfazGrafica extends javax.swing.JFrame {
             while ((apuntador = raf.readLine()) != null) {
                 String[] valores = apuntador.split("\\|"); // Se explica que cda campo está separado por |
 
-                    // Obtengo el valor de la cedula del archivo
-                    String cedula = valores[1].trim();
-                    // Comparo el valor de la cedula de la tabla con el ingresado
-                    if (cedulaEliminar.equals(cedula)) {
-                        long longitudLinea = raf.getFilePointer() - apuntadorPosicion; // Se resta la posicion actual de la linea de la posicion actual del puntero.
-                        long siguientePosicion = raf.getFilePointer(); //  Almacena la posición actual del puntero del archivo, que indica dónde termina la línea que se va a eliminar.
-                        //A continuación, se crea un arreglo de bytes (buffer) para almacenar temporalmente todos los datos que siguen a la línea que se va a eliminar. 
-                        //El tamaño del buffer es la longitud total del archivo menos la posición actual del puntero.
-                        byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
-                        raf.seek(siguientePosicion); // Ajusta el puntero del archivo a la posición justo después de la línea que se va a eliminar, o sea, a siguientePosicion.
-                        raf.readFully(buffer); // Lee los datos restantes en el buffer
+                // Obtengo el valor de la cedula del archivo
+                String cedula = valores[1].trim();
+                // Comparo el valor de la cedula de la tabla con el ingresado
+                if (cedulaEliminar.equals(cedula)) {
+                    long longitudLinea = raf.getFilePointer() - apuntadorPosicion; // Se resta la posicion actual de la linea de la posicion actual del puntero.
+                    long siguientePosicion = raf.getFilePointer(); //  Almacena la posición actual del puntero del archivo, que indica dónde termina la línea que se va a eliminar.
+                    //A continuación, se crea un arreglo de bytes (buffer) para almacenar temporalmente todos los datos que siguen a la línea que se va a eliminar. 
+                    //El tamaño del buffer es la longitud total del archivo menos la posición actual del puntero.
+                    byte[] buffer = new byte[(int) (raf.length() - siguientePosicion)];
+                    raf.seek(siguientePosicion); // Ajusta el puntero del archivo a la posición justo después de la línea que se va a eliminar, o sea, a siguientePosicion.
+                    raf.readFully(buffer); // Lee los datos restantes en el buffer
 
-                        raf.seek(apuntadorPosicion); // Mueve el puntero del archivo de vuelta a la posición donde comienza la línea que se va a eliminar-
-                        raf.write(buffer); // Sobrescribe la línea eliminadal.
-                        raf.setLength(raf.length() - longitudLinea); // Se reduce la longitud del archivo para eliminar el espacio que ocupaba la línea eliminada, se asegura que no queden datos innecesarios al final del archivo.
-                        proveedorEliminado = true; // Se verifica que se elimino el proveedor.
-                        break; // Se rompe el ciclo
-                    }
-                
+                    raf.seek(apuntadorPosicion); // Mueve el puntero del archivo de vuelta a la posición donde comienza la línea que se va a eliminar-
+                    raf.write(buffer); // Sobrescribe la línea eliminadal.
+                    raf.setLength(raf.length() - longitudLinea); // Se reduce la longitud del archivo para eliminar el espacio que ocupaba la línea eliminada, se asegura que no queden datos innecesarios al final del archivo.
+                    proveedorEliminado = true; // Se verifica que se elimino el proveedor.
+                    break; // Se rompe el ciclo
+                }
 
                 apuntadorPosicion = raf.getFilePointer(); // Se obtiene la posicion atual del apuntador.
             }
-        // Manejo de errores.
+            // Manejo de errores.
         } catch (IOException e) {
             System.out.println("Error al leer o escribir el archivo de proveedores: " + e.getMessage());
         }
 
         // Después de eliminar el proveedor, eliminar el producto relacionado:
         if (proveedorEliminado) {
-            
+
             try (RandomAccessFile rafProd = new RandomAccessFile(archivoProd, "rw")) {
                 String apuntadorProd;
                 long apuntadorPosicionProd = 0;
-                
-                
+
                 while ((apuntadorProd = rafProd.readLine()) != null) {
                     String[] valoresProd = apuntadorProd.split("\\|");
                     String nombre = valoresProd[0];
-                    
+
                     if (valoresProd.length >= 7) {
                         // Verifica si el producto pertenece al proveedor eliminado y coincide con el nombre del producto
                         if (nombreProductoEliminar.equalsIgnoreCase(nombre)) {
@@ -1126,29 +1127,28 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton9ActionPerformed
-    
-    
+
+
     private void ComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox1ActionPerformed
-        
+
     }//GEN-LAST:event_ComboBox1ActionPerformed
 
     private void ComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBox1MouseClicked
         //Agrega los codigos de los productos a un jComboBox
         ComboBox1.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Productos.txt");
+            File Pr = new File("src/Files/Productos.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cod = temp[0];
                 ComboBox1.addItem(cod);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1164,20 +1164,19 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void ComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBox2MouseClicked
         ComboBox2.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Productos.txt");
+            File Pr = new File("src/Files/Productos.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cod = temp[0];
                 ComboBox2.addItem(cod);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1192,47 +1191,47 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBox2MouseClicked
 
     private void ButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActualizarActionPerformed
-        String cod_Actualizar= ComboBox2.getSelectedItem().toString();
-        String precionuevo= PrecioNuevo.getText();
+        String cod_Actualizar = ComboBox2.getSelectedItem().toString();
+        String precionuevo = PrecioNuevo.getText();
         //verificaciones
-        try{
+        try {
             Double precio = Double.parseDouble(PrecioNuevo.getText());
-        }catch(NumberFormatException e2){
+        } catch (NumberFormatException e2) {
             JOptionPane.showMessageDialog(null, "Ingrese un precio válido. ");
             PrecioNuevo.setText("");
             return;
         }
         //verifica que el campo no esté vacío
-        if(precionuevo.isEmpty()){
+        if (precionuevo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese el precio. ");
             return;
         }
-        
-        String archivoProd ="src/Files/Productos.txt";
+
+        String archivoProd = "src/Files/Productos.txt";
         ActualizarPrecio(archivoProd, cod_Actualizar, precionuevo);
         PrecioNuevo.setText("");
     }//GEN-LAST:event_ButtonActualizarActionPerformed
 
-    public static void ActualizarPrecio ( String archivoProductos, String cod_actualizar, String precionuevo){
+    public static void ActualizarPrecio(String archivoProductos, String cod_actualizar, String precionuevo) {
         File archivo = new File(archivoProductos);
         StringBuilder nuevoContenido = new StringBuilder();
-        try(BufferedReader br = new BufferedReader (new FileReader (archivo))){
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
-            
-            while((linea = br.readLine()) != null){
+
+            while ((linea = br.readLine()) != null) {
                 String[] campos = linea.split("\\|"); //almacena los campos del registro
-                
-                if(campos[0].trim().equals(cod_actualizar)){
-                    campos[3]= precionuevo; //cambia el campo de precio
-                    linea= String.join("|", campos); 
+
+                if (campos[0].trim().equals(cod_actualizar)) {
+                    campos[3] = precionuevo; //cambia el campo de precio
+                    linea = String.join("|", campos);
                 }
-                
-                nuevoContenido.append(linea).append("\n"); 
-            }  
-        }catch(IOException e){
+
+                nuevoContenido.append(linea).append("\n");
+            }
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error actualizando el precio. ");
         }
-        
+
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
             bw.write(nuevoContenido.toString());
             JOptionPane.showMessageDialog(null, "Precio actualizado. ");
@@ -1240,7 +1239,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void ComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox2ActionPerformed
 
     }//GEN-LAST:event_ComboBox2ActionPerformed
@@ -1254,32 +1253,29 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_cantVentActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String cp = jComboven.getSelectedItem().toString(); 
-        
-        if((cantVent.getText()).isEmpty()){
+        String cp = jComboven.getSelectedItem().toString();
+
+        if ((cantVent.getText()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese la cantidad. ");
             return;
         }
-        
-        try{
+
+        try {
             int cv2 = Integer.parseInt(cantVent.getText());
-        } catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida. ");
             cantVent.setText("");
             return;
         }
-        
+
         int cv = Integer.parseInt(cantVent.getText()); // Convertir a entero
         registrarVenta(cp, cv); // Llamar a la función con los valores correctos
         cantVent.setText("");
-        
-        
-        
+
 
     }//GEN-LAST:event_jButton10ActionPerformed
-public static void registrarVenta(String codigoProducto, int cantidadVendida) {
-    
-            
+    public static void registrarVenta(String codigoProducto, int cantidadVendida) {
+
         String ARCHIVO_PRODUCTOS = ("src/Files/Productos.txt");
         File archivo = new File(ARCHIVO_PRODUCTOS);
         StringBuilder nuevoContenido = new StringBuilder();
@@ -1299,15 +1295,14 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
                     // Reconstruir la línea actualizada
                     campos[4] = String.valueOf(nuevaCantidad); // Actualizar cantidad en stock
-                    
+
                     campos[5] = fechaVenta; // Actualizar fecha de última venta
-                    if (cantidadActual - cantidadVendida <50){
-                    campos[4] = "50";
-                    reponerProductoYActualizarProveedor(codigoProducto, 50 -(cantidadActual - cantidadVendida) );
-                     }
+                    if (cantidadActual - cantidadVendida < 50) {
+                        campos[4] = "50";
+                        reponerProductoYActualizarProveedor(codigoProducto, 50 - (cantidadActual - cantidadVendida));
+                    }
                     linea = String.join("|", campos);
-                
-                    
+
                 }
 
                 nuevoContenido.append(linea).append("\n");
@@ -1325,8 +1320,9 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al escribir en el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);// TODO add your handling code here:
         }
-}
- public static void reponerProductoYActualizarProveedor(String codigoProducto, int cantidadVendida) {
+    }
+
+    public static void reponerProductoYActualizarProveedor(String codigoProducto, int cantidadVendida) {
         // Archivos
         String ARCHIVO_PRODUCTOS = "src/Files/Productos.txt";
         String ARCHIVO_PROVEEDORES = "src/Files/Proveedores.txt";
@@ -1421,13 +1417,12 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         }
     }
 
-
-    private void codProdActionPerformed(java.awt.event.ActionEvent evt) {                                        
+    private void codProdActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                       
+    }
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
- try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
             String apuntador;
             String codigoProducto = jComboven.getSelectedItem().toString();
             // Leer el archivo 
@@ -1435,15 +1430,14 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                   
-                    
+
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
                     String fecha = valores[5].trim();
 
                     // Comparar
-                    if (codigoProducto.equals(codigo)) {                       
+                    if (codigoProducto.equals(codigo)) {
                         JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nUltima fecha de entrega: " + fecha);
                         return;
 
@@ -1456,34 +1450,34 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
-        }       
-    // TODO add your handling code here:
+        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         String cp = jComborep.getSelectedItem().toString();
-        
-        if((cantidadReponer1.getText()).isEmpty()){
+
+        if ((cantidadReponer1.getText()).isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese la cantidad. ");
             return;
         }
-        
-        try{
+
+        try {
             int cv2 = Integer.parseInt(cantidadReponer1.getText());
-        } catch(NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida. ");
             cantidadReponer1.setText("");
             return;
         }
-        
+
         int cv = Integer.parseInt(cantidadReponer1.getText()); //Pasar a entero
-        
+
         reponerProductoYActualizarProveedor(cp, cv); // Llamar a la función con los valores correctos          
         cantidadReponer1.setText("");
     }//GEN-LAST:event_jButton13ActionPerformed
-    
+
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-         try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"))) {
             String apuntador;
             String codigoProducto = jComborep.getSelectedItem().toString();
             // Leer el archivo 
@@ -1491,15 +1485,14 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    
-                    
+
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
                     String fecha = valores[5].trim();
 
                     // Comparar
-                    if (codigoProducto.equals(codigo)) {                       
+                    if (codigoProducto.equals(codigo)) {
                         JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nUltima fecha de entrega: " + fecha);
                         return;
 
@@ -1530,20 +1523,19 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
     private void jComboprovMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboprovMouseClicked
         jComboprov.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Proveedores.txt");
+            File Pr = new File("src/Files/Proveedores.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cedula = temp[1];
                 jComboprov.addItem(cedula);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1559,20 +1551,19 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
     private void jComborepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComborepMouseClicked
         jComborep.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Productos.txt");
+            File Pr = new File("src/Files/Productos.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cod = temp[0];
                 jComborep.addItem(cod);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1588,20 +1579,19 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
     private void jCombovenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCombovenMouseClicked
         jComboven.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Productos.txt");
+            File Pr = new File("src/Files/Productos.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cod = temp[0];
                 jComboven.addItem(cod);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1624,15 +1614,14 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    
-                    
+
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
 
                     // Comparar
-                    if (codigoProducto.equals(codigo)) {                       
-                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria );
+                    if (codigoProducto.equals(codigo)) {
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria);
                         return;
 
                     }
@@ -1656,15 +1645,14 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                    
-                    
+
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
                     String codigo = valores[0].trim();
                     String precio = valores[3].trim();
                     // Comparar
-                    if (codigoProducto.equals(codigo)) {                       
-                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nPrecio Actual: $"+ precio);
+                    if (codigoProducto.equals(codigo)) {
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nPrecio Actual: $" + precio);
                         return;
 
                     }
@@ -1681,20 +1669,19 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
     private void jComboProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboProdMouseClicked
         jComboProd.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Productos.txt");
+            File Pr = new File("src/Files/Productos.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cod = temp[0];
                 jComboProd.addItem(cod);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1710,20 +1697,19 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
     private void jComboProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboProvMouseClicked
         jComboProv.removeAllItems();
-        
+
         BufferedReader pr = null;
         try {
-            File Pr = new File ("src/Files/Proveedores.txt");
+            File Pr = new File("src/Files/Proveedores.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cedula = temp[1];
                 jComboProv.addItem(cedula);
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1746,8 +1732,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                   
-                    
+
                     String nombre = valores[0].trim();
                     String producto = valores[2].trim();
                     String cedula = valores[1].trim();
@@ -1756,8 +1741,8 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                     String codigo = valores[5].trim();
 
                     // Comparar
-                    if (cedulaProveedor.equals(cedula)) {                       
-                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto: " + producto +"\nProducto suministrado: "+ codigo + "\nCantidad suministrada: "+ cantidad + "\nUltima fecha de entrega: " + fecha);
+                    if (cedulaProveedor.equals(cedula)) {
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nProducto: " + producto + "\nProducto suministrado: " + codigo + "\nCantidad suministrada: " + cantidad + "\nUltima fecha de entrega: " + fecha);
                         return;
 
                     }
@@ -1769,7 +1754,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
-        }   
+        }
     }//GEN-LAST:event_jButtonConProvActionPerformed
 
     private void jButtonConProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConProdActionPerformed
@@ -1781,8 +1766,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                 String[] valores = apuntador.split("\\|");
 
                 if (valores.length >= 3) {
-                   
-                    
+
                     String codigo = valores[0].trim();
                     String nombre = valores[1].trim();
                     String categoria = valores[2].trim();
@@ -1791,8 +1775,8 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
                     String fecha = valores[5].trim();
 
                     // Comparar
-                    if (codigoproducto.equals(codigo)) {                       
-                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria +"\nPrecio: $"+ precio + "\nCantidad en stock: "+ cantidad + "\nUltima fecha de entrega: " + fecha);
+                    if (codigoproducto.equals(codigo)) {
+                        JOptionPane.showMessageDialog(this, "Nombre: " + nombre + "\nCategoría: " + categoria + "\nPrecio: $" + precio + "\nCantidad en stock: " + cantidad + "\nUltima fecha de entrega: " + fecha);
                         return;
 
                     }
@@ -1804,7 +1788,7 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
 
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
-        }   
+        }
     }//GEN-LAST:event_jButtonConProdActionPerformed
 
     private void Precio_NewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Precio_NewActionPerformed
@@ -1884,7 +1868,6 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
         DefaultTableModel model = (DefaultTableModel) Overview_Productos.getModel();
 
         // Añadir la nueva fila al modelo de la tabla
-
         try {
             model.setRowCount(0);
             BufferedReader br = new BufferedReader(new FileReader("src/Files/Productos.txt"));
@@ -1921,35 +1904,34 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     private void jComboBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox1MouseClicked
         jComboBox1.removeAllItems();
         String cedulaEliminar = jComboprov.getSelectedItem().toString();
-        
+
         BufferedReader pr = null;
-        BufferedReader pro =null;
-        String codigoeliminar=null;
+        BufferedReader pro = null;
+        String codigoeliminar = null;
         try {
-            File Pr = new File ("src/Files/Proveedores.txt");
+            File Pr = new File("src/Files/Proveedores.txt");
             pr = new BufferedReader(new FileReader(Pr));
-            String line=pr.readLine();
-            while((line=pr.readLine()) != null){
-                String temp[]=line.split("\\|");
+            String line = pr.readLine();
+            while ((line = pr.readLine()) != null) {
+                String temp[] = line.split("\\|");
                 String cedula = temp[1];
-                if(cedula.equals(cedulaEliminar)){
+                if (cedula.equals(cedulaEliminar)) {
                     codigoeliminar = temp[5];
                     break;
                 }
             }
-            File Pro = new File ("src/Files/Productos.txt");
+            File Pro = new File("src/Files/Productos.txt");
             pro = new BufferedReader(new FileReader(Pro));
-            String line2 =pro.readLine();
-            while((line2=pro.readLine()) != null){
-                String temp[]= line2.split("\\|");
+            String line2 = pro.readLine();
+            while ((line2 = pro.readLine()) != null) {
+                String temp[] = line2.split("\\|");
                 String cod = temp[0];
-                if(cod.equals(codigoeliminar)){
+                if (cod.equals(codigoeliminar)) {
                     jComboBox1.addItem(cod);
                 }
             }
             pr.close();
-            
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(InterfazGrafica.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -1964,33 +1946,32 @@ public static void registrarVenta(String codigoProducto, int cantidadVendida) {
     }//GEN-LAST:event_jComboBox1MouseClicked
 
     private void verificarStockBajo() {
-    String archivoProductos = "src/Files/Productos.txt"; 
-    int productosConStockBajo = 0;
-    StringBuilder nombresProductos = new StringBuilder("Productos con stock menor a 50:\n");
+        String archivoProductos = "src/Files/Productos.txt";
+        int productosConStockBajo = 0;
+        StringBuilder nombresProductos = new StringBuilder("Productos con stock menor a 50:\n");
 
-    try (BufferedReader br = new BufferedReader(new FileReader(archivoProductos))) {
-        // Leer y descartar la primera línea (cabecera)
-        String linea = br.readLine();
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoProductos))) {
+            // Leer y descartar la primera línea (cabecera)
+            String linea = br.readLine();
 
-        // Bucle para procesar las demás líneas
-        while ((linea = br.readLine()) != null) {
-            String[] campos = linea.split("\\|");
-            if (campos.length == 7) {
-                int cantidadEnStock = Integer.parseInt(campos[4].trim());
-                
-                if (cantidadEnStock < 50) {
-                    nombresProductos.append(campos[1].trim()).append(" - Stock: ").append(cantidadEnStock).append("\n");
-                    productosConStockBajo++;
+            // Bucle para procesar las demás líneas
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split("\\|");
+                if (campos.length == 7) {
+                    int cantidadEnStock = Integer.parseInt(campos[4].trim());
+
+                    if (cantidadEnStock < 50) {
+                        nombresProductos.append(campos[1].trim()).append(" - Stock: ").append(cantidadEnStock).append("\n");
+                        productosConStockBajo++;
+                    }
                 }
             }
+
+            JOptionPane.showMessageDialog(this, nombresProductos);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
- 
-        JOptionPane.showMessageDialog(this,   nombresProductos);
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Actualizar_Precio_Del_Producto;
