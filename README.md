@@ -86,11 +86,10 @@ Desarrollar competencias en:
 ---
 
 ## 📸 Capturas del Sistema
-![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/ConsultarLab.png)
-/assets/screenshots/
----
-
-## 👨‍💻 Desarrollado por
-Proyecto realizado en equipo para el laboratorio académico **Laboratorio 1 – Manejo de Archivos en Java (2025)**.
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/m/Assets/IniciarSesion.png)
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/m/Assets/ProductosLAB.png)
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/m/Assets/VenderReponerLAB.png)
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/m/Assets/AgregarEliminarLAB.png)
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/m/Assets/ConsultarLAB.png)
 
 ---
