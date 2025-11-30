@@ -87,9 +87,12 @@ Desarrollar competencias en:
 
 ## 📸 Capturas del Sistema
 ![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/IniciarSesion.png)
+---
 ![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/ProductosLAB.png)
+---
 ![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/VenderReponerLAB.png)
+---
 ![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/AgregarEliminarLAB.png)
+---
 ![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/ConsultarLAB.png)
-
 ---
