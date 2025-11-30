@@ -59,15 +59,6 @@ Diseñada en NetBeans para permitir:
   - Formatos incorrectos  
   - Intentos de duplicado  
 
----
-## 🧪 Requerimientos de Calidad Cumplidos
-- ✔ Interfaz gráfica funcional  
-- ✔ Validaciones completas  
-- ✔ Eliminación segura de registros relacionados  
-- ✔ Manejo de errores y excepciones  
-- ✔ Código documentado  
-- ✔ Sin duplicados o archivos corruptos  
-- ✔ Integridad garantizada entre Productos ↔ Proveedores  
 
 ---
 
@@ -95,8 +86,7 @@ Desarrollar competencias en:
 ---
 
 ## 📸 Capturas del Sistema
-*(Agrega aquí tus screenshots para que el README se vea pro)*  
-Ruta sugerida:  
+
 /assets/screenshots/
 ---
 
