@@ -86,7 +86,7 @@ Desarrollar competencias en:
 ---
 
 ## 📸 Capturas del Sistema
-
+![Capturas del Sistema](https://raw.githubusercontent.com/pjosed/LabEDD/main/Assets/ConsultarLab.png)
 /assets/screenshots/
 ---
 
